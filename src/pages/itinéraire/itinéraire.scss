@@ -1,0 +1,11 @@
+page-itineraire {
+    $SIDEMENU_TOP: #ee4649;
+    $SIDEMENU_BOTTOM: #f6a72a;
+    .toolbar-background-md {
+        background: -webkit-gradient(left top, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+        background: -o-linear-gradient(bottom right, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+        background: -moz-linear-gradient(bottom right, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+        //background: linear-gradient(to bottom right, #00cc66 0%, #3ea843 100%);
+        background: linear-gradient(to top right, #ff9933 0%, #ff5050 100%);
+    }
+}

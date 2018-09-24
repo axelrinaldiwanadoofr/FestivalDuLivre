@@ -1,6 +1,4 @@
 // http://ionicframework.com/docs/theming/
-
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -14,3 +12,88 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.bg {
+    background: #fff3e6;
+    //#f2f2f2
+}
+
+.back {
+    background: #2c68e0;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #2c68e0 0%, #2989d8 20%, #fafc8f 84%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #2c68e0 0%, #2989d8 20%, #fafc8f 84%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #ffcc99 17%, #66ccff 84%);
+    /*linear-gradient(top, #2c68e0 0%, #2989d8 20%, #fafc8f 84%);*/
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background-size: cover;
+    display: block;
+    font-family: 'Catamaran', sans-serif;
+}
+
+ion-title {
+    text-align: center;
+    font-size: 100px;
+}
+
+ion-content {
+    text-align: center;
+}
+
+.icon-md,
+.icon-ios,
+.toolbar-title.toolbar-title-ios,
+.toolbar-title.toolbar-title-md,
+.back-button-text-md,
+.back-button-text-ios {
+    color: white;
+}
+
+$SIDEMENU_TOP: #ff6600;
+$SIDEMENU_BOTTOM: #f6a72a;
+.toolbar-background-md,
+.toolbar-background-ios {
+    background: -webkit-gradient(left top, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+    background: -o-linear-gradient(bottom right, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+    background: -moz-linear-gradient(bottom right, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+    background: linear-gradient(to top right, #ffcc66 0%, #ff6600 100%)
+}
+
+// Material Design Sidemenu
+.app {
+    ion-header {
+        padding: 5px 15px;
+        background-image: url('../assets/img/logo_festival.png');
+        background-position: fixed;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        height: 20%;
+        color: white;
+        .name {
+            font-weight: 500;
+        }
+    }
+    .user-avatar {
+        max-width: 125px;
+        height: 125px;
+        padding: .5em;
+        height: 12vh;
+        border-radius: 51px;
+    }
+    h3,
+    .label,
+    {
+        color: #999;
+        font-weight: 400;
+    }
+    ion-icon {
+        color: #cc5200;
+        font-size: 30px;
+    }
+    p {
+        color: #cc5200;
+        font-weight: bold;
+        font-size: 1.0em;
+    }
+}
