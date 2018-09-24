@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black');
+page-hello-ionic {
+    .logo {
+        border-radius: 0px;
+    }
+    .imgbtn {
+        border-radius: 10px;
+        //border: 1px solid white; #ffaa00;
+    }
+    .logo-client {
+        margin: 2px;
+        max-height: 300px;
+        max-width: auto;
+        //border: 2px solid #0099ff;
+        border-radius: 10px;
+    }
+    .btn {
+        border-radius: 0px;
+        background: linear-gradient(to top, #d3d3d3 0%, #ffffff 110%); //#ffaa00;
+        border: 2px solid darkorange;
+        font-size: 120%;
+        font-weight: bold;
+        max-height: 225px;
+        max-width: 200px;
+    }
+    .btnresto {
+        border-radius: 0px;
+        background: linear-gradient(to top, #d3d3d3 0%, #ffffff 110%); //#ffaa00;
+        border: 2px solid orange;
+        font-size: 120%;
+        font-weight: bold;
+        max-height: 225px;
+        max-width: 250px;
+    }
+    .btnresto:active {
+        transform: translate(0px, 3px);
+        box-shadow: 0px 2px #fff3e6;
+    }
+    .btn:active {
+        transform: translate(0px, 3px);
+        box-shadow: 0px 2px #fff3e6;
+    }
+    .searchbar {
+        background: grey;
+        border-radius: 10px;
+    }
+    ion-col {
+        border: 1px solid transparent;
+    }
+    .bandeau {
+        margin: auto;
+        width: 99%;
+        background-image: url('../assets/img/flou4.jpeg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: whitesmoke;
+        border-radius: 0px;
+        font-size: 100%;
+        font-weight: bold;
+        text-shadow: 3px 3px 3px black;
+    }
+    .rdv {
+        font-weight: bold;
+        font-size: 100%;
+        text-align: left;
+    }
+    .btn2 {
+        font-size: 120%;
+        font-weight: bold;
+        width: 80px;
+        background: #fff7e6;
+    }
+}
