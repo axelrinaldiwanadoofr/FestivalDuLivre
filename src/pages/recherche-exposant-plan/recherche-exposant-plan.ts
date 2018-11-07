@@ -48,11 +48,19 @@ export class RechercheExposantPlanPage implements OnInit
   {
     this.exposants = [] ;
     this.marqueurs = [] ;
-    
-    if( this.recherche.libelle )
+
+    if (this.recherche.libelle && this.recherche.themeId)
+    {
+      console.log("ok");
+    }
+    else if( this.recherche.libelle )
     {
       let libelle = '%' + this.recherche.libelle.toLocaleUpperCase() + '%'
-      let sql = "select numstand, id, libelle from EXPOSANT, EXPOSER where id=idExposant and lower(libelle) like ? order by libelle"
+      let sql;
+      sql += "select numstand, id, libelle"
+      sql += "from EXPOSANT, EXPOSER"
+      sql += "where id = idExposant and lower(libelle)"
+      sql += "like ? order by libelle"
       this.sqlPrd.select( sql, [libelle], this.exposants ).then((data)=>
       {
         this.exposants.forEach( (e)=>
@@ -77,7 +85,7 @@ export class RechercheExposantPlanPage implements OnInit
     }
     else
     {
-      let sql = "select numstand, id, libelle from EXPOSANT, EXPOSER where id=idExposant order by libelle"
+      let sql = "select idStand, id, nom from EXPOSANTS_18 JOIN etresur_18 ON id=idExposant order by nom"
       this.sqlPrd.select( sql , null, this.exposants ) ;
     }
   }
