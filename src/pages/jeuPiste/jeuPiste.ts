@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Enigme1 } from '../jeuPiste/enigmes/enigme1/enigme1';
 
 /**
  * Generated class for the RestaurantsPage page.
@@ -21,4 +22,15 @@ export class jeuPistePage {
     ionViewDidLoad() {
         console.log('ionViewDidLoad jeuPistePage');
     }
+
+    onClickDebutJeu()
+  {
+    this.navCtrl.push(Enigme1);
+  }
+
+  saveAnswer()
+  {
+      
+  }
+
 }
