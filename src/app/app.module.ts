@@ -32,6 +32,7 @@ import { RechercheRdvPage } from '../pages/recherche-rdv/recherche-rdv';
 import { RechercheExposantPlanPage } from '../pages/recherche-exposant-plan/recherche-exposant-plan' ;
 import { ExposantPage } from '../pages/exposant/exposant' ;
 import { lyceePage } from '../pages/lycee/lycee' ;
+import { jeuPistePage } from '../pages/jeuPiste/jeuPiste';
 import { ThemeExposantsPage } from '../pages/theme-exposants/theme-exposants' ;
 import { UnePersonnePage } from '../pages/unepersonne/unepersonne' ;
 import { FrmListeRdvPage } from '../pages/frm-liste-rdv/frm-liste-rdv' ;
@@ -82,6 +83,7 @@ import { TelechargerPage} from '../pages/telecharger/telecharger';
     ThemeExposantsPage,
     FrmListeRdvPage,
     lyceePage,
+    jeuPistePage,
     UnRendezVousPage,
     TelechargerPage,
   ],
@@ -124,6 +126,7 @@ import { TelechargerPage} from '../pages/telecharger/telecharger';
     ThemeExposantsPage,
     FrmListeRdvPage,
     lyceePage,
+    jeuPistePage,
     UnRendezVousPage,
     TelechargerPage,
   ],

@@ -12,6 +12,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { FavorisPage } from '../pages/favoris/favoris' ;
 import { TelechargerPage} from '../pages/telecharger/telecharger';
 import { lyceePage } from '../pages/lycee/lycee';
+import { jeuPistePage } from '../pages/jeuPiste/jeuPiste';
 
 
 
@@ -30,20 +31,21 @@ export class MyApp {
     public menu: MenuController,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    
+
   ) {
     this.initializeApp();
 
     // set our app's pages
     this.pages = [
       { title: 'Accueil', component: HelloIonicPage, icon: 'home'},
-      { title: "Présentation", component: PresentationPage, icon: 'desktop'},      
-      { title: "Infos pratiques", component: InfoPage, icon: 'information-circle'}, 
+      { title: "Présentation", component: PresentationPage, icon: 'desktop'},
+      { title: "Infos pratiques", component: InfoPage, icon: 'information-circle'},
       { title: 'Restaurants', component: RestaurantsPage, icon: 'restaurant'},
       { title: "Contact", component: ContactPage, icon: 'contacts'},
       { title: "Favoris", component: FavorisPage, icon: 'star'},
       { title: "Téléchargement", component : TelechargerPage, icon :'md-download'},
-      { title: "Lycée Camille Sée", component : lyceePage, icon: "ios-school"}
+      { title: "Lycée Camille Sée", component : lyceePage, icon: "ios-school"},
+      { title: "Jeu de piste", component : jeuPistePage, icon: "beer"}
     ];
   }
 
@@ -63,5 +65,5 @@ export class MyApp {
     this.nav.setRoot(page.component);
   }
 
-   
+
 }

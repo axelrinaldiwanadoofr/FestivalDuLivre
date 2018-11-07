@@ -19,7 +19,7 @@ export class lyceePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad lyceePage');
+    console.log('ionViewDidLoad lyceePage'); 
   }
 
 }
