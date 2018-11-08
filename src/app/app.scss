@@ -12,11 +12,18 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
-.bg {
-    background: #fff3e6;
-    //#f2f2f2
+
+//Changement de la couleur du fond
+.background {
+    background: #EEEDEB;
+    
 }
 
+legend{
+    color: #C51B5E;
+    font-size: 113%;
+	font-Weight: Bold;
+}
 .back {
     background: #2c68e0;
     /* Old browsers */
@@ -57,13 +64,14 @@ $SIDEMENU_BOTTOM: #f6a72a;
     background: -webkit-gradient(left top, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
     background: -o-linear-gradient(bottom right, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
     background: -moz-linear-gradient(bottom right, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
-    background: linear-gradient(to top right, #ffcc66 0%, #ff6600 100%)
+    // Ici le changement de couleur du header
+    background: linear-gradient(to top left, #2E3547 , #4D5F7A )
 }
 
 // Material Design Sidemenu
 .app {
     ion-header {
-        padding: 5px 15px;
+        //padding: 5px 15px;
         background-image: url('../assets/img/logo_festival.png');
         background-position: fixed;
         background-repeat: no-repeat;
@@ -88,12 +96,15 @@ $SIDEMENU_BOTTOM: #f6a72a;
         font-weight: 400;
     }
     ion-icon {
-        color: #cc5200;
-        font-size: 30px;
+        color: #C51B5E;
+        font-size: 1.8em;
+        margin-right: 7px; 
     }
+
+    //Ici changement de couleur des différents onglets dans le menu
     p {
-        color: #cc5200;
+        color: #C51B5E;
         font-weight: bold;
-        font-size: 1.0em;
+        font-size: 0.8em;
     }
 }

@@ -1,11 +1,11 @@
 page-historique {
     .rouge {
-        color: red;
+        color:#C51B5E;
     }
 	
 	fieldset{
 	text-align: left;
-	border:2px solid orange;
+	border:2px solid #BDAC98;
     -moz-border-radius:8px;
     -webkit-border-radius:8px;	
     border-radius:8px;	
@@ -16,7 +16,7 @@ page-historique {
 	{
 	  font-size: 113%;
 	  Font-Weight: Bold;
-	  color:red;
+	  color:#C51B5E;
 	}
 	
 	div
@@ -33,3 +33,7 @@ page-historique {
         background: linear-gradient(to top, #0066cc 17%, #66ccff 91%);
 }
 
+.background {
+    background: #EEEDEB;
+    //#f2f2f2
+}

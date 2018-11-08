@@ -12,11 +12,13 @@ p {
 }
 
 summary {
-	font-size: 20px;
+    font-size: 20px;
+    color:#C51B5E;
 }
 
 h2 {
-	text-decoration: underline;
+    text-decoration: underline;
+    
 }
 
 h3 {
@@ -30,3 +32,19 @@ h3 {
     height: 50px;
         background: linear-gradient(to top, #0066cc 17%, #66ccff 91%);
 }
+
+.background {
+    background: #EEEDEB;
+    //#f2f2f2
+}
+
+fieldset{
+	text-align: left;
+	border:2px solid #BDAC98;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;	
+    border-radius:8px;	
+	margin-bottom: 5%;
+	}
+	
+// Changement de couleur des dates dans le dossier app/app.scss

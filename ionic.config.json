@@ -1,6 +1,5 @@
 {
-  "name": "FestivalDuLivre",
-  "app_id": "",
-  "type": "ionic-angular",
-  "integrations": {}
+  "name": "FestivalDuLivre2",
+  "integrations": {},
+  "type": "ionic-angular"
 }

@@ -14,7 +14,7 @@
 </ion-header>
 
 
-<ion-content class="bg" padding>
+<ion-content class="background" padding>
     <ion-list>
         <ion-searchbar (ionInput)="getItems($event)" placeholder="N° du Stand"></ion-searchbar>
         <button class="button-list" ion-item *ngFor="let stand of stands" (click)="event(stand)" style="text-align:center;font-weight:bold;">
