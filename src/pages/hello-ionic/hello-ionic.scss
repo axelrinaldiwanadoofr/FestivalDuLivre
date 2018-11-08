@@ -2,6 +2,9 @@
 page-hello-ionic {
     //changer la couleur du header voir dans app/app.scss ligne 60
 
+    .btn-right {
+        float: right;
+    }
     .ios{
         color: #C51B5E;
     }
