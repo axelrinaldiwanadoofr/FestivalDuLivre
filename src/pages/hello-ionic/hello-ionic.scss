@@ -2,9 +2,13 @@
 page-hello-ionic {
     //changer la couleur du header voir dans app/app.scss ligne 60
 
+  
     .btn-right {
         float: right;
+        color:white;
+        background: #C51B5E;
     }
+   
     .ios{
         color: #C51B5E;
     }
@@ -13,6 +17,7 @@ page-hello-ionic {
         border-radius: 20px;
     }
     .imgbtn {
+        //image plan
         border-radius: 10px;
         //border: 1px solid white; #ffaa00;
     }
@@ -54,19 +59,7 @@ page-hello-ionic {
     ion-col {
         border: 1px solid transparent;
     }
-    .bandeau {
-        margin: auto;
-        width: 99%;
-        background-image: url('../assets/img/flou4.jpeg');
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        color: whitesmoke;
-        border-radius: 0px;
-        font-size: 100%;
-        font-weight: bold;
-        text-shadow: 3px 3px 3px black;
-    }
+    
     .rdv {
         font-weight: bold;
         font-size: 100%;
