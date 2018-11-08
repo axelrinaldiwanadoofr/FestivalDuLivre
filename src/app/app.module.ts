@@ -32,6 +32,7 @@ import { RechercheRdvPage } from '../pages/recherche-rdv/recherche-rdv';
 import { RechercheExposantPlanPage } from '../pages/recherche-exposant-plan/recherche-exposant-plan' ;
 import { ExposantPage } from '../pages/exposant/exposant' ;
 import { lyceePage } from '../pages/lycee/lycee' ;
+import { jeuPistePage } from '../pages/jeuPiste/jeuPiste';
 import { ThemeExposantsPage } from '../pages/theme-exposants/theme-exposants' ;
 import { UnePersonnePage } from '../pages/unepersonne/unepersonne' ;
 import { FrmListeRdvPage } from '../pages/frm-liste-rdv/frm-liste-rdv' ;
@@ -46,6 +47,9 @@ import { FavorisPage } from '../pages/favoris/favoris' ;
 import { UnRendezVousPage } from '../pages/un-rendez-vous/un-rendez-vous' ;
 
 import { TelechargerPage} from '../pages/telecharger/telecharger';
+
+// Enigmes : 
+import { Enigme1 } from '../pages/jeuPiste/enigmes/enigme1/enigme1';
 
 @NgModule({
   declarations: [
@@ -82,8 +86,10 @@ import { TelechargerPage} from '../pages/telecharger/telecharger';
     ThemeExposantsPage,
     FrmListeRdvPage,
     lyceePage,
+    jeuPistePage,
     UnRendezVousPage,
     TelechargerPage,
+    Enigme1,
   ],
   imports: [
     BrowserModule,
@@ -124,8 +130,10 @@ import { TelechargerPage} from '../pages/telecharger/telecharger';
     ThemeExposantsPage,
     FrmListeRdvPage,
     lyceePage,
+    jeuPistePage,
     UnRendezVousPage,
     TelechargerPage,
+    Enigme1,
   ],
   providers: [
     StatusBar,
