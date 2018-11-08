@@ -82,7 +82,6 @@ export class RechercheExposantPlanPage implements OnInit
       
       this.sqlPrd.select( sql, null, this.exposants ).then((data)=>
       {
-        console.log(sql);
         this.exposants.forEach( (e)=>
         {
           this.marqueurs.push( new PlanMarqueur( e.idStand, e.nom) ) ;
