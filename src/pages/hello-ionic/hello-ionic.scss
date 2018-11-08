@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Archivo+Black');
 page-hello-ionic {
+    //changer la couleur du header voir dans app/app.scss ligne 60
+
+    .btn-right {
+        float: right;
+    }
+    .ios{
+        color: #C51B5E;
+    }
     .logo {
         border-radius: 0px;
     }
@@ -16,8 +24,7 @@ page-hello-ionic {
     }
     .btn {
         border-radius: 0px;
-        background: linear-gradient(to top, #d3d3d3 0%, #ffffff 110%); //#ffaa00;
-        border: 2px solid darkorange;
+        background: linear-gradient(#EEEDEB); //#ffaa00;
         font-size: 120%;
         font-weight: bold;
         max-height: 225px;
@@ -25,8 +32,7 @@ page-hello-ionic {
     }
     .btnresto {
         border-radius: 0px;
-        background: linear-gradient(to top, #d3d3d3 0%, #ffffff 110%); //#ffaa00;
-        border: 2px solid orange;
+        background: linear-gradient(#EEEDEB); //#ffaa00;
         font-size: 120%;
         font-weight: bold;
         max-height: 225px;
