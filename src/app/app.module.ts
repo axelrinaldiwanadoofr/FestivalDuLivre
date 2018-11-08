@@ -29,6 +29,7 @@ import { PersonnePage } from '../pages/personne/personne';
 import { RechercheThemePage } from '../pages/recherche-theme/recherche-theme';
 import { StandListExposantPage } from '../pages/stand-list-exposant/stand-list-exposant' ;
 import { RechercheRdvPage } from '../pages/recherche-rdv/recherche-rdv';
+import { RechercheLivrePage } from '../pages/recherche-livre/recherche-livre';
 import { RechercheExposantPlanPage } from '../pages/recherche-exposant-plan/recherche-exposant-plan' ;
 import { ExposantPage } from '../pages/exposant/exposant' ;
 import { lyceePage } from '../pages/lycee/lycee' ;
@@ -75,6 +76,7 @@ import { TelechargerPage} from '../pages/telecharger/telecharger';
     RechercheRdvPage,
     PlanComponent,
     StandListExposantPage,
+    RechercheLivrePage,
     RechercheExposantPlanPage,
     ExposantPage,
     RendezVousDetailPage,
@@ -117,6 +119,7 @@ import { TelechargerPage} from '../pages/telecharger/telecharger';
     RechercheRdvPage,
     FavorisPage,
     StandListExposantPage,
+    RechercheLivrePage,
     RechercheExposantPlanPage,
     RendezVousDetailPage,
     ExposantPage,
