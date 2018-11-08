@@ -4,6 +4,20 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { PlanComponent } from '../components/plan/plan' ;
+import { ListeFrmSqlModeleComponent } from '../components/liste-frm-sql-modele/liste-frm-sql-modele' ;
+import { ListeFrmLineComponent } from '../components/liste-frm-line/liste-frm-line' ;
+import { TabFormComponent } from '../components/tab-form/tab-form' ;
+import { TabRowComponent } from '../components/tab-row/tab-row' ;
+import { TabCellComponent } from '../components/tab-cell/tab-cell' ;
+import { TabBtSaveComponent } from '../components/tab-bt-save/tab-bt-save' ;
+import { TabBtCancelComponent } from '../components/tab-bt-cancel/tab-bt-cancel' ;
+import { TabBtRemoveComponent } from '../components/tab-bt-remove/tab-bt-remove' ;
+import { TabBtNewComponent } from '../components/tab-bt-new/tab-bt-new' ;
+import { TabColHeaderComponent } from '../components/tab-col-header/tab-col-header' ;
+import { TabLineSelectorComponent } from '../components/tab-line-selector/tab-line-selector' ;
+import { FileSelectorComponent } from '../components/file-selector/file-selector' ;
+import { TextAreaComponent } from '../components/text-area/text-area' ;
+
 
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ModeEmploiPage } from '../pages/mode-emploi/mode-emploi';
@@ -54,6 +68,17 @@ import { Enigme1 } from '../pages/jeuPiste/enigmes/enigme1/enigme1';
 @NgModule({
   declarations: [
     MyApp,
+    TabFormComponent,
+    TabRowComponent,
+    TabCellComponent,
+    TabColHeaderComponent,
+    TabBtSaveComponent,
+    TabBtCancelComponent,
+    TabBtRemoveComponent,
+    TabBtNewComponent,
+    TabLineSelectorComponent,
+    FileSelectorComponent,
+    TextAreaComponent,    
     HelloIonicPage,
     ModeEmploiPage,
     InfoPage,
