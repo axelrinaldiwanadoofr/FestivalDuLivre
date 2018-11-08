@@ -1,61 +1,74 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
+import { RemoteSqlProvider } from "../../providers/remotesql/remotesql" ;
 
 import 'rxjs/add/operator/map';
 
-/*
-  Generated class for the JetonDeConnectionProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class JetonDeConnectionProvider 
 {
   private connected: boolean ;
   private compte: string ;
-  private droits: string ;
+  private nom: string ;
+  private privilege: number ;
+  private id: number ;
+  private idExposant: number ;
 
-  private users: Array<{compte:string, password: string, droits: string }> ;
-
-  constructor(public http: HttpClient) 
+  constructor( public sqlPrd: RemoteSqlProvider ) 
   {
     this.connected = false ;
     this.compte = null ;
-    this.droits = null ;
-
-    this.users = [
-      {compte: "admin", password: "config@flc", droits: "admin" }
-    ] ;
+    this.nom = null ;
+    this.privilege = 0 ;
+    this.id = null ;
+    this.idExposant = null ;
   }
 
-  isConnected() : string
+  isConnected()
   {
-    return this.droits ;
+    return this.connected ;
+  }
+  
+  getPrivilege() : number
+  {
+    return this.privilege ;
   }
 
-  connect( compte: string, password: string ): string
+  getNom(): string
   {
-    let user = this.users.find( (u)=>
-    {
-      return u.compte == compte && u.password == password ;
-    }) ;
+    return this.nom ;
+  }
 
-    if( user )
-    {
-      this.compte = user.compte ;
-      this.droits = user.droits ;
-      return this.droits ;
-    }
-    return null ;
+  getIdExposant(): number
+  {
+    return this.idExposant ;
+  }
+
+  connect( compte: string, password: string ): Promise<any>
+  {
+    return this.sqlPrd.select( "select nom, privilege, id, idExposant from UTILISATEURS_18 where compte=? and mdp=?",
+      [compte,password] ).then( (data)=>
+      {
+        if( data.rows.length > 0 )
+        {
+          this.compte = compte ;
+          this.nom = data.rows[0].nom ;
+          this.privilege = parseInt( data.rows[0].privilege ) ;
+          this.id = parseInt( data.rows[0].id ) ;
+          this.idExposant = parseInt( data.rows[0].idExposant ) ;
+          this.connected = true ;
+          return true ;
+        }
+        else return false ;
+      }) ;
   }
 
   unConnect()
   {
     this.compte = null ;
-    this.droits = null ;
+    this.nom = null ;
+    this.privilege = null ;
+    this.id = null ;
+    this.idExposant = null ;
     this.connected = false ;
   }
 
