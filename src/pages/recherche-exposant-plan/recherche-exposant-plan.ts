@@ -73,7 +73,7 @@ export class RechercheExposantPlanPage implements OnInit
     {
       let libelle = this.recherche.libelle.toLocaleUpperCase();
 
-      let sql = "SELECT stand_18.id, exposant_18.id, exposant_18.nom "
+      let sql = "SELECT stand_18.id as idStand, exposant_18.id, exposant_18.nom "
       sql += "FROM exposant_18 "
       sql += "JOIN etresur_18 ON exposant_18.id = etresur_18.idExposant "
       sql += "JOIN stand_18 ON etresur_18.idStand = stand_18.id "
