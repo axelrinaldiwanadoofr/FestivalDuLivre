@@ -40,23 +40,29 @@ export class ExposantPage implements OnInit
 
   ngOnInit()
   {
-    let id = this.navParams.get( "id" ) ;
-    if( id )
+    let id = this.navParams.get("id");
+    if(id)
     {
-      this.sqlPrd.select( "SELECT id, libelle FROM EXPOSANT where id=?", [id] ).then( (data)=>
+      this.sqlPrd.select( "SELECT id, nom FROM exposant_18 where id = ?", [id] ).then( (data)=>
       {
         let e = data.rows[0] ;
         if( e )
         {
           this.id = e.id ;
-          this.libelle = e.libelle ;
+          this.libelle = e.nom ;
         }
+        
         // Liste des stands
-        this.sqlPrd.select( "select * from EXPOSER where idExposant=?", [id]).then((data)=>
+        let sqlCommand = "SELECT * FROM stand_18"
+        sqlCommand += "JOIN etresur_18 ON stand_18.id = etresur_18.idStand"
+        sqlCommand += "JOIN exposant_18 ON etresur_18.idExposant = exposant_18.id"
+        sqlCommand += "WHERE exposant_18.id ?"
+
+        this.sqlPrd.select(sqlCommand, [id]).then((data)=>
         {
           data.rows.forEach( (s)=>
           {
-            this.stands.push( {numStand: s.numStand, numHall: s.numStand.substr(0,1)} ) ;
+            this.stands.push( {numStand: s.idStand, numHall: s.hall.substr(0,1)} ) ;
           })
         }) ;
 
