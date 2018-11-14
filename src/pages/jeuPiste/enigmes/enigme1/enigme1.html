@@ -1,10 +1,7 @@
 <ion-header>
 
-  <ion-navbar>    
+  <ion-navbar>
     <ion-title>Enigme n°1</ion-title>
-    <button ion-button menuToggle>
-                        <ion-icon name="menu"></ion-icon>
-                    </button>
   </ion-navbar>
 
 </ion-header>
@@ -15,10 +12,18 @@
       [Titre enigme 1]
     </p>
   </h4>
-  <br/>
-  <p>
-    [Insérer Enigme]
-  </p>
+  <br/> [Insérer Enigme]
+  <ion-item>
+    <ion-label>Todo</ion-label>
+    <ion-input type="text" [(ngModel)]="todo.title" name="title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Description</ion-label>
+    <ion-input type="text" [(ngModel)]="todo.description" name="description"></ion-input>
+  </ion-item>
+
+  <button ion-button round (click)="onClickEnigme()">Round Button</button>
+
 
   <br/>
 

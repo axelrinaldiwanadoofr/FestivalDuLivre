@@ -4,13 +4,14 @@
         
         <button ion-button menuToggle start>
       <ion-icon name="menu"></ion-icon>
-        </button>
+       </button>
 
-        <ion-title>Accueil</ion-title>
-
+        
+ 
         <button ion-button class="btn-right" (click)="recherche()">
-            <ion-icon name="ios-search" ></ion-icon>
+            <ion-icon name="ios-search" class="btn-right" ></ion-icon>
         </button>
+        <ion-title>Accueil</ion-title>
     </ion-navbar>
     
 </ion-header>
@@ -32,7 +33,7 @@
         <ion-row>
 
             <ion-col>
-                <button class="btn" (click)="plan()"><img  class="imgbtn" src="assets/img/FDL.jpg"><br>PLANS</button>
+                <button class="btn" (click)="plan()"><img  class="imgbtn" src="assets/img/plan2.png">plan</button>
             </ion-col>
             <!--
             <ion-col>
@@ -43,7 +44,7 @@
         <h1 class="ios">Restauration</h1>
         <ion-row>
             <ion-col>
-                <button class="btnresto" (click)="restaurants()"><img  class="imgbtn" src="assets/img/resto2h.png"><br>RESTAURANTS</button>
+                <button class="btnresto" (click)="restaurants()"><img  class="imgbtn" src="assets/img/repas2.png"><br></button>
             </ion-col>
         </ion-row>
         
