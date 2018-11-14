@@ -45,6 +45,7 @@ import { StandListExposantPage } from '../pages/stand-list-exposant/stand-list-e
 import { RechercheRdvPage } from '../pages/recherche-rdv/recherche-rdv';
 import { RechercheLivrePage } from '../pages/recherche-livre/recherche-livre';
 import { RechercheExposantPlanPage } from '../pages/recherche-exposant-plan/recherche-exposant-plan' ;
+import { LivrePage } from '../pages/livre/livre' ;
 import { ExposantPage } from '../pages/exposant/exposant' ;
 import { lyceePage } from '../pages/lycee/lycee' ;
 import { jeuPistePage } from '../pages/jeuPiste/jeuPiste';
@@ -107,6 +108,7 @@ import { Enigme1 } from '../pages/jeuPiste/enigmes/enigme1/enigme1';
     StandListExposantPage,
     RechercheLivrePage,
     RechercheExposantPlanPage,
+    LivrePage,
     ExposantPage,
     RendezVousDetailPage,
     UnePersonnePage,
@@ -153,6 +155,7 @@ import { Enigme1 } from '../pages/jeuPiste/enigmes/enigme1/enigme1';
     RechercheLivrePage,
     RechercheExposantPlanPage,
     RendezVousDetailPage,
+    LivrePage,
     ExposantPage,
     UnePersonnePage,
     ThemeExposantsPage,

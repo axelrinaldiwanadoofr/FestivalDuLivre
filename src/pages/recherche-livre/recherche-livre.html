@@ -9,7 +9,7 @@
         <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-        <ion-title>Recherche exposants</ion-title>
+        <ion-title>Recherche livres</ion-title>
     </ion-navbar>
 </ion-header>
 
@@ -17,7 +17,7 @@
 <ion-content>
     <ion-list>
         <ion-item>
-            <ion-input type="text" [(ngModel)]='recherche.libelle' placeholder="Taper une partie du nom"></ion-input>
+            <ion-input type="text" [(ngModel)]='recherche.titre' placeholder="Tapez une partie du nom"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>Thèmes</ion-label>
@@ -27,15 +27,17 @@
         </ion-item>
         <button ion-button color="primary" full (click)="onRecherche()">Rechercher</button>
     </ion-list>
+    
     <ion-list>
-        <ion-item-divider color="light">Liste des exposants</ion-item-divider>
-        <button ion-button full [hidden]="!exposants.length || exposants.length>6" (click)="onPlan()">Afficher sur le plan</button>
-        <ion-item *ngFor="let e of exposants" (click)="onExposantClick( e )">
-            <h2>{{e.libelle}}</h2>
-            <p>Stand n° {{e.numstand}}</p>
+        <ion-item-divider color="light">Liste des livres</ion-item-divider>
+        <!-- <button ion-button full [hidden]="!exposants.length || exposants.length>6" (click)="onPlan()">Afficher sur le plan</button> -->
+        <ion-item *ngFor="let l of livres" (click)="onLivreClick(l)">
+            <h2>{{l.titre}}</h2>
+            <p>{{l.auteur}}</p>
         </ion-item>
     </ion-list>
 </ion-content>
+
 <ion-footer class="accueil">
     <ion-toolbar>
         <button class="btnacc" (click)="Accueil()" ion-button round><ion-icon style="font-size:20px;" name="home"></ion-icon>&nbsp;Accueil</button>

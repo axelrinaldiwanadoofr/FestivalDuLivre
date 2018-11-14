@@ -36,10 +36,10 @@ export class LivrePage implements OnInit
 
   ngOnInit()
   {
-    let id = this.navParams.get( "idLivre" ) ;
+    let id = this.navParams.get("idLivre") ;
     if(id)
     {
-      this.sqlPrd.select( "SELECT idLivre, titre, enResume, auteur, editeur, idExposant FROM Livre_18 WHERE idLivre=?", [id] ).then( (data)=>
+      this.sqlPrd.select( "SELECT * FROM Livre_18 WHERE idLivre=?", [id] ).then( (data)=>
       {
         let livre = data.rows[0] ;
         if( livre )

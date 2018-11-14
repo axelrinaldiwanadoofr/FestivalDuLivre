@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { RemoteSqlProvider } from '../../providers/remotesql/remotesql' ;
-import { LivrePage } from '../../pages/livre/livre' ;
+import { RemoteSqlProvider } from '../../providers/remotesql/remotesql';
+import { LivrePage } from '../../pages/livre/livre';
 import { HelloIonicPage } from '../hello-ionic/hello-ionic';
 
 /**
@@ -17,51 +17,64 @@ import { HelloIonicPage } from '../hello-ionic/hello-ionic';
   templateUrl: 'recherche-livre.html',
 })
 
-export class RechercheLivrePage implements OnInit
-{  
-  private recherche: RechercheLivreCriteres ;
-  private livres: Array<any> ;
+export class RechercheLivrePage implements OnInit {
+  private recherche: RechercheLivreCriteres;
+  private livres: Array<any>;
+  private themes: Array<{ id: string, libelle: string }>;
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
-    public sqlPrd: RemoteSqlProvider ) 
-  {
-    this.recherche = new RechercheLivreCriteres() ;
-    this.livres = [] ;
+    public sqlPrd: RemoteSqlProvider) {
+    this.recherche = new RechercheLivreCriteres();
+    this.livres = [];
+    this.themes = [];
   }
 
 
-  ngOnInit(){}
+  ngOnInit() {
+    // Charge les thèmes
+    let sql = "SELECT * FROM theme_18 ORDER BY libelle";
+    this.sqlPrd.select(sql, null, this.themes);
+  }
 
-  onRecherche()
-  {
-    this.livres = [] ;
-    
-    if( this.recherche.titre )
-    {
-      let titre = '%' + this.recherche.titre.toLocaleUpperCase() + '%'
-      let sql = "SELECT idLivre, titre, enResume, auteur, editeur, idExposant FROM LIVRE_18 WHERE idLivre=idLivre and lower(titre) like ? ORDER BY titre"
+  onRecherche() {
+    this.livres = [];
+
+    // requête titre et thèmes remplis
+    if (this.recherche.titre && this.recherche.themeId) {
+      let sql = "SELECT * "
+      sql += "FROM (livre_18 JOIN concerner_18 ON livre_18.id=concerner_18.idLivre) "
+      sql += "JOIN theme_18 ON concerner_18.idTheme = theme_18.id "
+      sql += "WHERE theme_18.id=" + this.recherche.themeId
+      sql += " AND titre LIKE '" + '%' + this.recherche.titre + '%' + "' "
+      sql += "ORDER BY titre"
+
+      this.sqlPrd.select(sql, null, this.livres);
     }
+    // requête titre remplis
     else
     {
-      let sql = "SELECT idLivre, titre, enResume, auteur, editeur, idExposant FROM LIVRE_18 WHERE idLivre=idLivre ORDER BY titre"
+      let sql = "SELECT * "
+      sql += "FROM livre_18 "
+      sql += "WHERE titre LIKE '" + '%' + this.recherche.titre + '%' + "' "
+      sql += "ORDER BY titre"
       this.sqlPrd.select( sql , null, this.livres);
     }
   }
 
-  onLivreClick( livre ) 
-  {
-    this.navCtrl.push( LivrePage, {idLivre: livre.idLivre} ) ;
+  // si clic sur un livre de la liste affichée par la requête
+  onLivreClick(livre) {
+    this.navCtrl.push(LivrePage, { idLivre: livre.idLivre });
   }
 
- Accueil(){
-  this.navCtrl.setRoot(HelloIonicPage);
-}
+  Accueil() {
+    this.navCtrl.setRoot(HelloIonicPage);
+  }
 }
 
 
-export class RechercheLivreCriteres
-{
-  public titre: string ;
+export class RechercheLivreCriteres {
+  public titre: string;
+  public themeId: string;
 }
