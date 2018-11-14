@@ -10,4 +10,4 @@ import { ThemePage } from './theme';
     IonicPageModule.forChild(ThemePage),
   ],
 })
-export class ThemePageModule {}
+export class ThemesPageModule {}
