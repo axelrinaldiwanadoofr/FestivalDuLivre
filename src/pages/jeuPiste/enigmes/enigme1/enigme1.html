@@ -36,17 +36,16 @@
   <!--Après code : -->
   <h6>
   
-  <div *ngIf="codeBon"  [innerHTML]="todo.description" text-left></div>    
+  <div *ngIf="repAValider"  [innerHTML]="todo.description" text-left></div>    
   
   </h6>
   <br/>
 
   <!--Saisie de la réponse-->
-  <ion-item *ngIf="codeBon">
-    <ion-label *ngIf="codeBon"  >Réponse :  </ion-label>
-    <ion-input *ngIf="codeBon"  type="text"  [(ngModel)]="reponseDonnee"></ion-input>
+  <ion-item *ngIf="repAValider">
+    <ion-label *ngIf="repAValider"  >Réponse :  </ion-label>
+    <ion-input *ngIf="repAValider"  type="text"  [(ngModel)]="reponseDonnee"></ion-input>
   </ion-item>
-  <br/>
   <br/>
 
   <!--Traitement de la réponse-->
@@ -54,13 +53,14 @@
   <ion-label *ngIf="erreurRep" color="red"><strong> Réponse erronée ou mal écrite </strong></ion-label>
 
   <!--Validation avant l'affichage de la prochaine énigme-->
-  <ion-label *ngIf="reponseBonne" color="green"><strong> Bonne réponse ! </strong></ion-label>
+  <ion-label *ngIf="reponseBonne" color="lime"><strong> Bonne réponse ! </strong></ion-label>
   <br/>
 
   <h6>
     <div *ngIf="reponseBonne"  [innerHTML]="todo.commentaireFin" text-left></div>    
   </h6>
   <br/>
+  <button *ngIf="reponseBonne"  ion-button round (click)="onClickValideEnigme()">Passer à l'énigme suivante</button>
 
 
 
