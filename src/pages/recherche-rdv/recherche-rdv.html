@@ -42,13 +42,6 @@
                     <ion-option *ngFor="let age of ages" value={{age.id}}>{{age.libelle}}</ion-option>
                 </ion-select>
             </ion-item>
-            <ion-item>
-                <ion-label>Type de RDV :</ion-label>
-                <ion-select [(ngModel)]="unTypeRDV" interface="popover">
-                    <ion-option value="0">Tous les types</ion-option>
-                    <ion-option *ngFor="let typeRDV of typesRDV" value={{typeRDV.id}}>{{typeRDV.nom}}</ion-option>
-                </ion-select>
-            </ion-item>
         
             <br><button ion-button style="width:100%;" (click)="onSearch()">Rechercher</button>
         
@@ -58,17 +51,18 @@
                     <ion-card (click)="onUnRendezVous(r)">
                         <ion-card-content>
                             <p style="white-space:initial;">
-                            <b>{{r.nom}}</b>
+                            <b>{{r.titre}}</b>
                             </p>  
                             
                             
                             <br>
-                            <p style="white-space:initial;">{{r.duree}} pour {{r.age}} sur le stand n° <b>{{r.idStand}}</b></p><br>
-                            <p><b>{{r.jour}} <span [hidden]="r.duree=='en continu'">{{r.heure}}</span></b></p> 
+                            <p style="white-space:initial;">{{r.duree}} pour {{r.age}} sur le stand n° <b>{{r.numStand}}</b></p><br>
+                            <p><b>{{r.date}} <span [hidden]="r.duree=='en continu'">{{r.heure}}</span></b></p> 
                         </ion-card-content>
                     </ion-card>
-                </ion-item>    
-                <button ion-button full [hidden]="mesRDV.length>5 || !mesRDV.length" (click)="onPlan()">Afficher sur le plan</button>                   
+                  </ion-item>    
+                  <button ion-button full [hidden]="mesRDV.length>5 || !mesRDV.length" (click)="onPlan()">Afficher sur le plan</button>            
+                                                
             </ion-list>
         </ion-content>
         

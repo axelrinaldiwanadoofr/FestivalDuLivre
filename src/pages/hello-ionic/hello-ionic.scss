@@ -28,7 +28,6 @@ page-hello-ionic {
         //border: 2px solid #0099ff;
         border-radius: 10px;
     }
-    
     .btn {
         border-radius: 0px;
         background: linear-gradient(#EEEDEB); //#ffaa00;
@@ -37,7 +36,6 @@ page-hello-ionic {
         max-height: 225px;
         max-width: 200px;
     }
-
     .btnresto {
         border-radius: 0px;
         background: linear-gradient(#EEEDEB); //#ffaa00;
@@ -46,16 +44,6 @@ page-hello-ionic {
         max-height: 225px;
         max-width: 250px;
     }
-
-    .btnJeudepiste {
-        border-radius: 0px;
-        background: linear-gradient(#EEEDEB); //#ffaa00;
-        font-size: 120%;
-        font-weight: bold;
-        max-height: 225px;
-        max-width: 250px;
-    }
-
     .btnresto:active {
         transform: translate(0px, 3px);
         box-shadow: 0px 2px #fff3e6;
