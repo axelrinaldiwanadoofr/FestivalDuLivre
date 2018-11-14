@@ -1,7 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
 import { SqlPrd, SqlPrdAnswer } from '../../providers/remotesql/sqlprd';
 
 import 'rxjs/add/operator/map';
@@ -20,13 +17,13 @@ export class RemoteSqlProvider extends SqlPrd
   static webDbName: string ;
   static webDbId: number ;
 
-  private headers: Headers ;
+  //private headers: Headers ;
 
-  constructor( public http: HttpClient ) 
+  constructor() 
   {
     super() ;
 
-    this.headers = new Headers( {"Content-Type":"application/json"}) ;
+    //this.headers = new Headers( {"Content-Type":"application/json"}) ;
     
     if( !RemoteSqlProvider.webSqlApiName ) RemoteSqlProvider.webSqlApiName = "sqlexec.php" ;
     if( !RemoteSqlProvider.webSqlApiUrl ) RemoteSqlProvider.webSqlApiUrl = "http://localhost/bd" ;
@@ -71,85 +68,56 @@ export class RemoteSqlProvider extends SqlPrd
   * Génère et retourne l'objet de donnée à envoyer au WEB service avec la methode POST
   */
 
-  createPostData( sql: string, pk: Array<string>, values: any ): any
+  createPostData( sql: string, pk: Array<string>, values: any, lineOffset: number=0, nbLines: number=99999999 ): any
   {
-      // Recupere le type de requete SELECT, UPDATE, DELETE ou INSERT
-      
-      let data = {
-          dbname: RemoteSqlProvider.webDbName,
-          dbid: RemoteSqlProvider.webDbId,
-          sql: sql,
-          fields: ""
-      };
-          
-      let sqlType = this.getTypeOfSqlStatement( sql ) ;
-      let value ;
-      let first = true ;
-      
-      // Ajoute dans l'attribut fields les valeurs des attributs de l'objet reférencé par values sous forme d'argument
-      if( values && ( sqlType == RemoteSqlProvider.SELECT 
-        || sqlType == RemoteSqlProvider.UPDATE 
-        || sqlType == RemoteSqlProvider.INSERT ) )
-      {
-          for( let fieldName in values )        
-          {
-              if( fieldName.indexOf( "$$") == -1 )
-              {
-                  if( values[fieldName] )
-                  {
-                      value = values[fieldName] ;
-  
-                      // Remplace les caractères qui posent problème dans l'URL
-                      if( typeof value == "string" )
-                      {
-                          value = value.replace( /&/g, "<etcom>") ;
-                          value = value.replace( /,/g, "<virg>") ;
-                          value = value.replace( /#/g, "<dieze>") ;
-                      }
-                      if( first ) data.fields += value ; 
-                      else data.fields += "," + value ; 
-                      first = false ;
-                  }
-                  else
-                  {
-                      if( first ) data.fields += "null" ; 
-                      else data.fields += "," + "null" ; 
-                      first = false ;            
-                  }
-              }
-          }
-      }
-      
-      // Ajoute sous forme d'argument dans l'attribut fields les valeurs des attributs de l'objet reférencé par values 
-      // qui sont mentionnés par le tableau pk
-      if( pk && ( sqlType == RemoteSqlProvider.DELETE || sqlType == RemoteSqlProvider.UPDATE ) )
-      {        
-          for( let i=0 ; i<pk.length ; i++ )
-          {
-              if( values[pk[i]] )
-              {
-                  value = values[pk[i]] ;
-  
-                  // Remplace le caractères qui posent problème dans l'URL
-                  if( typeof value == "string" )
-                  {
-                      value = value.replace( /&/g, "<etcom>") ;
-                      value = value.replace( /,/g, "<virg>") ;
-                      value = value.replace( /#/g, "<dieze>") ;
-                  }
-                  if( first ) data.fields += value ; 
-                  else data.fields += "," + value ; 
-                  first = false ;
-              }
-              else
-              {
-                  if( first ) data.fields += "null" ; 
-                  else data.fields += "," + "null" ; 
-                  first = false ;            
-              }
-          }           
-      }
-      return data ;
+    // Recupere le type de requete SELECT, UPDATE, DELETE ou INSERT
+
+    let data = {
+        dbname: RemoteSqlProvider.webDbName,
+        dbid: RemoteSqlProvider.webDbId,
+        sql: sql,
+        lineoffset: lineOffset,
+        nblines: nbLines,
+        valueStr: "",
+        pkStr:""
+    };
+        
+    let sqlType = this.getTypeOfSqlStatement( sql ) ;
+
+    //data.valueStr = JSON.stringify( {prenom:"Mathieu", nom:"MYERE"} ) ;
+
+    // Ajoute dans l'attribut fields les valeurs des attributs de l'objet reférencé par values sous forme d'argument
+    if( values && ( sqlType == RemoteSqlProvider.SELECT 
+    || sqlType == RemoteSqlProvider.UPDATE 
+    || sqlType == RemoteSqlProvider.INSERT ) )
+    {
+        let dd = {} ;
+
+        for( let fieldName in values )        
+        {
+            if( fieldName[0] != "$" && typeof values[fieldName] != "function" )
+            {
+                if( values[fieldName] ) dd[fieldName] = values[fieldName] ;
+                else dd[fieldName] = "null" ;
+            }
+        }
+        data.valueStr = JSON.stringify( dd ) ;
+    }
+
+    // Ajoute sous forme d'argument dans l'attribut fields les valeurs des attributs de l'objet reférencé par values 
+    // qui sont mentionnés par le tableau pk
+    if( pk && ( sqlType == RemoteSqlProvider.DELETE || sqlType == RemoteSqlProvider.UPDATE ) )
+    {
+        let dd = {} ;
+
+        for( let i=0 ; i<pk.length ; i++ )
+        {
+            if( values[pk[i]] ) dd[pk[i]] = values[pk[i]] ;
+            else dd[pk[i]] = "null" ;
+        }           
+        data.pkStr = JSON.stringify( dd ) ;
+    }
+    return data ;
   }
   
   sendPostRequest( url: string, data: any ) 
@@ -229,10 +197,10 @@ export class RemoteSqlProvider extends SqlPrd
     * @description
     * Execute a SQL request and return the result as an array of objects
     */
-    select( sql: string, bindings: Array<any>, array: Array<any> = null ): any
+    select( sql: string, bindings: Array<any>, array: Array<any> = null, offset: number = 0, nblines: number = 999999999  ): any
     {
         var url = this.createPostUrl( sql, null, bindings ) ;
-        var data = this.createPostData( sql, null, bindings ) ;
+        var data = this.createPostData( sql, null, bindings, offset, nblines ) ;
         
         // Envoie la requete vers le serveur WEB
         return this.sendPostRequest( url, data ).then( (results: SqlPrdAnswer) =>
@@ -289,14 +257,14 @@ export class RemoteSqlProvider extends SqlPrd
         // Envoie la requete vers le serveur WEB
         return this.sendPostRequest( url, data ).then( (results: SqlPrdAnswer)=>
         {
-            if( results.sql )
+            if( results.error && results.sql )
             {
-                return results ;
+                console.error( "RemoteSqlPrd.prototype.insert: " + results.error + + " dans la requete: " + results.sql ) ;
             }
-            else alert( "RemoteSqlPrd.prototype.insert: " + results.error + " dans la requete: " + results.sql ) ;
+            return results ;
         }, (error)=>
         {
-            console.error( "RemoteSqlPrd.prototype.insert: " + error.message + " on URL: " + url ) ;
+            console.error( "RemoteSqlPrd.prototype.insert: " + error + " on URL: " + url ) ;
         });    
     }
 

@@ -40,7 +40,7 @@ export abstract class SqlPrd
   * @description
   * Execute a SQL request and return the result as an array of objects
   */
-  abstract select( sql: string, bindings: Array<any>, array: Array<any> ): any
+  abstract select( sql: string, bindings: Array<any>, array: Array<any>, offset: number, nblines: number ): any
 
   /**
   * @ngdoc method
@@ -156,12 +156,15 @@ export abstract class SqlPrd
       let first = true ;
       for( let fieldName in row )
       {
+        if( fieldName[0] != "$" && typeof row[fieldName] != "function" )
+        {
           if( first )
           {
               sql += fieldName + "=?" ;
               first = false ;
           }
           else sql += "," + fieldName + "=?" ;
+        }
       }
       sql += this.createSqlWhereStatement( pk ) ;
 
@@ -210,12 +213,15 @@ export abstract class SqlPrd
       let first = true ;
       for( let fieldName in row )
       {
+        if( fieldName[0] != "$" && typeof row[fieldName] != "function" )
+        {
           if( first )
           {
               sql += fieldName ;
               first = false ;
           }
           else sql += "," + fieldName ;
+        }
       }
       sql += ") VALUES( " ;
 
@@ -223,12 +229,15 @@ export abstract class SqlPrd
       first = true ;
       for( let fieldName in row )
       {
+        if( fieldName[0] != "$" && typeof row[fieldName] != "function" )
+        {
           if( first )
           {
               sql += "?"
               first = false ;
           }
           else sql += ",?" ;
+        }
       }
       sql += ")" ;
       
@@ -280,4 +289,9 @@ export class SqlPrdAnswer
     public sql: string ;
     public rows: Array<any> ;
     public error: string ;
+
+    constructor( data: any )
+    {
+        
+    }
 }

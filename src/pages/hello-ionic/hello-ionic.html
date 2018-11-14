@@ -1,57 +1,55 @@
 <ion-header>
+    
     <ion-navbar>
+        
         <button ion-button menuToggle start>
       <ion-icon name="menu"></ion-icon>
-        </button>
+       </button>
 
-        <ion-title>Accueil</ion-title>
         
+ 
+        <button ion-button class="btn-right" (click)="recherche()">
+            <ion-icon name="ios-search" class="btn-right" ></ion-icon>
+        </button>
+        <ion-title>Accueil</ion-title>
     </ion-navbar>
+    
 </ion-header>
 
 
-<ion-content class="bg">
+<ion-content class="background">
     <ion-grid>
-
+        <p>Faire la présentation du jeu de piste</p>
         <ion-row row-auto>
+            <!--
             <ion-col>
                 <br>
                 <img src="assets/img/bandeauSuggestionRDV.png"><br>
                 <p class="rdv" *ngFor="let rdvs of rdv">{{rdvs.heure}} : Stand {{rdvs.titre}} n° {{rdvs.numStand}} ({{rdvs.libelle}})</p>
             </ion-col>
+        -->
         </ion-row>
-        <ion-row row-auto>
-            <ion-col>
-                <br>
-                <img src="assets/img/bandeauInfo.png"><br>
-            </ion-col>
-        </ion-row>
+        <h1 class="ios">Informations</h1>
         <ion-row>
 
             <ion-col>
-                <button class="btn" (click)="plan()"><img  class="imgbtn" src="assets/img/plan.png"><br>PLANS</button>
+                <button class="btn" (click)="plan()"><img  class="imgbtn" src="assets/img/plan2.png">plan</button>
             </ion-col>
+            <!--
             <ion-col>
                 <button class="btn" (click)="recherche()"><img  class="imgbtn" src="assets/img/recherche.png" ><br>RECHERCHER</button>
             </ion-col>
+        -->
         </ion-row>
+        <h1 class="ios">Restauration</h1>
         <ion-row>
             <ion-col>
-                <br>
-                <img src="assets/img/bandeauResto.png"><br>
+                <button class="btnresto" (click)="restaurants()"><img  class="imgbtn" src="assets/img/repas2.png"><br></button>
             </ion-col>
         </ion-row>
-        <ion-row>
-            <ion-col>
-                <button class="btnresto" (click)="restaurants()"><img  class="imgbtn" src="assets/img/resto2h.png"><br>RESTAURANTS</button>
-            </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col>
-                <br>
-                <img src="assets/img/bandeauSuivre.png"><br>
-            </ion-col>
-        </ion-row>
+        
+        <h1 class="ios">Nous suivre</h1>
+        
         <ion-row>
             <ion-col>
                 <a href="https://www.facebook.com/FDLColmar/" target="blank_"><img class="logo" src="assets/img/logos/logo_facebook.png"></a>
@@ -65,7 +63,8 @@
             <ion-col>
                 <a href="https://www.instagram.com/fdlcolmar/" target="blank_"><img class="logo" src="assets/img/logos/logo_instagram.png"></a>
             </ion-col>
-
+        
         </ion-row>
+    
     </ion-grid>
 </ion-content>
