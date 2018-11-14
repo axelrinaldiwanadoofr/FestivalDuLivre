@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { RecherchePage} from '../recherche/recherche';
 import { PlansPage} from '../plans/plans';
 import { lyceePage} from '../lycee/lycee';
+import { jeuPistePage } from '../jeuPiste/jeuPiste';
 import { RestaurantsPage} from '../restaurants/restaurants';
 import { PresentationPage} from '../presentation/presentation';
 import { RemoteSqlProvider } from '../../providers/remotesql/remotesql';
@@ -37,6 +38,9 @@ export class HelloIonicPage {
   }
   lycee(){
     this.navCtrl.push(lyceePage,null);
+  }
+  jeuPistePage(){
+    this.navCtrl.push(jeuPistePage,null);
   }
 }
 

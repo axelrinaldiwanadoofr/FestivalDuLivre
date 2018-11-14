@@ -31,22 +31,28 @@
         </ion-row>
         <h1 class="ios">Informations</h1>
         <ion-row>
+            
+            <ion-col>
+                <button class="btn" (click)="plan()"><img  class="imgbtn" src="assets/img/plan2.png"><br><strong>Plan</strong></button>
+            </ion-col>
 
             <ion-col>
-                <button class="btn" (click)="plan()"><img  class="imgbtn" src="assets/img/plan2.png">plan</button>
+                <button class="btnresto" (click)="restaurants()"><img  class="imgbtn" src="assets/img/repas.png"><br><strong>Restauration</strong></button>
             </ion-col>
+
             <!--
             <ion-col>
                 <button class="btn" (click)="recherche()"><img  class="imgbtn" src="assets/img/recherche.png" ><br>RECHERCHER</button>
             </ion-col>
         -->
         </ion-row>
-        <h1 class="ios">Restauration</h1>
+        <h1 class="ios">Autres</h1>
         <ion-row>
             <ion-col>
-                <button class="btnresto" (click)="restaurants()"><img  class="imgbtn" src="assets/img/repas.png"><br></button>
+                <button class="btnJeudepiste" (click)="jeuPistePage()"><img class="imgbtn" src="assets/img/Jeudepiste.png"><br><strong>Jeu de piste</strong></button>
             </ion-col>
         </ion-row>
+        
         
         <h1 class="ios">Nous suivre</h1>
         
