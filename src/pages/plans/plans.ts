@@ -58,10 +58,12 @@ export class PlanMarqueur
 {
   public idZone: number ;
   public titre: string ;
+  public hall: string ;
 
-  constructor( idZone: number, titre: string )
+  constructor( idZone: number, titre: string, hall = null )
   {
     this.idZone = idZone ;
     this.titre = titre ;
+    this.hall = hall;
   }
 }
