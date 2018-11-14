@@ -50,11 +50,11 @@
   <br/>
 
   <!--Traitement de la réponse-->
-  <button *ngIf="!trouve"  ion-button round (click)="onClickEnigme()">Valider</button>
+  <button *ngIf="codeBon"  ion-button round (click)="onClickEnigme()">Valider</button>
   <ion-label *ngIf="erreurRep" color="red"><strong> Réponse erronée ou mal écrite </strong></ion-label>
 
   <!--Validation avant l'affichage de la prochaine énigme-->
-  <ion-label *ngIf="reponseBonne" color="red"><strong> Bonne réponse ! </strong></ion-label>
+  <ion-label *ngIf="reponseBonne" color="green"><strong> Bonne réponse ! </strong></ion-label>
   <br/>
 
   <h6>

@@ -5,7 +5,7 @@ import { NavController } from 'ionic-angular';
   selector: 'page-jeuPiste',
   templateUrl: 'enigme1.html'
 })
-export class Enigme1 {
+export class Enigme {
 
   public lesEnigmes: Array<{title: string, description: string, day: number, numStand: number, reponse: Array<string>, code: string[6], commentaireFin: string}> ;
 
@@ -17,7 +17,6 @@ export class Enigme1 {
   public erreurCode: boolean;
   public erreurRep: boolean;
   public reponseValidee: boolean;
-  public trouve: boolean;
 
   public codeEnigme: string ;
   public reponseDonnee: string;
@@ -55,7 +54,6 @@ export class Enigme1 {
     this.erreurRep = false;
     this.reponseBonne = false;
     this.reponseValidee = false;
-    this.trouve = false;
     
 
     this.todo = this.lesEnigmes[this.index] ;
@@ -72,21 +70,21 @@ export class Enigme1 {
     }
     else 
     {
-      this.erreurCode = true
+      this.erreurCode = true;
     }
   }
 
   onClickEnigme()
     {
         this.todo.reponse.forEach(rep => {
-          if (rep == this.reponseDonnee || trouve)
+          if ( (rep == this.reponseDonnee || this.reponseBonne))
           {
               this.index ++;        
               this.erreurRep = false;
               this.reponseBonne = true; 
               this.codeEnigme = ""; 
               this.trouve = true;         
-              
+              this.todo = this.lesEnigmes[this.index];
           }
           else {
             this.erreurRep = true;
