@@ -14,30 +14,28 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content class="background">
+    <br>
     <ion-list>
-        <ion-item>
+        <ion-item class="debutListe">
             <ion-input type="text" [(ngModel)]='recherche.libelle' placeholder="Taper une partie du nom"></ion-input>
         </ion-item>
-        <ion-item>
+        <ion-item class="finListe">
             <ion-label>Thèmes</ion-label>
-            <ion-select full [(ngModel)]="recherche.themeId">
-              <ion-option *ngFor="let t of themes" value="{{t.id}}">{{t.libelle}}</ion-option>
+            <ion-select full [(ngModel)]="recherche.themeId" >
+                <ion-option *ngFor="let t of themes" value="{{t.id}}">{{t.libelle}}</ion-option>
             </ion-select>
         </ion-item>
-        <button ion-button class="btnRechercher" full (click)="onRecherche()">Rechercher</button>
+        <br>
+        <button ion-button class="btn" full (click)="onRecherche()">Rechercher</button>
     </ion-list>
     <ion-list>
-        <ion-item-divider color="light">Liste des exposants</ion-item-divider>
-        <button ion-button full [hidden]="!exposants.length || exposants.length>6" (click)="onPlan()">Afficher sur le plan</button>
+        <ion-item-divider class="debutListe">Liste des exposants</ion-item-divider>
         <ion-item *ngFor="let e of exposants" (click)="onExposantClick( e )">
             <h2>{{e.nom}}</h2>
             <p>Stand n° {{e.idStand}} Hall n°{{e.hallStand}}</p>
         </ion-item>
+        <br>
+        <button ion-button full [hidden]="!exposants.length || exposants.length>6" (click)="onPlan()"class="btn">Afficher sur le plan</button>
     </ion-list>
 </ion-content>
-<!--<ion-footer class="accueil">
-    <ion-toolbar>
-        <button class="btnacc" (click)="Accueil()" ion-button round><ion-icon style="font-size:20px;" name="home"></ion-icon>&nbsp;Accueil</button>
-    </ion-toolbar>
-</ion-footer>-->
