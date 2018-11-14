@@ -25,7 +25,7 @@ export class jeuPistePage {
 
     onClickDebutJeu()
   {
-    this.navCtrl.push(Enigme);
+    this.navCtrl.push(Enigme1);
   }
 
   saveAnswer()
