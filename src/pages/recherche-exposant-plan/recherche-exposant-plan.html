@@ -1,6 +1,6 @@
 <!--
   Generated template for the RechercheExposantPlanPage page.
-
+  
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
@@ -32,7 +32,7 @@
         <button ion-button full [hidden]="!exposants.length || exposants.length>6" (click)="onPlan()">Afficher sur le plan</button>
         <ion-item *ngFor="let e of exposants" (click)="onExposantClick( e )">
             <h2>{{e.nom}}</h2>
-            <p>Stand n° {{e.idStand}}</p>
+            <p>Stand n° {{e.idStand}} Hall n°{{e.hallStand}}</p>
         </ion-item>
     </ion-list>
 </ion-content>

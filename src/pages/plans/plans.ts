@@ -29,7 +29,7 @@ export class PlansPage implements OnInit
 
   ngOnInit()
   {
-    this.plan.addPlan( new Plan("parcExpo", "Parc exposition", "assets/plans/parcExpo.png") ) ;
+    this.plan.addPlan( new Plan("parcExpo", "Parc exposition", "assets/plans/parcExpo.png", ) ) ;
     this.plan.addPlan( new Plan("hall1", "N° 1", "assets/plans/hall1.png") ) ;
     this.plan.addPlan( new Plan("hall2", "N° 2", "assets/plans/hall2.png") ) ;
     this.plan.addPlan( new Plan("hall3", "N° 3", "assets/plans/hall3.png") ) ;      
@@ -52,16 +52,19 @@ export class PlansPage implements OnInit
   {
     this.navCtrl.push( StandListExposantPage, {numStand: event.idZone } ) ;
   }  
+
 }
 
 export class PlanMarqueur
 {
   public idZone: number ;
   public titre: string ;
+  public hall: string ;
 
-  constructor( idZone: number, titre: string )
+  constructor( idZone: number, titre: string, hall = null )
   {
     this.idZone = idZone ;
     this.titre = titre ;
+    this.hall = hall;
   }
 }

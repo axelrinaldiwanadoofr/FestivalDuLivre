@@ -14,12 +14,12 @@
 </ion-header>
 
 <ion-content class="background" padding>
-    <button class="button" ion-button color="danger" (click)="stand()"><ion-icon name="home"></ion-icon><ion-label>Stand</ion-label></button><br>
-    <button class="button" ion-button color="danger" (click)="theme()"><ion-icon name="home"></ion-icon><ion-label>Theme</ion-label></button><br>
-    <button class="button" ion-button color="vivi" (click)="rdv()"><ion-icon name="calendar"></ion-icon><ion-label>Rendez-vous</ion-label></button><br>
-    <button class="button" ion-button color="primary" (click)="exposants()"><ion-icon name="contact"></ion-icon><ion-label>Exposant</ion-label></button><br>
-    <button class="button" ion-button color="primary" (click)="auteurs()"><ion-icon name="contact"></ion-icon><ion-label>Auteur</ion-label></button><br>
-    <button class="button" ion-button color="primary" (click)="favoris()"><ion-icon name="star"></ion-icon><ion-label>Mes favoris</ion-label></button><br>
+    <button class="button" ion-button class="btn" (click)="stand()"><ion-icon name="home"></ion-icon><ion-label>Stand</ion-label></button><br>
+    <button class="button" ion-button class="btn" (click)="theme()"><ion-icon name="home"></ion-icon><ion-label>Theme</ion-label></button><br>
+    <button class="button" ion-button class="btn" (click)="rdv()"><ion-icon name="calendar"></ion-icon><ion-label>Rendez-vous</ion-label></button><br>
+    <button class="button" ion-button class="btn" (click)="exposants()"><ion-icon name="contact"></ion-icon><ion-label>Exposant</ion-label></button><br>
+    <button class="button" ion-button class="btn" (click)="auteurs()"><ion-icon name="contact"></ion-icon><ion-label>Auteur</ion-label></button><br>
+    <button class="button" ion-button class="btn" (click)="favoris()"><ion-icon name="star"></ion-icon><ion-label>Mes favoris</ion-label></button><br>
     
     <button *ngIf="jeton.isConnected()" class="button" ion-button color="primary" (click)="configPlan()">
         <ion-icon name="cog"></ion-icon>

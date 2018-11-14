@@ -37,6 +37,7 @@ export class MyApp {
 
     // set our app's pages
     this.pages = [
+      
       { title: 'Accueil', component: HelloIonicPage, icon: 'home'},
       { title: "Présentation", component: PresentationPage, icon: 'desktop'},
       { title: "Infos pratiques", component: InfoPage, icon: 'information-circle'},
@@ -45,7 +46,7 @@ export class MyApp {
       { title: "Favoris", component: FavorisPage, icon: 'star'},
       { title: "Téléchargement", component : TelechargerPage, icon :'md-download'},
       { title: "Lycée Camille Sée", component : lyceePage, icon: "ios-school"},
-      { title: "Jeu de piste", component : jeuPistePage, icon: "beer"}
+      { title: "Jeu de piste", component : jeuPistePage, icon: "md-map"}
     ];
   }
 
