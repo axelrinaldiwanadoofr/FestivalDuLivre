@@ -63,7 +63,7 @@ import { UnRendezVousPage } from '../pages/un-rendez-vous/un-rendez-vous' ;
 import { TelechargerPage} from '../pages/telecharger/telecharger';
 
 // Enigmes : 
-import { Enigme } from '../pages/jeuPiste/enigmes/enigme1/enigme1';
+import { Enigme1 } from '../pages/jeuPiste/enigmes/enigme1/enigme1';
 
 @NgModule({
   declarations: [
@@ -114,7 +114,7 @@ import { Enigme } from '../pages/jeuPiste/enigmes/enigme1/enigme1';
     jeuPistePage,
     UnRendezVousPage,
     TelechargerPage,
-    Enigme,
+    Enigme1,
   ],
   imports: [
     BrowserModule,
@@ -158,7 +158,7 @@ import { Enigme } from '../pages/jeuPiste/enigmes/enigme1/enigme1';
     jeuPistePage,
     UnRendezVousPage,
     TelechargerPage,
-    Enigme,
+    Enigme1,
   ],
   providers: [
     StatusBar,
