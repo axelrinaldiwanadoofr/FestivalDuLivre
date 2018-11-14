@@ -44,9 +44,9 @@
             </ion-item>
             <ion-item>
                 <ion-label>Type de RDV :</ion-label>
-                <ion-select [(ngModel)]="unTypeRDV" (ionInput)="getTypeRDV($event)" interface="popover" multiple="false">
+                <ion-select [(ngModel)]="unTypeRDV" interface="popover">
                     <ion-option value="0">Tous les types</ion-option>
-                    <ion-option *ngFor="let un-rendez-vous of rendez-vous" value={{un-rendez-vous.id}}>{{un-rendez-vous.nom}}</ion-option>
+                    <ion-option *ngFor="let typeRDV of typesRDV" value={{typeRDV.id}}>{{typeRDV.nom}}</ion-option>
                 </ion-select>
             </ion-item>
         
@@ -68,8 +68,7 @@
                         </ion-card-content>
                     </ion-card>
                 </ion-item>    
-                <button ion-button full [hidden]="mesRDV.length>5 || !mesRDV.length" (click)="onPlan()">Afficher sur le plan</button>     
-                                                        
+                <button ion-button full [hidden]="mesRDV.length>5 || !mesRDV.length" (click)="onPlan()">Afficher sur le plan</button>                   
             </ion-list>
         </ion-content>
         

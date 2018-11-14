@@ -32,6 +32,9 @@ export class RechercheRdvPage {
   public unTheme:number;
   public uneTrancheAge : Array<{id:number}>;
 
+  public typesRDV: Array<{id: number, nom: string}>;
+  public unTypeRDV: number;
+
   public mesRDV: Array<{idStand:number, nom:string, jour:string, heure:string, duree: string, description: string, age: string, type: string}>;
 
   constructor( 
@@ -44,30 +47,36 @@ export class RechercheRdvPage {
   {
 
     this.themes = [] ;    
-    this.sqlPrd.select( "SELECT * FROM theme_18 ORDER BY libelle", null, this.themes ) ;
- 
-
-    //let sql = "SELECT distinct TRANCHEAGE.id as id,libelle FROM TRANCHEAGE, RDV" ;
-    //sql += " where TRANCHEAGE.id=RDV.idTrancheAge order by TRANCHEAGE.id" ;
-    
+    this.typesRDV = [];
     this.ages = [] ;
+    this.desTheme=[];
+
+    let d: Date = new Date() ;
+
+    if( !d.getDay()  ) this.unJour="dimanche";
+    else this.unJour="samedi";
+
+    this.uneHeure= d.getHours() + ":" + d.getMinutes() ;
+    this.uneTranche=0;
+    this.unTheme=0;
+    this.uneTrancheAge=[];
+    this.unTypeRDV=0;
+    this.mesRDV=[];
+  }
+
+  ngOnInit () {
+    this.sqlPrd.select( "SELECT * FROM theme_18 ORDER BY libelle", null, this.themes) ;
+
     let sql = "SELECT distinct trancheage_18.id as id, libelle";
     sql += " FROM trancheage_18";
     sql += " JOIN  rdv_18 ON  trancheage_18.id=rdv_18.idTrancheAge";
     sql += " ORDER BY trancheage_18.id" ;
     this.sqlPrd.select( sql, null, this.ages ) ;
-    this.desTheme=[];
 
-    /*let d: Date = new Date() ;
+    this.sqlPrd.select( "SELECT * FROM typerdv_18 ORDER BY nom", null, this.typesRDV) ;
 
-    if( !d.getDay()  ) this.unJour="dimanche";
-    else this.unJour="samedi";*/
+    console.log(this.typesRDV);
 
-    //this.uneHeure= "" + d.getHours() + ":" + d.getMinutes() ;
-    this.uneTranche=0;
-    this.unTheme=0;
-    this.uneTrancheAge=[];
-    this.mesRDV=[];
   }
 
   Accueil(){
@@ -75,37 +84,22 @@ export class RechercheRdvPage {
   }
 
   onSearch() {
-    
-      //test pour recuperer Variable
-      
-      
-      /*let alert = this.alertCtrl.create({
-      title: this.unJour,
-      subTitle: '10% of battery remaining',
-      buttons: ['Dismiss']
-      });
-      alert.present();
-    this.mesRDV=[];*/
 
 
     if( this.unTheme )
     {
-      /*let sql = "SELECT distinct rdv_18.idStand, jour, heure, duree, rdv_18.nom, nbMaxPlace, description, trancheage_18.libelle as age, typerdv_18.nom as type" ;
-      sql += " from rdv_18 " ;
-      sql += " JOIN etresur_18 ON rdv_18.idStand=etresur_18.idStand JOIN concerner_18 ON etresur_18.idExposant=concerner_18.idExposant"
-      sql += " left join trancheage_18 on rdv_18.idTrancheAge=trancheage_18.id" ;
-      sql += " left join typerdv_18 on rdv_18.typeRDV=typerdv_18.id" ;
-      sql += " WHERE concerner_18.idTheme=? AND rdv_18.jour=? AND rdv_18.heure>=?" ;
-      sql += " order by jour desc, heure" ;*/
-      
+      this.mesRDV = [] ;
+      //
+      // Recherche par theme
+      //
       let sql = "SELECT distinct rdv_18.idStand, jour, heure, duree, rdv_18.nom, nbMaxPlace, description, trancheage_18.libelle as age, typerdv_18.nom as type";
       sql +=" FROM trancheage_18";
       sql +=" JOIN rdv_18 ON trancheage_18.id = rdv_18.idTrancheAge";
       sql +=" JOIN typerdv_18 ON rdv_18.idTypeRDV = typerdv_18.id";
       sql +=" JOIN parlerde_18 ON rdv_18.id = parlerde_18.idRDV";
       sql +=" JOIN theme_18 ON parlerde_18.idTheme = theme_18.id";
-      // sql +=" WHERE jour='samedi' AND heure='10:30:00' AND theme_18.libelle ='Littérature'";
-      sql +=" WHERE jour='" + this.unJour + "' AND heure='" + this.uneHeure + "' AND theme_18.id =" + this.unTheme;
+      sql +=" WHERE jour='" + this.unJour + "' AND heure>='" + this.uneHeure + "' AND theme_18.id =" + this.unTheme;
+      sql += " order by jour desc, heure";
 
       this.sqlPrd.select(sql, null, this.mesRDV).then((data) => {
         console.log(data);
@@ -113,41 +107,100 @@ export class RechercheRdvPage {
     }
     else if( this.uneTranche )
     {
-      let sql = "select distinct r.idStand, date, heure, duree, titre, nbPlaceMax, resume, ta.libelle as age, tr.libelle as type" ;
-      sql += " from RDV as r" ;
-      sql += " JOIN EXPOSER ON r.idStand=EXPOSER.idStand JOIN CONCERNE ON EXPOSER.idExposant=CONCERNE.idExposant"
-      sql += " left join TRANCHEAGE as ta on r.idTrancheAge=ta.id" ;
-      sql += " left join TYPERDV as tr on r.typeRDV=tr.id" ;
-      sql += " WHERE r.idTrancheAge=? AND r.date=? AND r.heure>=?" ;
-      sql += " order by date desc, heure" ;
-    
-      this.sqlPrd.select(sql, [this.uneTranche,this.unJour,this.uneHeure], this.mesRDV);
+      this.mesRDV = [] ;
+      //
+      // Recherche par Tranche d'age
+      //
+      let sql = "SELECT distinct rdv_18.idStand, jour, heure, duree, rdv_18.nom, nbMaxPlace, description, trancheage_18.libelle as age, typerdv_18.nom as type";
+      sql +=" FROM trancheage_18";
+      sql +=" JOIN rdv_18 ON trancheage_18.id = rdv_18.idTrancheAge";
+      sql +=" JOIN typerdv_18 ON rdv_18.idTypeRDV = typerdv_18.id";
+      sql +=" JOIN parlerde_18 ON rdv_18.id = parlerde_18.idRDV";
+      sql +=" JOIN theme_18 ON parlerde_18.idTheme = theme_18.id";
+      sql +=" WHERE jour='" + this.unJour + "' AND heure>='" + this.uneHeure + "' AND trancheage_18.id =" + this.uneTranche;
+      sql += " order by jour desc, heure";
+
+      this.sqlPrd.select(sql, null, this.mesRDV).then((data) => {
+        console.log(data);
+      });
+    }
+    else if( this.unTypeRDV )
+    {
+      this.mesRDV = [] ;
+      //
+      // Recherche par type de rendez vous
+      //
+      let sql = "SELECT distinct rdv_18.idStand, jour, heure, duree, rdv_18.nom, nbMaxPlace, description, trancheage_18.libelle as age, typerdv_18.nom as type";
+      sql +=" FROM trancheage_18";
+      sql +=" JOIN rdv_18 ON trancheage_18.id = rdv_18.idTrancheAge";
+      sql +=" JOIN typerdv_18 ON rdv_18.idTypeRDV = typerdv_18.id";
+      sql +=" JOIN parlerde_18 ON rdv_18.id = parlerde_18.idRDV";
+      sql +=" JOIN theme_18 ON parlerde_18.idTheme = theme_18.id";
+      sql +=" WHERE jour='" + this.unJour + "' AND heure>='" + this.uneHeure + "' AND typerdv_18.id =" + this.unTypeRDV;
+      sql += " order by jour desc, heure";
+
+      this.sqlPrd.select(sql, null, this.mesRDV).then((data) => {
+        console.log(data);
+      });
     }
     else 
     {
-      let sql = "select distinct r.numStand, date, heure, duree, titre, nbPlaceMax, resume, ta.libelle as age, tr.libelle as type" ;
-      sql += " from RDV as r" ;
-      sql += " JOIN EXPOSER ON r.numStand=EXPOSER.numStand JOIN CONCERNE ON EXPOSER.idExposant=CONCERNE.idExposant"
-      sql += " left join TRANCHEAGE as ta on r.idTrancheAge=ta.id" ;
-      sql += " left join TYPERDV as tr on r.typeRDV=tr.id" ;
-      sql += " WHERE r.date=? AND r.heure>=?" ;
-      sql += " order by date desc, heure" ;
-    
-      this.sqlPrd.select(sql, [this.unJour,this.uneHeure], this.mesRDV);
+     this.mesRDV = [] ;
+      //
+      // Recherche si l'utilisateur ne saisi ni tranche d'age ni theme
+      //
+      let sql = "SELECT distinct rdv_18.idStand, jour, heure, duree, rdv_18.nom, nbMaxPlace, description, trancheage_18.libelle as age, typerdv_18.nom as type";
+      sql +=" FROM trancheage_18";
+      sql +=" JOIN rdv_18 ON trancheage_18.id = rdv_18.idTrancheAge";
+      sql +=" JOIN typerdv_18 ON rdv_18.idTypeRDV = typerdv_18.id";
+      sql +=" JOIN parlerde_18 ON rdv_18.id = parlerde_18.idRDV";
+      sql +=" JOIN theme_18 ON parlerde_18.idTheme = theme_18.id";
+      sql +=" WHERE jour='" + this.unJour + "' AND heure>='" + this.uneHeure + "'";
+      sql += " order by jour desc, heure";
+
+      this.sqlPrd.select(sql, null, this.mesRDV).then((data) => {
+        console.log(data);
+      });
     }
 
     if( this.unTheme && this.uneTranche )
     {
-      let sql = "select distinct rdv_18.idStand, jour, heure, duree, nom, nbMaxPlace, description, trancheage_18.libelle as age, typerdv_18.libelle as type" ;
-      sql += " from rdv_18";
-      sql += " JOIN etresur_18 ON rdv_18.idStand=etresur.idStand"; 
-      sql += " JOIN concerner_18 ON etresur.idExposant=concerner_18.idExposant"
-      sql += " left join trancheage_18 on rdv_18.idTrancheAge=trancheage_18.id" ;
-      sql += " left join typerdv_18 on rdv_18.typeRDV=typerdv_18.id" ;
-      sql += " WHERE concerner_18.idTheme=? AND rdv_18.idTrancheAge=? AND rdv_18.jour=? AND rdv_18.heure>=?" ;
-      sql += " order by jour desc, heure" ;
-    
-      this.sqlPrd.select(sql, [this.unTheme,this.uneTranche,this.unJour,this.uneHeure], this.mesRDV);
+      this.mesRDV = [] ;
+      //
+      // Recherche par theme et par tranche d'age
+      //
+      let sql = "SELECT distinct rdv_18.idStand, jour, heure, duree, rdv_18.nom, nbMaxPlace, description, trancheage_18.libelle as age, typerdv_18.nom as type";
+      sql +=" FROM trancheage_18";
+      sql +=" JOIN rdv_18 ON trancheage_18.id = rdv_18.idTrancheAge";
+      sql +=" JOIN typerdv_18 ON rdv_18.idTypeRDV = typerdv_18.id";
+      sql +=" JOIN parlerde_18 ON rdv_18.id = parlerde_18.idRDV";
+      sql +=" JOIN theme_18 ON parlerde_18.idTheme = theme_18.id";
+      sql +=" WHERE jour='" + this.unJour + "' AND heure>='" + this.uneHeure + "' AND trancheage_18.id =" + this.uneTranche + " AND theme_18.id =" + this.unTheme;
+      sql += " order by jour desc, heure";
+
+      this.sqlPrd.select(sql, null, this.mesRDV).then((data) => {
+        console.log(data);
+      });
+    }
+
+    if( this.unTheme && this.uneTranche && this.unTypeRDV)
+    {
+      this.mesRDV = [] ;
+      //
+      // Recherche par theme, tranche d'age et type de rendez vous
+      //
+      let sql = "SELECT distinct rdv_18.idStand, jour, heure, duree, rdv_18.nom, nbMaxPlace, description, trancheage_18.libelle as age, typerdv_18.nom as type";
+      sql +=" FROM trancheage_18";
+      sql +=" JOIN rdv_18 ON trancheage_18.id = rdv_18.idTrancheAge";
+      sql +=" JOIN typerdv_18 ON rdv_18.idTypeRDV = typerdv_18.id";
+      sql +=" JOIN parlerde_18 ON rdv_18.id = parlerde_18.idRDV";
+      sql +=" JOIN theme_18 ON parlerde_18.idTheme = theme_18.id";
+      sql +=" WHERE jour='" + this.unJour + "' AND heure>='" + this.uneHeure + "' AND trancheage_18.id =" + this.uneTranche + " AND theme_18.id =" + this.unTheme + " AND typerdv-18.id =" + this.unTypeRDV;
+      sql += " order by jour desc, heure";
+
+      this.sqlPrd.select(sql, null, this.mesRDV).then((data) => {
+        console.log(data);
+      });
     }
     
   }
