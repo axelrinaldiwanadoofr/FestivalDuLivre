@@ -9,20 +9,28 @@
 <ion-content padding>
   <h4>
     <p>
-      [Titre enigme 1]
+      <ion-label>[Titre enigme] </ion-label>
     </p>
   </h4>
-  <br/> [Insérer Enigme]
+  <br/> 
+  <h5>
+    <p>
+      Stand n°
+      <ion-input type= "text" [(ngModel)]="todo.numStand" ></ion-input>
+      <ion-label>Rendez vous sur le stand trouvez le code et insérez le </ion-label>
+    </p>
+  </h5>
+
   <ion-item>
-    <ion-label>Réponse : </ion-label>
-    <ion-input type="text" [(ngModel)]="todo.title" name="title"></ion-input>
+    <ion-label id= "codeEnigme">Code :  </ion-label>
+    <ion-input type="text"  name="title"></ion-input>
   </ion-item>
   <!--<ion-item>
     <ion-label>Description</ion-label>
     <ion-input type="text" [(ngModel)]="todo.description" name="description"></ion-input>
   </ion-item>-->
-
-  <button ion-button round (click)="onClickEnigme()">Round Button</button>
+  <br/>
+  <button ion-button round (click)="onClickCode()">Afficher l'énigme</button>
 
 
   <br/>
