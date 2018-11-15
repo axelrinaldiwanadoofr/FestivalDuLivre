@@ -19,6 +19,7 @@ export class Enigme1 {
   public reponseValidee: boolean;
   public repAValider: boolean;
   public afficherIntitulé: boolean;
+  public rebusDingbat: boolean;
 
   public codeEnigme: string;
   public reponseDonnee: string;
@@ -52,7 +53,7 @@ export class Enigme1 {
        day: 1, numStand: 416, reponse: ["Esperluette","esperluette","L'esperluette","L'Esperluette","ESPERLUETTE","L'ESPERLUETTE","l'ESPERLUETTE","L'ESPERLUETTE","l'esperluette","l'Esperluette"], code: "f7ezf5", 
        commentaireFin: "L’esperluette (S-pere-lu-ette) est le caractère qui représente le « et » : & " },
       //Enigme 7
-      { title: "coucou", description: "S _ _ A _ _ _ Q  _ _ <br/> +<br/>  _ _ M_ _ _ I _ _ _ <br/> +<br/>  _ É _ _ N _ _ _ U _  <br/>+<br/>  _ _ _ _ _ T _ _ _ E ", day: 1, numStand: 320,
+      { title: "Un peu de calcul", description: "S _ _ A _ _ _ Q  _ _ <br/> +<br/>  _ _ M_ _ _ I _ _ _ <br/> +<br/>  _ É _ _ N _ _ _ U _  <br/>+<br/>  _ _ _ _ _ T _ _ _ E ", day: 1, numStand: 320,
        reponse: ["sémantique","Sémantique","SEMANTIQUE","Semantique","semantique","SÉMANTIQUE"], code: "kf8s3y", commentaireFin: " " },
       //Enigme 8
       { title: "coucou", description: "ldjfldj", day: 1, numStand: 235, reponse: [" "], code: "4frt8d", commentaireFin: " " },
@@ -95,6 +96,8 @@ export class Enigme1 {
     this.repAValider = false;
     // Affichage de l'énigme
     this.afficherIntitulé = false;
+    // Affichage des enigmes avec des photos
+    this.rebusDingbat = false;
 
 
     this.todo = this.lesEnigmes[this.index];
@@ -135,5 +138,18 @@ export class Enigme1 {
     this.index ++;
     this.todo = this.lesEnigmes[this.index];
     this.codeBon = false;
+
+    // Test des enigmes avec photos
+    if (this.compteurReponse == 2 || this.compteurReponse == 3)
+    {
+      this.codeBon = false;
+      this.erreurCode = false;
+      this.erreurRep = false;
+      this.reponseBonne = false;
+      this.reponseValidee = false;
+      this.repAValider = false;
+      this.afficherIntitulé = false;
+      this.rebusDingbat = true;
+    }
   }
 }
