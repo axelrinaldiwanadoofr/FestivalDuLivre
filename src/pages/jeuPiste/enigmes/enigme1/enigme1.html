@@ -8,7 +8,7 @@
 
 <ion-content padding>
   <h3>
-    <p>
+    <p *ngIf="!messageFin" >
       {{todo.title}}
     </p>
   </h3>
@@ -75,5 +75,17 @@
 
 
 
+  <!--Affichage Message Final-->
+  <h3>
+    <strong>
+    <div *ngIf="messageFin" text-center>
+      Felicitations !!!
+    </div>
+    <br/>
+    <div *ngIf="messageFin" text-center>
+      Vous avez fini notre jeu de piste, rendez-vous à l'entrée du salon chez les étudiants en informatique :D
+    </div>
+    </strong>
+  </h3>
 
 </ion-content>

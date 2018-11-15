@@ -20,6 +20,7 @@ export class Enigme1 {
   public repAValider: boolean;
   public afficherIntitulé: boolean;
   public afficherImage: boolean;
+  public messageFin: boolean;
 
   public codeEnigme: string;
   public reponseDonnee: string;
@@ -39,7 +40,7 @@ export class Enigme1 {
       //Enigme 2
       {
         title: "AVOCAT", description:
-          "Déchiffrez le code : <br/>OHYBNO",
+        "Déchiffrez le code : <br/>OHYBNO",
         day: 1, numStand: 201, reponse: ["EXORDE", "exorde", "éxorde", "l'exorde", "L'exorde", "l'éxorde", "L'éxorde", "l'Éxorde", "L'Éxorde", "L'ÉXORDE", "yousk2"], code: "h5cr2h",
         commentaireFin: " Definition : <br/> Première partie d'un discours.<br/> Exorde d'une harangue, d'un plaidoyer. ", image: null
       },
@@ -108,6 +109,9 @@ export class Enigme1 {
     // Test d'affichage de l'image
     this.afficherImage = false;
 
+    // Test Message de fin
+    this.messageFin = false;
+
 
     this.todo = this.lesEnigmes[this.index];
   }
@@ -156,6 +160,20 @@ export class Enigme1 {
     this.todo = this.lesEnigmes[this.index];
     this.codeBon = false;
     this.afficherImage = false;
+
+    if (this.compteurReponse == 8) {
+      this.messageFin = true;
+      this.index = 0;
+      this.compteurReponse = 0;
+      this.codeBon = true;
+      this.erreurCode = false;
+      this.erreurRep = false;
+      this.reponseBonne = false;
+      this.reponseValidee = false;
+      this.repAValider = false;
+      this.afficherIntitulé = false;
+      this.afficherImage = false;
+    }
   }
 
 }
