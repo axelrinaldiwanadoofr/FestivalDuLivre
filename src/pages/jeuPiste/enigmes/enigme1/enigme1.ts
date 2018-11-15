@@ -77,14 +77,23 @@ export class Enigme1 {
       { title: "coucou", description: "ldjfldj", day: 2, numStand: 235, reponse: [" "], code: "", commentaireFin: " " }
     ];
 
+    // Numéro de l'énigme 
     this.index = 0;
+    // Nombre de bonnes réponses 
     this.compteurReponse = 0;
+    // Test code de l'énigme juste
     this.codeBon = false;
+    // Test code de l'énigme faux
     this.erreurCode = false;
+    // Test réponse fausse
     this.erreurRep = false;
+    // Test réponse juste
     this.reponseBonne = false;
+    // Test validation + affichage de l'énigme suivante
     this.reponseValidee = false;
+    // Test reponse à valider pour passer à l'énigme suivante
     this.repAValider = false;
+    // Affichage de l'énigme
     this.afficherIntitulé = false;
 
 
