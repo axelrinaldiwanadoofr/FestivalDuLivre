@@ -55,7 +55,7 @@
             <ion-list>
                 <ion-item *ngFor="let r of mesRDV">
                     <button item-end small icon-only ion-button color="orange" (click)="onFavoris( r )"><ion-icon color="primary" name="star"></ion-icon></button>
-                    <ion-card (click)="onUnRendezVous(r)">
+                    <!--<ion-card (click)="onUnRendezVous(r)">-->  
                         <ion-card-content>
                             <p style="white-space:initial;">
                             <b>{{r.nom}}</b>
@@ -66,9 +66,9 @@
                             <p style="white-space:initial;">{{r.duree}} pour {{r.age}} sur le stand n° <b>{{r.idStand}}</b></p><br>
                             <p><b>{{r.jour}} <span [hidden]="r.duree=='en continu'">{{r.heure}}</span></b></p> 
                         </ion-card-content>
-                    </ion-card>
+                   <!-- </ion-card>--> 
                 </ion-item>    
-                <button ion-button full [hidden]="mesRDV.length>5 || !mesRDV.length" (click)="onPlan()">Afficher sur le plan</button>                   
+                <!--<button ion-button full [hidden]="mesRDV.length>5 || !mesRDV.length" (click)="onPlan()">Afficher sur le plan</button>-->                   
             </ion-list>
         </ion-content>
         

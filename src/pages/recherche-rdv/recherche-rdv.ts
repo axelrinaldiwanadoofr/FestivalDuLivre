@@ -85,67 +85,8 @@ export class RechercheRdvPage {
 
   onSearch() {
 
+    this.mesRDV = [] ;
 
-    if( this.unTheme )
-    {
-      this.mesRDV = [] ;
-      //
-      // Recherche par theme
-      //
-      let sql = "SELECT distinct rdv_18.idStand, jour, heure, duree, rdv_18.nom, nbMaxPlace, description, trancheage_18.libelle as age, typerdv_18.nom as type";
-      sql +=" FROM trancheage_18";
-      sql +=" JOIN rdv_18 ON trancheage_18.id = rdv_18.idTrancheAge";
-      sql +=" JOIN typerdv_18 ON rdv_18.idTypeRDV = typerdv_18.id";
-      sql +=" JOIN parlerde_18 ON rdv_18.id = parlerde_18.idRDV";
-      sql +=" JOIN theme_18 ON parlerde_18.idTheme = theme_18.id";
-      sql +=" WHERE jour='" + this.unJour + "' AND heure>='" + this.uneHeure + "' AND theme_18.id =" + this.unTheme;
-      sql += " order by jour desc, heure";
-
-      this.sqlPrd.select(sql, null, this.mesRDV).then((data) => {
-        console.log(data);
-      });
-    }
-    else if( this.uneTranche )
-    {
-      this.mesRDV = [] ;
-      //
-      // Recherche par Tranche d'age
-      //
-      let sql = "SELECT distinct rdv_18.idStand, jour, heure, duree, rdv_18.nom, nbMaxPlace, description, trancheage_18.libelle as age, typerdv_18.nom as type";
-      sql +=" FROM trancheage_18";
-      sql +=" JOIN rdv_18 ON trancheage_18.id = rdv_18.idTrancheAge";
-      sql +=" JOIN typerdv_18 ON rdv_18.idTypeRDV = typerdv_18.id";
-      sql +=" JOIN parlerde_18 ON rdv_18.id = parlerde_18.idRDV";
-      sql +=" JOIN theme_18 ON parlerde_18.idTheme = theme_18.id";
-      sql +=" WHERE jour='" + this.unJour + "' AND heure>='" + this.uneHeure + "' AND trancheage_18.id =" + this.uneTranche;
-      sql += " order by jour desc, heure";
-
-      this.sqlPrd.select(sql, null, this.mesRDV).then((data) => {
-        console.log(data);
-      });
-    }
-    else if( this.unTypeRDV )
-    {
-      this.mesRDV = [] ;
-      //
-      // Recherche par type de rendez vous
-      //
-      let sql = "SELECT distinct rdv_18.idStand, jour, heure, duree, rdv_18.nom, nbMaxPlace, description, trancheage_18.libelle as age, typerdv_18.nom as type";
-      sql +=" FROM trancheage_18";
-      sql +=" JOIN rdv_18 ON trancheage_18.id = rdv_18.idTrancheAge";
-      sql +=" JOIN typerdv_18 ON rdv_18.idTypeRDV = typerdv_18.id";
-      sql +=" JOIN parlerde_18 ON rdv_18.id = parlerde_18.idRDV";
-      sql +=" JOIN theme_18 ON parlerde_18.idTheme = theme_18.id";
-      sql +=" WHERE jour='" + this.unJour + "' AND heure>='" + this.uneHeure + "' AND typerdv_18.id =" + this.unTypeRDV;
-      sql += " order by jour desc, heure";
-
-      this.sqlPrd.select(sql, null, this.mesRDV).then((data) => {
-        console.log(data);
-      });
-    }
-    else 
-    {
-     this.mesRDV = [] ;
       //
       // Recherche si l'utilisateur ne saisi ni tranche d'age ni theme
       //
@@ -156,53 +97,22 @@ export class RechercheRdvPage {
       sql +=" JOIN parlerde_18 ON rdv_18.id = parlerde_18.idRDV";
       sql +=" JOIN theme_18 ON parlerde_18.idTheme = theme_18.id";
       sql +=" WHERE jour='" + this.unJour + "' AND heure>='" + this.uneHeure + "'";
+      
+
+      if(this.unTheme != 0){
+        sql += " AND theme_18.id = " + this.unTheme; 
+      }
+
+      if(this.unTypeRDV != 0){
+        sql += " AND typerdv_18.id = " + this.unTypeRDV;
+      }
+
+      if(this.uneTranche != 0){
+        sql += " AND trancheage_18.id = " + this.uneTranche;
+      }
+
       sql += " order by jour desc, heure";
-
-      this.sqlPrd.select(sql, null, this.mesRDV).then((data) => {
-        console.log(data);
-      });
-    }
-
-    if( this.unTheme && this.uneTranche )
-    {
-      this.mesRDV = [] ;
-      //
-      // Recherche par theme et par tranche d'age
-      //
-      let sql = "SELECT distinct rdv_18.idStand, jour, heure, duree, rdv_18.nom, nbMaxPlace, description, trancheage_18.libelle as age, typerdv_18.nom as type";
-      sql +=" FROM trancheage_18";
-      sql +=" JOIN rdv_18 ON trancheage_18.id = rdv_18.idTrancheAge";
-      sql +=" JOIN typerdv_18 ON rdv_18.idTypeRDV = typerdv_18.id";
-      sql +=" JOIN parlerde_18 ON rdv_18.id = parlerde_18.idRDV";
-      sql +=" JOIN theme_18 ON parlerde_18.idTheme = theme_18.id";
-      sql +=" WHERE jour='" + this.unJour + "' AND heure>='" + this.uneHeure + "' AND trancheage_18.id =" + this.uneTranche + " AND theme_18.id =" + this.unTheme;
-      sql += " order by jour desc, heure";
-
-      this.sqlPrd.select(sql, null, this.mesRDV).then((data) => {
-        console.log(data);
-      });
-    }
-
-    if( this.unTheme && this.uneTranche && this.unTypeRDV)
-    {
-      this.mesRDV = [] ;
-      //
-      // Recherche par theme, tranche d'age et type de rendez vous
-      //
-      let sql = "SELECT distinct rdv_18.idStand, jour, heure, duree, rdv_18.nom, nbMaxPlace, description, trancheage_18.libelle as age, typerdv_18.nom as type";
-      sql +=" FROM trancheage_18";
-      sql +=" JOIN rdv_18 ON trancheage_18.id = rdv_18.idTrancheAge";
-      sql +=" JOIN typerdv_18 ON rdv_18.idTypeRDV = typerdv_18.id";
-      sql +=" JOIN parlerde_18 ON rdv_18.id = parlerde_18.idRDV";
-      sql +=" JOIN theme_18 ON parlerde_18.idTheme = theme_18.id";
-      sql +=" WHERE jour='" + this.unJour + "' AND heure>='" + this.uneHeure + "' AND trancheage_18.id =" + this.uneTranche + " AND theme_18.id =" + this.unTheme + " AND typerdv-18.id =" + this.unTypeRDV;
-      sql += " order by jour desc, heure";
-
-      this.sqlPrd.select(sql, null, this.mesRDV).then((data) => {
-        console.log(data);
-      });
-    }
-    
+      this.sqlPrd.select(sql, null, this.mesRDV);
   }
 
   onUnRendezVous( r )
