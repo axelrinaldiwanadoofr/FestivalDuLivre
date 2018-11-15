@@ -12,8 +12,8 @@
 
 <ion-content padding class="background">
   <ion-list>
-      <button ion-item *ngFor="let exposant of tab" (click)="onExposant(exposant)">{{exposant.libelle}}</button>      
-      <button color="danger" ion-button full [hidden]="!tab.length || tab.length>6" (click)="onPlan()" class="btn">Afficher sur le plan</button>            
+      <button ion-item *ngFor="let exposant of tab" (click)="onExposant(exposant)">{{exposant.nom}}</button>      
+      <button color="danger" ion-button full [hidden]="!tab.length || tab.length>6" (click)="onPlan()">Afficher sur le plan</button>            
     </ion-list>
 </ion-content>
 

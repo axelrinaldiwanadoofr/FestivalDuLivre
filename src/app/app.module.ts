@@ -27,7 +27,7 @@ import { PlanAccesPage } from '../pages/plan-acces/plan-acces';
 import { ContactPage } from '../pages/contact/contact';
 import { DatesPage } from '../pages/dates/dates';
 import { HistoriquePage } from '../pages/historique/historique';
-import { ThemePage } from '../pages/theme/theme';
+//import { ThemePage } from '../pages/theme/theme';
 import { PlansPage} from '../pages/plans/plans';
 import { RecherchePage } from '../pages/recherche/recherche';
 import { ThemesPage } from '../pages/themes/themes';
@@ -90,7 +90,7 @@ import { Enigme1 } from '../pages/jeuPiste/enigmes/enigme1/enigme1';
     DatesPage,
     FavorisPage,
     HistoriquePage,
-    ThemePage,
+    //ThemePage,
     PlansPage,
     RecherchePage,
     ThemesPage,
@@ -136,7 +136,7 @@ import { Enigme1 } from '../pages/jeuPiste/enigmes/enigme1/enigme1';
     ContactPage,
     DatesPage,
     HistoriquePage,
-    ThemePage,
+   // ThemePage,
     PlansPage,
     RecherchePage,
     ThemesPage,

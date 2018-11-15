@@ -16,7 +16,7 @@ export class ThemesPage
   {
       this.themes = [] ;
 
-      this.sqlPrd.select( "select * from theme", null, this.themes ) ;
+      this.sqlPrd.select( "SELECT * FROM theme_18 ORDER BY libelle", null, this.themes ) ;
   }
 
   onThemeClicked( event, unTheme )

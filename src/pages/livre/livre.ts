@@ -29,29 +29,32 @@ export class LivrePage implements OnInit
     public navCtrl: NavController, 
     public navParams: NavParams,
     public sqlPrd: RemoteSqlProvider,
-    public favorisPrd: FavorisProvider,
-    public toastCtrl: ToastController ) 
+    // public favorisPrd: FavorisProvider,
+    // public toastCtrl: ToastController )
+  )
   {
   }
 
   ngOnInit()
   {
-    let id = this.navParams.get("idLivre") ;
-    if(id)
+    let idLivre = this.navParams.get("idLivre") ;
+    if(idLivre)
     {
-      this.sqlPrd.select( "SELECT * FROM Livre_18 WHERE idLivre=?", [id] ).then( (data)=>
+      this.sqlPrd.select( "SELECT * FROM Livre_18 WHERE idLivre=?", [idLivre] ).then( (data)=>
       {
         let livre = data.rows[0] ;
-        if( livre )
+        if(livre)
         {
           this.idLivre = livre.idLivre;
           this.titre = livre.titre;
-          this.enResume = livre.enResume;
-          this.auteur = livre.auteur;
-          this.editeur = livre.editeur;
-          this.idExposant = livre.idExposant;
+          this.enResume =  livre.enResume ;
+          this.auteur = livre.auteur ;
+          this.editeur = livre.editeur ;
+          this.idExposant = livre.idExposant ;
         }
+        this.navCtrl.push(LivrePage, {idLivre: this.idLivre, titre: this.titre});
       }) ;
+      
     }
   }
 
