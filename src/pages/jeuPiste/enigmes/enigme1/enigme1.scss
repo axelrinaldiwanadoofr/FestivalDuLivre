@@ -16,3 +16,10 @@ $colors: (
     red : #DE2916,
     lime : #00FF00
 );
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}

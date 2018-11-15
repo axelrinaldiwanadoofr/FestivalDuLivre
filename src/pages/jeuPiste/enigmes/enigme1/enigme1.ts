@@ -19,7 +19,6 @@ export class Enigme1 {
   public reponseValidee: boolean;
   public repAValider: boolean;
   public afficherIntitulé: boolean;
-  public rebusDingbat: boolean;
   public afficherImage: boolean;
 
   public codeEnigme: string;
@@ -43,9 +42,9 @@ export class Enigme1 {
            day: 1, numStand: 201, reponse: ["EXORDE", "exorde", "éxorde", "l'exorde", "L'exorde", "l'éxorde", "L'éxorde","l'Éxorde","L'Éxorde","L'ÉXORDE", "yousk2"], code: "h5cr2h",
             commentaireFin: " Definition : <br/> Première partie d'un discours.<br/> Exorde d'une harangue, d'un plaidoyer. ", image: null },
       //Enigme 3
-      { title: "REBUS", description: "rebusAne.png", day: 1, numStand: 340, reponse: [" ", "yousk2"], code: "4gla2x", commentaireFin: " " , image: null},
+      { title: "REBUS", description: "oui", day: 1, numStand: 340, reponse: ["ANECDOTE", "yousk2", "anecdote", "Anecdote"], code: "4gla2x", commentaireFin: " " , image: "assets/img/imgEnigmes/rebusAne.png"},
       //Enigme 4
-      { title: "DINGBAT", description: "ldjfldj", day: 1, numStand: 426, reponse: [" ", "yousk2"], code: "yf8t2d", commentaireFin: " " , image: null},
+      { title: "DINGBAT", description: "non", day: 1, numStand: 426, reponse: [" ", "yousk2"], code: "yf8t2d", commentaireFin: " " , image: "assets/img/imgEnigmes/peurMal.png"},
       //Enigme 5
       { title: "Salée...", description: "Cette pierre tendre de feuilletée,<br/>En Bretagne, est très employée.<br/>Les écoliers l'ont tous levée.<br/>Et parfois, elle est très salée.<br/>Qui est-elle ?<br/>",
        day: 1, numStand: 500, reponse: ["ardoise","l'ardoise","Ardoise","l'Ardoise","L'ardoise","ARDOISE","L'Ardoise","L'ARDOISE","l'ARDOISE", "yousk2"], code: "nhe8wz",
@@ -67,9 +66,9 @@ export class Enigme1 {
       //Enigme 2
       { title: "coucou", description: "ldjfldj", day: 2, numStand: 201, reponse: [" ", "yousk2"], code: "", commentaireFin: " " , image: null},
       //Enigme 3
-      { title: "coucou", description: "ldjfldj", day: 2, numStand: 340, reponse: [" ", "yousk2"], code: "", commentaireFin: " " , image: null},
+      { title: "coucou", description: "ldjfldj", day: 2, numStand: 340, reponse: [" ", "yousk2"], code: "", commentaireFin: " " , image:  "assets/img/imgEnigmes/rebusOeufs.png"},
       //Enigme 4
-      { title: "coucou", description: "ldjfldj", day: 2, numStand: 426, reponse: [" ", "yousk2"], code: "", commentaireFin: " " , image: null},
+      { title: "coucou", description: "ldjfldj", day: 2, numStand: 426, reponse: [" ", "yousk2"], code: "", commentaireFin: " " , image:  "assets/img/imgEnigmes/iresi.png"},
       //Enigme 5
       { title: "coucou", description: "ldjfldj", day: 2, numStand: 500, reponse: [" ", "yousk2"], code: "", commentaireFin: " " , image: null },
       //Enigme 6
@@ -98,8 +97,6 @@ export class Enigme1 {
     this.repAValider = false;
     // Test affichage de l'énigme
     this.afficherIntitulé = false;
-    // Test affichage des enigmes avec des photos
-    this.rebusDingbat = false;
     // Test d'affichage de l'image
     this.afficherImage = false;
 
@@ -114,6 +111,7 @@ export class Enigme1 {
       this.codeBon = true;
       this.erreurCode = false;
       this.repAValider = true;
+      this.afficherImage = true;
     }
     else {
       this.erreurCode = true;
@@ -128,6 +126,7 @@ export class Enigme1 {
         this.reponseBonne = true;
         this.codeEnigme = "";
         this.repAValider = false;
+        this.afficherImage = true;
       }
       else {
         this.erreurRep = true;
@@ -142,32 +141,7 @@ export class Enigme1 {
     this.index ++;
     this.todo = this.lesEnigmes[this.index];
     this.codeBon = false;
-
-    // Test des enigmes avec photos
-    if (this.compteurReponse == 2 || this.compteurReponse == 3)
-    {
-      this.codeBon = false;
-      this.erreurCode = false;
-      this.erreurRep = false;
-      this.reponseBonne = false;
-      this.reponseValidee = false;
-      this.repAValider = false;
-      this.afficherIntitulé = false;
-      this.rebusDingbat = true;
-    }
-  }
-
-  onClickRebusDingbat()
-  {
-    if (this.todo.code == this.codeEnigme) {
-      this.codeBon = true;
-      this.erreurCode = false;
-      this.repAValider = true;
-      this.afficherImage = true;
-    }
-    else {
-      this.erreurCode = true;
-    }
+    this.afficherImage = false;
   }
 
 }

@@ -41,6 +41,7 @@
   <h6>
   
   <div *ngIf="repAValider"  [innerHTML]="todo.description" text-left></div>    
+  <img *ngIf="afficherImage" src={{todo.image}} class="center">
   
   </h6>
   <br/>
@@ -72,20 +73,6 @@
   <br/>
   <button *ngIf="reponseBonne"  ion-button round (click)="onClickValideEnigme()" class="debutJeu">Passer à l'énigme suivante</button>
 
-
-
-  <!--Bouton validation code rebus-->
-  <button *ngIf="rebusDingbat"  ion-button round (click)="onClickRebusDingbat()" class="debutJeu">Afficher l'énigme</button>
-  <ion-label *ngIf="erreurCode" color="red"  ><strong> Code incorrect ou mal écrit </strong></ion-label>
-  
-
-  <!--Après code rebus : -->
-  <h6>
-  
-  <img *ngIf="todo.image" src={{todo.image}} >
-  
-  </h6>
-  <br/>
 
 
 
