@@ -19,13 +19,13 @@
         <ion-item>
             <ion-input type="text" [(ngModel)]='recherche.titre' placeholder="Tapez une partie du nom"></ion-input>
         </ion-item>
-        <ion-item>
+        <ion-item >
             <ion-label>Thèmes</ion-label>
             <ion-select full [(ngModel)]="recherche.themeId">
               <ion-option *ngFor="let t of themes" value="{{t.id}}">{{t.libelle}}</ion-option>
             </ion-select>
         </ion-item>
-        <button ion-button color="primary" full (click)="onRecherche()">Rechercher</button>
+        <button ion-button full (click)="onRecherche()" class="btn">Rechercher</button>
     </ion-list>
     
     <ion-list>
@@ -38,8 +38,3 @@
     </ion-list>
 </ion-content>
 
-<ion-footer class="accueil">
-    <ion-toolbar>
-        <button class="btnacc" (click)="Accueil()" ion-button round><ion-icon style="font-size:20px;" name="home"></ion-icon>&nbsp;Accueil</button>
-    </ion-toolbar>
-</ion-footer>

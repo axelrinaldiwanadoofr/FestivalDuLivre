@@ -65,7 +65,7 @@ export class RechercheLivrePage implements OnInit {
 
   // si clic sur un livre de la liste affichée par la requête
   onLivreClick(livre) {
-    this.navCtrl.push(LivrePage, { idLivre: livre.idLivre });
+    this.navCtrl.push(LivrePage, { idLivre: livre.idLivre, titre: livre.titre });
   }
 
   Accueil() {
