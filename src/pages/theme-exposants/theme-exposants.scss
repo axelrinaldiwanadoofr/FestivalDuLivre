@@ -1,10 +1,16 @@
 page-theme-exposants {
-        .btn-acc{
+      
+        
+        .btn
+        {
             text-align: center;
-        }
-        .acc{
+            width: 100%;
+            font-weight: bold;
             height: 50px;
-            background: linear-gradient(to top, #0066cc 17%, #66ccff 91%);
+            margin-bottom: 40px;
+            color:white;
+            background: #C51B5E;
+            border-radius: 10% / 55%;
         }
 }
 

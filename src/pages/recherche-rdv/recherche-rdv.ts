@@ -6,7 +6,7 @@ import { FavorisProvider } from '../../providers/favoris/favoris' ;
 import { PlansPage, PlanMarqueur } from '../../pages/plans/plans' ;
 import { ToastController } from 'ionic-angular';
 import { UnRendezVousPage } from '../un-rendez-vous/un-rendez-vous' ;
-import { AlertController } from 'ionic-angular';
+
 
 /**
  * Generated class for the RechercheRdvPage page.
@@ -32,23 +32,22 @@ export class RechercheRdvPage {
   public unTheme:number;
   public uneTrancheAge : Array<{id:number}>;
 
-  public typesRDV: Array<{id: number, nom: string}>;
-  public unTypeRDV: number;
-
-  public mesRDV: Array<{idStand:number, nom:string, jour:string, heure:string, duree: string, description: string, age: string, type: string}>;
+  public mesRDV: Array<{numStand:number, titre:string, date:string, heure:string, duree: string, resume: string, age: string, type: string}>;
 
   constructor( 
     public navCtrl: NavController, 
     public navParams: NavParams, 
     public sqlPrd: RemoteSqlProvider,
     public favorisPrd: FavorisProvider,
-    public toastCtrl: ToastController,
-    private alertCtrl: AlertController ) 
+    public toastCtrl: ToastController ) 
   {
-
     this.themes = [] ;    
-    this.typesRDV = [];
+    this.sqlPrd.select( "SELECT * FROM THEME order by libelle", null, this.themes ) ;
     this.ages = [] ;
+
+    let sql = "SELECT distinct TRANCHEAGE.id as id,libelle FROM TRANCHEAGE, RDV" ;
+    sql += " where TRANCHEAGE.id=RDV.idTrancheAge order by TRANCHEAGE.id" ;
+    this.sqlPrd.select( sql, null, this.ages ) ;
     this.desTheme=[];
 
     let d: Date = new Date() ;
@@ -56,27 +55,11 @@ export class RechercheRdvPage {
     if( !d.getDay()  ) this.unJour="dimanche";
     else this.unJour="samedi";
 
-    this.uneHeure= d.getHours() + ":" + d.getMinutes() ;
+    this.uneHeure= "" + d.getHours() + ":" + d.getMinutes() ;
     this.uneTranche=0;
     this.unTheme=0;
     this.uneTrancheAge=[];
-    this.unTypeRDV=0;
     this.mesRDV=[];
-  }
-
-  ngOnInit () {
-    this.sqlPrd.select( "SELECT * FROM theme_18 ORDER BY libelle", null, this.themes) ;
-
-    let sql = "SELECT distinct trancheage_18.id as id, libelle";
-    sql += " FROM trancheage_18";
-    sql += " JOIN  rdv_18 ON  trancheage_18.id=rdv_18.idTrancheAge";
-    sql += " ORDER BY trancheage_18.id" ;
-    this.sqlPrd.select( sql, null, this.ages ) ;
-
-    this.sqlPrd.select( "SELECT * FROM typerdv_18 ORDER BY nom", null, this.typesRDV) ;
-
-    console.log(this.typesRDV);
-
   }
 
   Accueil(){
@@ -84,6 +67,7 @@ export class RechercheRdvPage {
   }
 
   onSearch() {
+    this.mesRDV=[];
 
     this.mesRDV = [] ;
 
@@ -125,18 +109,18 @@ export class RechercheRdvPage {
     let m = [] ;
     this.mesRDV.forEach( (r)=>
     {
-      m.push( new PlanMarqueur( r.idStand, r.nom ) ) ;
+      m.push( new PlanMarqueur( r.numStand, r.titre ) ) ;
     });
     this.navCtrl.push( PlansPage, {marqueurs: m} ) ;
   }
 
   onFavoris( r )
   {
-    let str = "RDV  " + r.nom + " " + r.date ;
+    let str = "RDV  " + r.titre + " " + r.date ;
     if( r.duree == "en continu") str += " en continu" ;
     else str += " à " + r.heure ;
 
-    this.favorisPrd.ajoute( r.idStand, 999, str ) ;
+    this.favorisPrd.ajoute( r.numStand, 999, str ) ;
 
     let toast = this.toastCtrl.create({
       message: 'Rdv ajouté aux favoris',
