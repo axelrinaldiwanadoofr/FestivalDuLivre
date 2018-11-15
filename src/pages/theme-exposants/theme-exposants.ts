@@ -28,12 +28,23 @@ export class ThemeExposantsPage {
 
   ngOnInit()
   {
-    let sql = "SELECT numStand, e.id as id, libelle " ;
+   /* let sql = "SELECT numStand, e.id as id, libelle " ;
     sql += " FROM EXPOSANT as e, CONCERNE as c, EXPOSER as er" ;
     sql += " WHERE c.idExposant = e.id AND e.id=er.idExposant AND idTheme = ?" ;
     sql += " ORDER BY libelle" ; 
-    this.sqlPrd.select( sql, [this.selectedItem.id], this.tab);
+    this.sqlPrd.select( sql, [this.selectedItem.id], this.tab);*/
+
+    let sql = "SELECT exposant_18.id, nom " ;
+    sql += " FROM exposant_18 JOIN presenter_18 ON exposant_18.id = presenter_18.idExposant";
+    sql += " JOIN theme_18 ON presenter_18.idTheme = theme_18.id";
+    sql += " WHERE idTheme = " + this.selectedItem.id;
+    sql += " ORDER BY nom" ; 
+
+    this.sqlPrd.select( sql, null, this.tab);
   }
+   
+  
+
 
   accueil(){
     this.navCtrl.push(HelloIonicPage, null);

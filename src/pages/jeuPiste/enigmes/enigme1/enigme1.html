@@ -27,6 +27,7 @@
     <ion-input *ngIf="!codeBon"  type="text"  [(ngModel)]="codeEnigme"></ion-input>
   </ion-item>
   <br/>
+  <button ion-button round (click)="onClickCode()" class="debutJeu"> Afficher l'énigme</button>
 
   <br/>
   <button *ngIf="!codeBon"  ion-button round (click)="onClickCode()">Afficher l'énigme</button>

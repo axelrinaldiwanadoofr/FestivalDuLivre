@@ -16,7 +16,7 @@
   <ion-list>
     <ion-list-header>Liste des thèmes</ion-list-header>
     <button ion-item *ngFor="let theme of themes" (click)="onThemeClicked($event, theme)">
-      {{theme.id}} {{theme.nom_theme}} 
+      {{theme.id}} {{theme.libelle}} 
     </button>
   </ion-list>
 </ion-content>

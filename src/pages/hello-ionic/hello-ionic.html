@@ -19,7 +19,7 @@
 
 <ion-content class="background">
     <ion-grid>
-        <p>Faire la présentation du jeu de piste</p>
+        <p>[Présentation de l'application]</p>
         <ion-row row-auto>
             <!--
             <ion-col>
@@ -33,18 +33,22 @@
         <ion-row>
 
             <ion-col>
-                <button class="btn" (click)="plan()"><img  class="imgbtn" src="assets/img/plan2.png">plan</button>
+                <button class="btn" (click)="restaurants()"><img src="assets/img/Repas.png"><br><strong>Restauration</strong></button>
             </ion-col>
-            <!--
+                        
             <ion-col>
-                <button class="btn" (click)="recherche()"><img  class="imgbtn" src="assets/img/recherche.png" ><br>RECHERCHER</button>
+                    <button class="btn" (click)="plan()"><img src="assets/img/plan2.png"><br><strong>Plan</strong></button>
             </ion-col>
-        -->
+            
+            <ion-col>
+                <button class="btn" (click)="recherche()"><img src="assets/img/recherche.png" ><br>Rechercher</button>
+            </ion-col>
+       
         </ion-row>
-        <h1 class="ios">Restauration</h1>
+        <h1 class="ios">Jeu de piste</h1>
         <ion-row>
             <ion-col>
-                <button class="btnresto" (click)="restaurants()"><img  class="imgbtn" src="assets/img/repas2.png"><br></button>
+                <button class="btn" (click)="jeuPiste()"><img class="" src="assets/img/Jeudepiste.png"><br></button>
             </ion-col>
         </ion-row>
         

@@ -6,6 +6,7 @@ import { lyceePage} from '../lycee/lycee';
 import { RestaurantsPage} from '../restaurants/restaurants';
 import { PresentationPage} from '../presentation/presentation';
 import { RemoteSqlProvider } from '../../providers/remotesql/remotesql';
+import { jeuPistePage } from '../jeuPiste/jeuPiste';
 @Component({
   selector: 'page-hello-ionic',
   templateUrl: 'hello-ionic.html',
@@ -37,6 +38,9 @@ export class HelloIonicPage {
   }
   lycee(){
     this.navCtrl.push(lyceePage,null);
+  }
+  jeuPiste(){
+    this.navCtrl.push(jeuPistePage,null);
   }
 }
 

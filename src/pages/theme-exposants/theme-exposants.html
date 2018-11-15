@@ -10,15 +10,15 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="background">
   <ion-list>
-      <button ion-item *ngFor="let exposant of tab" (click)="onExposant(exposant)">{{exposant.libelle}}</button>      
+      <button ion-item *ngFor="let exposant of tab" (click)="onExposant(exposant)">{{exposant.nom}}</button>      
       <button color="danger" ion-button full [hidden]="!tab.length || tab.length>6" (click)="onPlan()">Afficher sur le plan</button>            
     </ion-list>
 </ion-content>
 
-<ion-footer>
+<!--<ion-footer>
   <ion-toolbar class="btn-acc">
     <button class="acc" (click)="Accueil()" ion-button round><ion-icon name="home"></ion-icon> &nbsp; Accueil</button>
   </ion-toolbar>
-</ion-footer>
+</ion-footer>-->
