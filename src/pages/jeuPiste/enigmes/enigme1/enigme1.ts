@@ -45,9 +45,9 @@ export class Enigme1 {
         commentaireFin: " Definition : <br/> Première partie d'un discours.<br/> Exorde d'une harangue, d'un plaidoyer. ", image: null
       },
       //Enigme 3
-      { title: "REBUS", description: "oui", day: 1, numStand: 340, reponse: ["ANECDOTE", "yousk2", "anecdote", "Anecdote"], code: "4gla2x", commentaireFin: " ", image: "assets/img/imgEnigmes/rebusAne.png" },
+      { title: "REBUS", description: "", day: 1, numStand: 340, reponse: ["ANECDOTE", "yousk2", "anecdote", "Anecdote"], code: "4gla2x", commentaireFin: " ", image: "assets/img/imgEnigmes/rebusAne.png" },
       //Enigme 4
-      { title: "DINGBAT", description: "non", day: 1, numStand: 426, reponse: [" ", "yousk2"], code: "yf8t2d", commentaireFin: " ", image: "assets/img/imgEnigmes/peurMal.png" },
+      { title: "DINGBAT", description: "Quelle est cette expression ? ", day: 1, numStand: 426, reponse: [" ", "yousk2"], code: "yf8t2d", commentaireFin: " ", image: "assets/img/imgEnigmes/peurMal.png" },
       //Enigme 5
       {
         title: "Salée...", description: "Cette pierre tendre de feuilletée,<br/>En Bretagne, est très employée.<br/>Les écoliers l'ont tous levée.<br/>Et parfois, elle est très salée.<br/>Qui est-elle ?<br/>",
