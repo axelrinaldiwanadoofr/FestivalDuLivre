@@ -23,7 +23,7 @@
         {{e.nom}}
       </ion-item>   
       <ion-item-divider color='orange'>Liste des rendez vous</ion-item-divider>
-      <ion-item *ngFor="let r of rdvs" (click)="onRdv(r)">
+      <ion-item *ngFor="let r of rdvs"><!--(click)="onRdv(r)"-->
         <p style="white-space:initial;"><b>{{r.titre}}</b></p>  
         <br>
         <p>stand n° <b>{{r.numStand}}</b></p>
@@ -33,7 +33,8 @@
         <p>
           <b>{{r.date}} <span [hidden]="!r.duree">{{r.heure}}</span>
           </b>
-        </p> 
+        </p>
+        <p class="addFavorie" (click)="onFavorisRDV(r)"><ion-icon name="star" class="star"></ion-icon></p>
       </ion-item>      
   </ion-list>
 </ion-content>
