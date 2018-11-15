@@ -47,7 +47,7 @@ export class FavorisProvider
       }      
     }
 
-    suprime( idStand: number, idExposant: number=null )
+    supprime( idStand: number, idExposant: number=null )
     {
       let favoris = {idStand: idStand, idExposant: idExposant } ;
 

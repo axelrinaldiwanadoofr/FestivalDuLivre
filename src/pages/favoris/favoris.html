@@ -14,19 +14,14 @@
 </ion-header>
 
 <ion-content padding>
-    <button ion-button full (click)="onPlan()">Afficher sur le plan</button>            
     <ion-list no-border>
         <ion-item ion-item *ngFor="let f of favoris">
             <p style="white-space:initial;" (click)="onFavorisClick( f )">
                 <b>Stand n°{{f.idStand}}</b> <span *ngIf='f.idExposant'>{{f.nomExposant}}</span>
             </p>
-            <button ion-button color="primary" item-end (click)="onRemoveFavorisClick( f )">Supprimer</button>
-        </ion-item>    
+            <button ion-button  item-end (click)="onRemoveFavorisClick( f )" class="btnSuppr">Supprimer</button>
+        </ion-item>   
     </ion-list>
+    <button ion-button full (click)="onPlan()"class="btn">Afficher sur le plan</button> 
 </ion-content>
 
-<ion-footer>
-    <ion-toolbar class="accueil">
-        <button class="btnacc" (click)="Accueil()" ion-button round><ion-icon name="home"></ion-icon> &nbsp; Accueil</button>
-    </ion-toolbar>
-</ion-footer>

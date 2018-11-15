@@ -18,25 +18,28 @@
 
 
 
-<ion-content padding>
+<ion-content class="background" padding>
     <ion-list>
-        <button color="danger" ion-button full (click)="onFavoris()">Ajouter aux favoris</button>            
-        <ion-item-divider color="orange" [hidden]="!stands.length">Liste des stands</ion-item-divider>
-        <ion-item *ngFor="let s of stands">
+        <ion-item-divider [hidden]="!stands.length" class="Liste">Liste des stands</ion-item-divider>
+        <ion-item *ngFor="let s of stands" class="finListe">
             <p>Stand n° {{s.numStand}} hall n° {{s.numHall}}</p>
         </ion-item>     
-        <button color="danger" ion-button full [hidden]="!stands.length" (click)="onPlan()">Afficher sur le plan</button>            
-        <ion-item-divider color="orange" [hidden]="!intervenants.length">Dédicaces</ion-item-divider>
-        <ion-item *ngFor="let i of intervenants">
+        <br>
+                            
+        <ion-item-divider [hidden]="!intervenants.length" class="Liste">Dédicaces</ion-item-divider>
+        <ion-item *ngFor="let i of intervenants" >
             <h2>{{i.nom}} {{i.prenom}}</h2>
             <p item-end>{{i.jour}}</p>
         </ion-item>
+        <br>
+        <button ion-button full [hidden]="!stands.length" (click)="onPlan()" class="btn">Afficher sur le plan</button>    
+        <button class="btn" ion-button full (click)="onFavoris()">Ajouter aux favoris</button>
     </ion-list>
         
 </ion-content>
 
-<ion-footer>
+<!--<ion-footer>
     <ion-toolbar class="accueil">
         <button class="btnacc" (click)="Accueil()" ion-button round><ion-icon style="font-size:20px;" name="home"></ion-icon>&nbsp;Accueil</button>
     </ion-toolbar>
-</ion-footer>
+</ion-footer>-->
