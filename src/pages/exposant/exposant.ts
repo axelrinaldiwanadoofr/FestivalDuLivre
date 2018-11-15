@@ -43,7 +43,8 @@ export class ExposantPage implements OnInit
     let id = this.navParams.get("id");
     if(id)
     {
-      this.sqlPrd.select( "SELECT id, nom FROM exposant_18 where id = ?", [id] ).then( (data)=>
+      let sqlCommand = "SELECT id, nom FROM exposant_18 where id = " + id ;
+      this.sqlPrd.select(sqlCommand, []).then( (data)=>
       {
         let e = data.rows[0] ;
         if( e )
@@ -53,12 +54,12 @@ export class ExposantPage implements OnInit
         }
         
         // Liste des stands
-        let sqlCommand = "SELECT * FROM stand_18"
-        sqlCommand += "JOIN etresur_18 ON stand_18.id = etresur_18.idStand"
-        sqlCommand += "JOIN exposant_18 ON etresur_18.idExposant = exposant_18.id"
-        sqlCommand += "WHERE exposant_18.id ?"
+        let sqlCommand = "SELECT * FROM stand_18 "
+        sqlCommand += "JOIN etresur_18 ON stand_18.id = etresur_18.idStand "
+        sqlCommand += "JOIN exposant_18 ON etresur_18.idExposant = exposant_18.id "
+        sqlCommand += "WHERE exposant_18.id = " + id
 
-        this.sqlPrd.select(sqlCommand, [id]).then((data)=>
+        this.sqlPrd.select(sqlCommand, []).then((data)=>
         {
           data.rows.forEach( (s)=>
           {
@@ -68,9 +69,9 @@ export class ExposantPage implements OnInit
 
         // Liste des intervenants
         let sql = "select nom, prenom, jour from INTERVENANT, SERA_PRESENT"
-        sql += " where id=numIntervenant and num_exposant=?"
+        sql += " where id=numIntervenant and num_exposant=" + id
         sql += " order by nom, prenom" ;
-        this.sqlPrd.select( sql, [id], this.intervenants ) ;
+        this.sqlPrd.select( sql, [], this.intervenants ) ;
       }) ;
     }
   }

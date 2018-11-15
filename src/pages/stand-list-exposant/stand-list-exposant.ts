@@ -49,26 +49,25 @@ export class StandListExposantPage implements OnInit
 
   ngOnInit()
   {
-    this.numStand = this.navParams.get( "numStand" ) ;
+    this.numStand = this.navParams.get( "numStand" );
 
     if( this.numStand )
     {
-      let sql = "select numstand, idExposant, libelle from EXPOSANT, EXPOSER where id=idExposant and numstand=?" ;
-      this.sqlPrd.select( sql, [this.numStand], this.exposants ) ;
+      let sqlCommand = "SELECT etresur_18.idStand as numstand, exposant_18.id as idExposant, exposant_18.nom ";
+      sqlCommand += "FROM exposant_18 ";
+      sqlCommand += "JOIN etresur_18 ON exposant_18.id = etresur_18.idExposant "
+      sqlCommand += "WHERE etresur_18.idStand = " + this.numStand
 
-      sql = "select distinct numStand, date, heure, duree, titre, nbPlaceMax, resume, ta.libelle as age, tr.libelle as type" ;
-      sql += " from RDV as r" ;
-      sql += " left join TRANCHEAGE as ta on r.idTrancheAge=ta.id" ;
-      sql += " left join TYPERDV as tr on r.typeRDV=tr.id" ;
-      sql += " where numStand=?" ;
-      sql += " order by date desc, heure" ;
+      this.sqlPrd.select(sqlCommand, [], this.exposants ) ;
       
-      //sql = "select distinct numStand, date, heure, duree, titre, nbPlaceMax, resume" ; 
-      //sql += " from RDV as r" 
-      //sql += " where numStand=?"
-      //sql += " order by date desc, heure"
-          
-      this.sqlPrd.select( sql, [this.numStand], this.rdvs ) ;
+      sqlCommand = "SELECT stand_18.id as numStand, rdv_18.duree, rdv_18.jour as date, rdv_18.heure, rdv_18.nom, rdv_18.nbMaxPlace, rdv_18.description, trancheage_18.libelle as age "
+      sqlCommand += "FROM rdv_18 "
+      sqlCommand += "LEFT JOIN stand_18 ON rdv_18.idStand = stand_18.id "
+      sqlCommand += "LEFT JOIN trancheage_18 ON rdv_18.idTrancheAge = trancheage_18.id "
+      sqlCommand += "WHERE rdv_18.idStand = ? "
+      sqlCommand += "ORDER BY rdv_18.jour DESC"
+
+      this.sqlPrd.select(sqlCommand, [this.numStand], this.rdvs);
     }     
   }
 
