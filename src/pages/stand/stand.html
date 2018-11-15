@@ -19,7 +19,7 @@
         <ion-searchbar (ionInput)="getItems($event)" placeholder="N° du Stand"></ion-searchbar>
         <button class="button-list" ion-item *ngFor="let stand of stands" (click)="event(stand)" style="text-align:center;font-weight:bold;">
           <ion-icon class="icon-home" name="home"></ion-icon>
-        STAND {{stand.num}}
+        STAND {{stand.id}}
       </button>
     </ion-list>
 </ion-content>

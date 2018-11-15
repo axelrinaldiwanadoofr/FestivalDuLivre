@@ -20,16 +20,20 @@
       <button color="danger" ion-button full (click)="onFavoris()">Ajouter aux favoris</button>            
       <ion-item-divider color='orange'>Liste des exposant</ion-item-divider>
       <ion-item *ngFor="let e of exposants">
-        {{e.libelle}}
+        {{e.nom}}
       </ion-item>   
       <ion-item-divider color='orange'>Liste des rendez vous</ion-item-divider>
       <ion-item *ngFor="let r of rdvs" (click)="onRdv(r)">
         <p style="white-space:initial;"><b>{{r.titre}}</b></p>  
         <br>
-        <p [hidden]="!r.resume" style="white-space:initial;">{{r.resume}}</p>
+        <p>stand n° <b>{{r.numStand}}</b></p>
+        <p [hidden]="!r.description" style="white-space:initial;">{{r.description}}</p>
         <br>
-        <p>{{r.duree}} pour {{r.age}} sur le stand n° <b>{{r.numStand}}</b></p><br>
-        <p><b>{{r.date}} <span [hidden]="r.duree=='en continu'">{{r.heure}}</span></b></p> 
+        <p>{{r.duree}} pour {{r.age}}</p><br>
+        <p>
+          <b>{{r.date}} <span [hidden]="!r.duree">{{r.heure}}</span>
+          </b>
+        </p> 
       </ion-item>      
   </ion-list>
 </ion-content>
