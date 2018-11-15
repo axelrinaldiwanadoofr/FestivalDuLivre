@@ -4,6 +4,7 @@ import { IntervenantPage } from '../intervenant/intervenant';
 import { HallsPage } from '../halls/halls';
 import { RechercheThemePage } from '../recherche-theme/recherche-theme';
 import { RechercheRdvPage } from '../recherche-rdv/recherche-rdv';
+import { RechercheLivrePage } from '../../pages/recherche-livre/recherche-livre';
 import { RechercheExposantPlanPage } from '../../pages/recherche-exposant-plan/recherche-exposant-plan' ;
 import { RemoteSqlProvider } from '../../providers/remotesql/remotesql';
 import { PlansPage, PlanMarqueur} from '../plans/plans';
@@ -48,6 +49,11 @@ export class RecherchePage
   }
   rdv(){
     this.navCtrl.push(RechercheRdvPage,null);
+  }
+
+  livres()
+  {
+    this.navCtrl.push(RechercheLivrePage,null);
   }
   
   exposants()

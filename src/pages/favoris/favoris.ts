@@ -65,7 +65,7 @@ export class FavorisPage implements OnInit
 
     onRemoveFavorisClick( f )
     {
-      this.favorisPrd.suprime( f.idStand, f.idExposant ) ;
+      this.favorisPrd.supprime( f.idStand, f.idExposant ) ;
       let i = this.favoris.indexOf( f ) ;
       this.favoris.splice( i, 1 ) ;
     }
