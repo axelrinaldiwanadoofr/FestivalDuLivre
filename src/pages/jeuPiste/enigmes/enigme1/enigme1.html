@@ -21,6 +21,9 @@
       <ion-label *ngIf="!codeBon" >et insérez le ci-dessous </ion-label>
     </div>
   </h6>
+
+
+  
   <!--Saisie du code-->
   <ion-item *ngIf="!codeBon">
     <ion-label *ngIf="!codeBon"  >Code :  </ion-label>
@@ -33,6 +36,8 @@
   <ion-label *ngIf="erreurCode" color="red"  ><strong> Code incorrect ou mal écrit </strong></ion-label>
   
 
+
+
   <!--Après code : -->
   <h6>
   
@@ -41,6 +46,8 @@
   </h6>
   <br/>
 
+
+
   <!--Saisie de la réponse-->
   <ion-item *ngIf="repAValider">
     <ion-label *ngIf="repAValider"  >Réponse :  </ion-label>
@@ -48,9 +55,13 @@
   </ion-item>
   <br/>
 
+
+
   <!--Traitement de la réponse-->
   <button *ngIf="repAValider"  ion-button round (click)="onClickEnigme()">Valider</button>
   <ion-label *ngIf="erreurRep" color="red"><strong> Réponse erronée ou mal écrite </strong></ion-label>
+
+
 
   <!--Validation avant l'affichage de la prochaine énigme-->
   <ion-label *ngIf="reponseBonne" color="lime"><strong> Bonne réponse ! </strong></ion-label>
