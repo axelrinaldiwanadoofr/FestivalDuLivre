@@ -97,6 +97,22 @@ export class StandListExposantPage implements OnInit
   {
     this.navCtrl.push( UnRendezVousPage, {rdv: r} ) ;
   }
+
+  onFavorisRDV( r )
+  {
+    console.log(r)
+    let str = "RDV  " + r.nom + " " + r.date ;
+    if( r.duree == "en continu") str += " en continu" ;
+    else str += " à " + r.heure ;
+
+    this.favorisPrd.ajoute( r.numStand, 999, str ) ;
+
+    let toast = this.toastCtrl.create({
+      message: 'Rendez-vous ajouté aux favoris.',
+      duration: 1000 
+    });
+    toast.present();
+  }
  
   Accueil()
   {

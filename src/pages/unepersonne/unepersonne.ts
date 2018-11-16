@@ -21,7 +21,7 @@ import { UnRendezVousPage } from '../../pages/un-rendez-vous/un-rendez-vous' ;
 })
 export class UnePersonnePage implements OnInit
 {
-  private unePersonne:  {id:number,nom:string,prenom:string} ;
+  private unePersonne:  {id:number,nom:string,prenom:string};
   private dedicaces: Array<{id:number, numstand: number, libelle: string, jour: string}> ;
   private rdv: Array<{numStand: number, date: string, heure: string, duree: string, titre: string, resume: string, age: string, type: string }>
 
@@ -32,29 +32,30 @@ export class UnePersonnePage implements OnInit
     public favorisPrd: FavorisProvider,
     public toastCtrl: ToastController ) 
   {
-    this.unePersonne = this.navParams.get( "personne" ) ;
+    this.unePersonne = this.navParams.get("personne");
     this.dedicaces = [] ;
     this.rdv = [] ;
   }
 
   ngOnInit()
   {
+    console.log(this.unePersonne.id)
     // Liste des dédicaces
-    let sql = "select id, numstand, libelle, jour from EXPOSANT, SERA_PRESENT, EXPOSER"
-    sql += " where id=num_exposant and numIntervenant=?"
-    sql += " and idExposant=id"
-    sql += " order by libelle" ;
-    this.sqlPrd.select( sql, [this.unePersonne.id], this.dedicaces ) ;
+    //SELECT rdv_18.nom,description,jour,duree,heure,idStand, trancheage_18.libelle 
+    let sql = "SELECT jour,heure,idStand "
+    sql += "FROM rdv_18 "
+    sql += "JOIN personne_18 ON rdv_18.id = personne_18.id "
+    sql += "JOIN trancheage_18 ON rdv_18.id = trancheage_18.id "
+    sql += "WHERE personne_18.id = " + this.unePersonne.id;
+    this.sqlPrd.select( sql, [ ], this.dedicaces ) ;
 
     // Liste des rdv
-    sql = "select distinct numStand, date, heure, duree, titre, resume, ta.libelle as age, tr.libelle as type" ;
-    sql += " from RDV as r" ;
-    sql += " inner join PARTICIPER as pa on pa.idRdv=r.id" ;
-    sql += " left join TRANCHEAGE as ta on r.idTrancheAge=ta.id" ;
-    sql += " left join TYPERDV as tr on r.typeRDV=tr.id" ;
-    sql += " where pa.idIntervenant=?" ;
-    sql += " order by date desc, heure" ;
-    this.sqlPrd.select( sql, [this.unePersonne.id], this.rdv ) ;
+    sql = "SELECT rdv_18.nom, description, duree, trancheage_18.libelle as age, jour, heure, idStand ";
+    sql += "FROM rdv_18 ";
+    sql += "JOIN personne_18 ON rdv_18.id = personne_18.id ";
+    sql += "JOIN trancheage_18 ON rdv_18.id = trancheage_18.id ";
+    sql += "WHERE personne_18.id = " + this.unePersonne.id;
+    this.sqlPrd.select( sql, [ ], this.rdv ) ;
   }
 
   Accueil(){
@@ -99,6 +100,22 @@ export class UnePersonnePage implements OnInit
 
     let toast = this.toastCtrl.create({
       message: 'Rdv avec ' + this.unePersonne.nom + " " + this.unePersonne.prenom + ' ajouté aux favoris',
+      duration: 1000 
+    });
+    toast.present();
+  }
+
+  
+  onFavorisRDV( r )
+  {
+    let str = "RDV  " + r.nom + " " + r.jour ;
+    if( r.duree == "en continu") str += " en continu" ;
+    else str += " à " + r.heure ;
+
+    this.favorisPrd.ajoute( r.idStand, 999, str ) ;
+
+    let toast = this.toastCtrl.create({
+      message: 'Rendez-vous ajouté aux favoris',
       duration: 1000 
     });
     toast.present();

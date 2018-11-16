@@ -20,5 +20,17 @@ page-stand-list-exposant {
        border-radius: 10px 10px 0px 0px;
    }
 
-   
+    p {
+        float: left;
+        padding-right: 7px;
+        display: inline-block;
+    }
+
+    .addFavorie {
+        float: right;
+
+        .star {
+            color: #ffbe00;
+        }
+    }
 }
