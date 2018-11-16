@@ -9,7 +9,7 @@
         <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-        <ion-title>Recherche livres</ion-title>
+        <ion-title>Recherche de livres</ion-title>
     </ion-navbar>
 </ion-header>
 
@@ -34,6 +34,7 @@
         <ion-item *ngFor="let l of livres" (click)="onLivreClick(l)">
             <h2>{{l.titre}}</h2>
             <p>{{l.auteur}}</p>
+            <button ion-button clear item-end>numDuStand</button>
         </ion-item>
     </ion-list>
 </ion-content>
