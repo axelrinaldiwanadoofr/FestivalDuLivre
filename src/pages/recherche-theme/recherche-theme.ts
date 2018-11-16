@@ -17,13 +17,13 @@ import { HelloIonicPage } from '../hello-ionic/hello-ionic';
 })
 export class RechercheThemePage {
 
-public themes:Array<{id:number,libelle:string}>
+public themes:Array<{id: number, libelle: string}>
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public sqlPrd:RemoteSqlProvider) {
     this.themes=[];
     
-    this.sqlPrd.select("SELECT * FROM `THEME` order by libelle",null,this.themes);
+    this.sqlPrd.select("SELECT * FROM theme_18 ORDER BY libelle", null, this.themes);
   }
 
   exposants(theme){

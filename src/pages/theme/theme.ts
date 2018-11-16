@@ -1,27 +1,25 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HelloIonicPage } from '../hello-ionic/hello-ionic';
-/**
- * Generated class for the ThemePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { NavController, NavParams } from 'ionic-angular';
+import { RemoteSqlProvider } from '../../providers/remotesql/remotesql'
 
-@IonicPage()
 @Component({
   selector: 'page-theme',
-  templateUrl: 'theme.html',
+  templateUrl: 'theme.html'
 })
-export class ThemePage {
+export class ThemePage 
+{
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public themes: Array<{id: number, libelle: string}> ;
+  
+  constructor( 
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public sqlPrd: RemoteSqlProvider ) 
+  {
+    this.themes = [];
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ThemePage');
-  }
-  Accueil(){
-    this.navCtrl.setRoot(HelloIonicPage);
+  ngOnInit () {
+    this.sqlPrd.select( "SELECT * FROM theme_18 ORDER BY libelle", null, this.themes );
   }
 }

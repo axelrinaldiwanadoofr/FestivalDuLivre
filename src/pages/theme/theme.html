@@ -1,39 +1,22 @@
-<!--
-  Generated template for the ThemePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-    <ion-navbar>
-        <button ion-button menuToggle>
-                <ion-icon name="menu"></ion-icon>
-            </button>
-        <ion-title>Thème 2018</ion-title>
-    </ion-navbar>
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>
+      Liste des thèmes
+      <button ion-button color="secondary" (click)="onNouveauTheme()">
+        +
+      </button>  
+    </ion-title>
+  </ion-navbar>
 </ion-header>
 
-<ion-content class="background" padding>
-    <div class="titre">
-        <fieldset>
-    <legend> ON LIRAIT LE SUD </legend>
-    <p> On dirait le sud… chantait Nino Ferrer, et c’est en pensant à lui que nous vous proposons de le lire. Pourtant, on le sait bien, les écrits imprimés sont plus graves que les ritournelles et l’on oublie souvent les textes des chansons qui survolent
-    ce que les livres creusent. Comment donc s’étonner que le Sud de la littérature soit moins aimable que celui que l’on fredonne ; que le soleil qui nous caresse dans l’une, devienne soudain dans l’autre l’impitoyable révélateur de la misère et de la
-    peur ; que le doux farniente des uns soit en fait le manque cruel de travail des autres ? La terre étant irrémédiablement ronde, on est toujours au Sud de quelqu’un, et le mot persiste à garder sa connotation enchantée malgré les désenchantements
-    de la réalité. Alors, qui doit-on croire ? Ceux qui le rêvent ou ceux qui le vivent ? Nul doute que les écrivains réunis sous la bannière On lirait le sud, auront chacun leur réponse, mais, quelle qu’elle soit, le Sud en sortira grandi car, chanté
-    ou lu, il reste la destination favorite de tous les rêveurs.<br><br><strong> Patrick Raynal, conseiller littéraire du Festival du livre</strong></p>
-    </fieldset>
-    </div>
-    <br><br>
-    <ion-card>
-        <ion-card-content>
-            <img src="assets/img/logo_festival.png">
-        </ion-card-content>
-    </ion-card>
+<ion-content>
+  <ion-list>
+    <ion-list-header>Liste des thèmes</ion-list-header>
+    <button ion-item *ngFor="let theme of themes" (click)="onThemeClicked($event, theme)">
+      {{theme.id}} {{theme.libelle}} 
+    </button>
+  </ion-list>
 </ion-content>
-
-<ion-footer class="accueil">
-    <ion-toolbar>
-        <button class="btnacc" (click)="Accueil()" ion-button round><ion-icon style="font-size:20px;" name="home"></ion-icon>&nbsp;Accueil</button>
-    </ion-toolbar>
-</ion-footer>
