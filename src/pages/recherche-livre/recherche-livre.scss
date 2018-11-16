@@ -1,8 +1,14 @@
-page-recherche-exposant-plan {
+page-recherche-livre {
     .debutListe{
         background: #DED8CF;
         color: black;
         border-radius: 10px 10px 0px 0px;
+    }
+
+    .finListe{
+        background: #DED8CF;
+        color: black;
+        border-radius: 0px 0px 10px 10px;
     }
 
     .btn {

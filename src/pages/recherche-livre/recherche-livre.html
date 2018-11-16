@@ -14,22 +14,22 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content class="background">
     <ion-list>
-        <ion-item>
+        <ion-item class="debutListe">
             <ion-input type="text" [(ngModel)]='recherche.titre' placeholder="Tapez une partie du nom"></ion-input>
         </ion-item>
-        <ion-item >
-            <ion-label>Thèmes</ion-label>
+        <ion-item class="finListe" >
+            <ion-label >Thèmes</ion-label>
             <ion-select full [(ngModel)]="recherche.themeId">
               <ion-option *ngFor="let t of themes" value="{{t.id}}">{{t.libelle}}</ion-option>
             </ion-select>
         </ion-item>
-        <button ion-button full (click)="onRecherche()" class="btn">Rechercher</button>
+        
     </ion-list>
-    
+    <button ion-button full (click)="onRecherche()" class="btn" >Rechercher</button>
     <ion-list>
-        <ion-item-divider color="light">Liste des livres</ion-item-divider>
+        <ion-item-divider class="debutListe">Liste des livres</ion-item-divider>
         <!-- <button ion-button full [hidden]="!exposants.length || exposants.length>6" (click)="onPlan()">Afficher sur le plan</button> -->
         <ion-item *ngFor="let l of livres" (click)="onLivreClick(l)">
             <h2>{{l.titre}}</h2>
