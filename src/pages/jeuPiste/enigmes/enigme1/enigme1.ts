@@ -47,10 +47,10 @@ export class Enigme1 {
       },
       //Enigme 3
       { title: "Rébus", description: "Quel est ce mot ?  ", day: 1, numStand: 340, reponse: ["ANECDOTE", "yousk2", "anecdote", "Anecdote"], 
-      code: "4gla2x", commentaireFin: "Anecdote (âne-haie-k'-Do-t) : Bref récit d'un fait curieux ou pittoresque, susceptible de divertir ; histoire. ", image: "assets/img/imgEnigmes/rebusAne.png" },
+      code: "4gla2x", commentaireFin: "Anecdote (âne-haie-k'-Do-t) : Bref récit d'un fait curieux ou pittoresque, susceptible de divertir : une histoire. ", image: "assets/img/imgEnigmes/rebusAne.png" },
       //Enigme 4
       { title: "Dingbat", description: "Quelle est cette expression ? ", 
-      day: 1, numStand: 426, reponse: [ "yousk2"," "], 
+      day: 1, numStand: 426, reponse: [ "yousk2","plus de peur que de mal", "PLUS DE PEUR QUE DE MAL", "Plus de peur que de mal"], 
       code: "yf8t2d", commentaireFin: " ", image: "assets/img/imgEnigmes/peurMal.png" },
       //Enigme 5
       {
@@ -68,14 +68,14 @@ export class Enigme1 {
       },
       //Enigme 7
       {
-        title: "Un peu de calcul", description: "S _ _ A _ _ _ Q  _ _ <br/> +<br/>  _ _ M_ _ _ I _ _ _ <br/> +<br/>  _ É _ _ N _ _ _ U _  <br/>+<br/>  _ _ _ _ _ T _ _ _ E ", day: 1, numStand: 320,
+        title: "Un peu de calcul", description: "S _ _ A _ _ _ Q  _ _ <br/>  +<br/>  _ _ M_ _ _ I _ _ _ <br/>  +<br/>  _ É _ _ N _ _ _ U _  <br/>  +<br/>  _ _ _ _ _ T _ _ _ E ", day: 1, numStand: 320,
         reponse: ["sémantique", "Sémantique", "SEMANTIQUE", "Semantique", "semantique", "SÉMANTIQUE", "yousk2"],
          code: "kf8s3y", commentaireFin: "Sémantique : Étude du sens des unités linguistiques et de leurs combinaisons.", image: null
       },
       //Enigme 8
       { title: "Mystère final", description: "Je suis un mystère de la critique,<br/>Je suis un pilier du poulpe,<br/>Le roman noir est l’avenir du roman,<br/>Je suis un spécialiste de la littérature américaine,<br/>Je suis au salon du livre de Colmar<br/><br/>Qui suis-je ?",
        day: 1, numStand: 235, reponse: ["Patrick Raynal", "yousk2", "partick raynal", "Partick raynal", "patrick Raynal", "raynal", "RAYNAL", "PARTICK RAYNAL", "Raynal"],
-        code: "4frt8d", commentaireFin: "Mystère de la critique fait référence au prix du mystère de la critique qu’il a gagné en 1989. « Le roman noir est l’avenir du roman » est une de ses citations, ça donne un indice de la catégorie de ses écrits. ", image: null },
+        code: "4frt8d", commentaireFin: "Patrick Raynal, né le 1er juillet 1946 à Paris, est écrivain, éditeur, scénariste, traducteur et journaliste français. Considéré comme un spécialiste de la littérature américaine, il collabore, de 1990 à 1995, au journal Le Monde (Le Monde des Livres). La même année, il obtient le prix Mystère de la critique pour son roman Fenêtre sur femmes.", image: null },
 
 
       //Jour 2 
@@ -90,27 +90,27 @@ export class Enigme1 {
       //Enigme 3
       { title: "Rébus", description: "Quel est ce mot ?", 
       day: 2, numStand: 340, reponse: ["ENCYCLOPEDISTE", "L'ENCYCLOPEDISTE","L'ENCYCLOPÉDISTE", "yousk2", "encyclopediste", "Encyclopediste", "Encyclopédiste", "encyclopédiste", "ENCYCLOPÉDISTE", "l'ecyclopediste", "l'encyclopédiste", "l'Ecyclopediste", "l'Encyclopédiste", "L'ecyclopediste", "L'encyclopédiste", "L'Ecyclopediste", "L'Encyclopédiste"],
-      code: "4gla2x", commentaireFin: " ", image: "assets/img/imgEnigmes/rebusOeufs.png" },
+      code: "4gla2x", commentaireFin: "Définition : <br/>Auteur ou collaborateur d'une encyclopédie.", image: "assets/img/imgEnigmes/rebusOeufs.png" },
       //Enigme 4
       { title: "Dingbat", description: "Quel est cet adjectif ? ", 
-      day: 2, numStand: 426, reponse: ["Irréversible", "yousk2"], 
-      code: "yf8t2d", commentaireFin: " ", image: "assets/img/imgEnigmes/iresi.png" },
+      day: 2, numStand: 426, reponse: ["Irréversible", "yousk2", "irréversible", "irreversible", "Irreversible", "IRREVERSIBLE", "IRRÉVERSIBLE"], 
+      code: "yf8t2d", commentaireFin: "Irréversible ( i ré vert si bleu) : Qui suit un processus qu'on ne peut ni enrayer ni renverser : Mouvement, maladie irréversible.", image: "assets/img/imgEnigmes/iresi.png" },
       //Enigme 5
-      { title: "coucou", description: "ldjfldj", 
-      day: 2, numStand: 500, reponse: [" ", "yousk2"], 
-      code: "nhe8wz", commentaireFin: " ", image: null },
+      { title: "coucou", description: "Cet imprévisible évènement,<br/>Qu'on appelle aussi aléa.<br/>Apporte des bouleversements,<br/>Surtout quand on ne l'attend pas.<br/><br/>Qui est-il ?",
+      day: 2, numStand: 500, reponse: ["yousk2", "Hasard", "HASARD", "hasard", "le hasard", "le Hasard", "Le hasard", "Le Hasard", "LE HASARD"], 
+      code: "nhe8wz", commentaireFin: "Puissance considérée comme la cause d'événements apparemment fortuits ou inexplicables : Rien n'a été laissé au hasard.", image: null },
       //Enigme 6
-      { title: "coucou", description: "ldjfldj", 
-      day: 2, numStand: 416, reponse: [" ", "yousk2"], 
-      code: "f7ezf5", commentaireFin: " ", image: null },
+      { title: "coucou", description: "Mon premier est la 5éme lettre de l’alphabet<br/>Mon deuxième est l’alliée de Peter Pan<br/>Mon troisième est élue dans un concours de beauté<br/>Mon quatrième est un pronom personnel<br/><br/>Mon tout est une figure de style",
+      day: 2, numStand: 416, reponse: ["yousk2", "euphemisme", "Euphemisme", "Euphémisme", "euphémisme", "l'euphemisme", "L'euphemisme", "l'Euphemisme", "L'Euphemisme", "l'euphémisme", "L'euphémisme", "l'Euphémisme", "L'Euphémisme", "L'EUPHEMISME", "EUPHEMISME", "L'EUPHÉMISME", "EUPHÉMISME"], 
+      code: "f7ezf5", commentaireFin: "Euphémisme (E-fée-miss-me). Elle permet de rendre une réalité moins brutale.", image: null },
       //Enigme 7
-      { title: "coucou", description: "ldjfldj", 
-      day: 2, numStand: 320, reponse: [" ", "yousk2"], 
-      code: "kf8s3y", commentaireFin: " ", image: null },
+      { title: "Un peu de clacul...", description: "_ _ U _ _ _ E _ _<br/>  +<br/>T _ _ C _ _ _ N _<br/>  +<br/> _ R _ _ U _ _ _ _<br/>  +<br/>_ _ _ _ _ L _ _ T ", 
+      day: 2, numStand: 320, reponse: ["yousk2", "truculent", "TRUCULENT", "Truculent"], 
+      code: "kf8s3y", commentaireFin: "Truculent adj. :  On qualifie ainsi un style qui n'hésite pas à employer des mots crus, grossiers, ou des mots violents.", image: null },
       //Enigme 8
-      { title: "coucou", description: "ldjfldj", 
-      day: 2, numStand: 235, reponse: [" ", "yousk2"], 
-      code: "4frt8d", commentaireFin: " ", image: null }
+      { title: "Mystère final", description: "Je suis un poète français maudit,<br/>Ayant un époux infernal,<br/>J’écris des recueils.<br/><br/>Qui suis-je ?",
+      day: 2, numStand: 235, reponse: ["yousk2", "Paul VERLAINE", "PAUL VERLAINE", "Paul Verlaine", "paul verlaine", "Paul verlaine", "paul Verlaine", "verlaine", "Verlaine", "VERLAINE"], 
+      code: "4frt8d", commentaireFin: " Paul Verlaine est un poète français né à Metz le 30 mars 1844, il est décédé à Paris le 8 janvier 1896. Il abandonne sa femme pour suivre Rimbaud en Angleterre et en Belgique. Mais les relations entre ces deux hommes trop différents sont orageuses : En 1873 Verlaine blesse Rimbaud avec un révolver et sera condamné à deux ans de prison. Il se convertit au catholicisme pendant sa détention, et il écrit plusieurs poèmes de Sagesse.", image: null }
     ];
 
     // Numéro de l'énigme 
