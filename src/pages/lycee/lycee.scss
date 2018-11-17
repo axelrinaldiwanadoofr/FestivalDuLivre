@@ -1,20 +1,24 @@
     page-lycee {
-        table {
-            text-align: center;
-            border-collapse: separate;
-            margin: auto;
+
+        .field
+        {
+            
+	        border:1.5px solid black;
+            -moz-border-radius:8px;
+            -webkit-border-radius:8px;	
+            border-radius:8px;	
+	        margin-bottom: 5%;
+            background: white;
+
         }
-        td {
-            border-bottom: 1px dashed black;
-            padding: 2px;
+
+        .titre
+        {
+            color: #C51B5E;
         }
-        .colour {
-            color: blue;
-            font-style: italic;
-            font-size: 22px;
-        }
-        font-size: 15px;
-        ion-content {
-            text-align: center;
-        }
+
+       
+
+
+       
     }

@@ -25,7 +25,7 @@ export class PersonnePage {
     this.Intervenants=[];
     
     this.selectedItem = navParams.get('lettre');
-    this.sqlPrd.select( "SELECT * from INTERVENANT WHERE nom LIKE '"+this.selectedItem+"%' order by nom", null, this.Intervenants ) ;
+    this.sqlPrd.select( "SELECT * from personne_18 WHERE fonction like '%auteur%' AND nom LIKE '"+this.selectedItem+"%' order by nom", null, this.Intervenants ) ;
     
     
   }
