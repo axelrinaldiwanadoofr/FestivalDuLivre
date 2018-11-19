@@ -8,7 +8,7 @@
 
 <ion-content padding>
   <h3>
-    <p>
+    <p *ngIf="!messageFin" >
       {{todo.title}}
     </p>
   </h3>
@@ -21,26 +21,32 @@
       <ion-label *ngIf="!codeBon" >et insérez le ci-dessous </ion-label>
     </div>
   </h6>
+
+
+  
   <!--Saisie du code-->
   <ion-item *ngIf="!codeBon">
     <ion-label *ngIf="!codeBon"  >Code :  </ion-label>
     <ion-input *ngIf="!codeBon"  type="text"  [(ngModel)]="codeEnigme"></ion-input>
   </ion-item>
+  
   <br/>
-  <button ion-button round (click)="onClickCode()" class="debutJeu"> Afficher l'énigme</button>
-
-  <br/>
-  <button *ngIf="!codeBon"  ion-button round (click)="onClickCode()">Afficher l'énigme</button>
+  <button *ngIf="!codeBon"  ion-button round (click)="onClickCode()" class="debutJeu">Afficher l'énigme</button>
   <ion-label *ngIf="erreurCode" color="red"  ><strong> Code incorrect ou mal écrit </strong></ion-label>
   
+
+
 
   <!--Après code : -->
   <h6>
   
   <div *ngIf="repAValider"  [innerHTML]="todo.description" text-left></div>    
+  <img *ngIf="afficherImage" src={{todo.image}} style="width:535px;height:300px;" class="center">
   
   </h6>
   <br/>
+
+
 
   <!--Saisie de la réponse-->
   <ion-item *ngIf="repAValider">
@@ -49,9 +55,13 @@
   </ion-item>
   <br/>
 
+
+
   <!--Traitement de la réponse-->
-  <button *ngIf="repAValider"  ion-button round (click)="onClickEnigme()">Valider</button>
+  <button *ngIf="repAValider"  ion-button round (click)="onClickEnigme()" class="debutJeu">Valider</button>
   <ion-label *ngIf="erreurRep" color="red"><strong> Réponse erronée ou mal écrite </strong></ion-label>
+
+
 
   <!--Validation avant l'affichage de la prochaine énigme-->
   <ion-label *ngIf="reponseBonne" color="lime"><strong> Bonne réponse ! </strong></ion-label>
@@ -61,12 +71,21 @@
     <div *ngIf="reponseBonne"  [innerHTML]="todo.commentaireFin" text-left></div>    
   </h6>
   <br/>
-  <button *ngIf="reponseBonne"  ion-button round (click)="onClickValideEnigme()">Passer à l'énigme suivante</button>
+  <button *ngIf="reponseBonne"  ion-button round (click)="onClickValideEnigme()" class="debutJeu">Passer à l'énigme suivante</button>
 
 
 
-
-
-
+  <!--Affichage Message Final-->
+  <h3>
+    <strong>
+    <div *ngIf="messageFin" text-center>
+      Felicitations !!!
+    </div>
+    <br/>
+    <div *ngIf="messageFin" text-center>
+      Vous avez fini notre jeu de piste, rendez-vous à l'entrée du salon chez les étudiants en informatique :D
+    </div>
+    </strong>
+  </h3>
 
 </ion-content>
