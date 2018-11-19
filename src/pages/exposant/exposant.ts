@@ -68,12 +68,12 @@ export class ExposantPage implements OnInit
         }) ;
 
         // Liste des intervenants
-        let sql = "select nom, prenom, jour from INTERVENANT, SERA_PRESENT"
+        /*let sql = "select nom, prenom, jour from INTERVENANT, SERA_PRESENT"
         sql += " where id=numIntervenant and num_exposant=" + id
         sql += " order by nom, prenom" ;
-        this.sqlPrd.select( sql, [], this.intervenants ) ;
+        this.sqlPrd.select( sql, [], this.intervenants ) ;*/
 
-        let sql = "SELECT personne_18.nom, prenom, jour";
+        let sql = "SELECT DISTINCT personne_18.nom, prenom, jour";
         sql += " FROM personne_18 JOIN participer_18" ;
         sql += " ON personne_18.id = participer_18.idPersonne";
         sql += " JOIN rdv_18 ON participer_18.idRDV = rdv_18.id";
