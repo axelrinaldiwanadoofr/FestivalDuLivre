@@ -15,29 +15,28 @@
 
 <ion-content padding>
     <ion-list>
-        <button ion-button full (click)="onFavoris()">Ajouter aux favoris</button>            
-        <ion-item-divider color="orange" [hidden]="!dedicaces.length">Dédicaces</ion-item-divider>
+                    
+        <ion-item-divider class="debutListe" [hidden]="!dedicaces.length">Signatures</ion-item-divider>
         <ion-item *ngFor="let d of dedicaces">
             <p style="white-space:initial;">
-                <b>{{d.libelle}}</b> {{d.jour}} sur le stand n° {{d.numstand}}
+                <b>{{d.libelle}}</b> {{d.jour}} sur le stand n° {{d.idStand}}
             </p>
         </ion-item>      
         <button ion-button full [hidden]="!dedicaces.length" (click)="onDedicacesPlan()">Afficher sur le plan</button>            
-        <ion-item-divider color="orange" [hidden]="!rdv.length">Les rendez-vous</ion-item-divider>
-        <ion-item *ngFor="let r of rdv" (click)="onRdv(r)">
-          <p style="white-space:initial;"><b>{{r.titre}}</b></p>  
+        <ion-item-divider class="debutListe" [hidden]="!rdv.length">Les rendez-vous</ion-item-divider>
+        <ion-item *ngFor="let r of rdv">
+          <p style="white-space:initial;"><b>{{r.nom}}</b></p>  
           <p></p>
-                 <p [hidden]="!r.resume" style="white-space:initial;">{{r.resume}}</p>
+                 <p [hidden]="!r.description" style="white-space:initial;">{{r.description}}</p>
                  <br>
-          <p>{{r.duree}} pour {{r.age}} sur le stand n° <b>{{r.numStand}}</b></p><br>
-          <p><b>{{r.date}} <span [hidden]="r.duree=='en continu'">{{r.heure}}</span></b></p> 
+          <p>{{r.duree}} pour {{r.age}} sur le stand n° <b>{{r.idStand}}</b></p><br>
+          <p><b>{{r.jour}} <span>{{r.heure}}</span></b></p> 
+          <p class="addFavorie" (click)="onFavorisRDV(r)">
+              <ion-icon name="star" class="star"></ion-icon>
+          </p>
         </ion-item>      
-        <button ion-button full [hidden]="!rdv.length" (click)="onRdvPlan()">Afficher sur le plan</button>            
+        <button ion-button full [hidden]="!rdv.length" class="btn" (click)="onRdvPlan()">Afficher sur le plan</button>
+        <button ion-button full (click)="onFavoris()">Ajouter aux favoris</button>            
     </ion-list>   
 </ion-content>
 
-<ion-footer>
-    <ion-toolbar class="btn-acc">
-        <button class="acc" (click)="Accueil()" ion-button round><ion-icon name="home"></ion-icon> &nbsp; Accueil</button>
-    </ion-toolbar>
-</ion-footer>
