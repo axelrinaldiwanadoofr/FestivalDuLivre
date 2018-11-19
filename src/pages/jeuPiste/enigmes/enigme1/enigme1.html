@@ -6,17 +6,20 @@
 
 </ion-header>
 
-<ion-content padding>
+<ion-content class="background" padding>
   <h3>
-    <p *ngIf="!messageFin" >
+    <fieldset class="field"> 
+    <p *ngIf="!messageFin" class="center">
       {{todo.title}}
     </p>
+  </fieldset>
   </h3>
+    
   <!--Avant le Code : -->
   <h6>
     <div>
-      <ion-label *ngIf="!codeBon" text-center>Stand n°</ion-label>
-      <ion-input *ngIf="!codeBon"  type= "text" [(ngModel)]="todo.numStand" text-center></ion-input>
+      <ion-label *ngIf="!codeBon" class="center"><h4>Stand</h4></ion-label>
+      <ion-input *ngIf="!codeBon" class="center" type= "text" [(ngModel)]="todo.numStand" text-center></ion-input>
       <ion-label *ngIf="!codeBon" >Rendez vous sur le stand trouvez le code </ion-label>
       <ion-label *ngIf="!codeBon" >et insérez le ci-dessous </ion-label>
     </div>
@@ -25,7 +28,7 @@
 
   
   <!--Saisie du code-->
-  <ion-item *ngIf="!codeBon">
+  <ion-item *ngIf="!codeBon" class="Liste">
     <ion-label *ngIf="!codeBon"  >Code :  </ion-label>
     <ion-input *ngIf="!codeBon"  type="text"  [(ngModel)]="codeEnigme"></ion-input>
   </ion-item>
@@ -49,8 +52,8 @@
 
 
   <!--Saisie de la réponse-->
-  <ion-item *ngIf="repAValider">
-    <ion-label *ngIf="repAValider"  >Réponse :  </ion-label>
+  <ion-item *ngIf="repAValider"  class="Liste">
+    <ion-label *ngIf="repAValider" >Réponse :  </ion-label>
     <ion-input *ngIf="repAValider"  type="text"  [(ngModel)]="reponseDonnee"></ion-input>
   </ion-item>
   <br/>
@@ -64,7 +67,7 @@
 
 
   <!--Validation avant l'affichage de la prochaine énigme-->
-  <ion-label *ngIf="reponseBonne" color="lime"><strong> Bonne réponse ! </strong></ion-label>
+  <ion-label *ngIf="reponseBonne"  color="lime"><strong> Bonne réponse ! </strong></ion-label>
   <br/>
 
   <h6>

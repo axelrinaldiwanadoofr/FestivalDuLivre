@@ -15,15 +15,15 @@
 
 <ion-content padding>
     <ion-list>
-        <button ion-button full (click)="onFavoris()">Ajouter aux favoris</button>            
-        <ion-item-divider color="orange" [hidden]="!dedicaces.length">Dédicaces</ion-item-divider>
+                    
+        <ion-item-divider class="debutListe" [hidden]="!dedicaces.length">Signatures</ion-item-divider>
         <ion-item *ngFor="let d of dedicaces">
             <p style="white-space:initial;">
                 <b>{{d.libelle}}</b> {{d.jour}} sur le stand n° {{d.idStand}}
             </p>
         </ion-item>      
         <button ion-button full [hidden]="!dedicaces.length" (click)="onDedicacesPlan()">Afficher sur le plan</button>            
-        <ion-item-divider color="orange" [hidden]="!rdv.length">Les rendez-vous</ion-item-divider>
+        <ion-item-divider class="debutListe" [hidden]="!rdv.length">Les rendez-vous</ion-item-divider>
         <ion-item *ngFor="let r of rdv">
           <p style="white-space:initial;"><b>{{r.nom}}</b></p>  
           <p></p>
@@ -35,12 +35,8 @@
               <ion-icon name="star" class="star"></ion-icon>
           </p>
         </ion-item>      
-        <button ion-button full [hidden]="!rdv.length" (click)="onRdvPlan()">Afficher sur le plan</button>            
+        <button ion-button full [hidden]="!rdv.length" class="btn" (click)="onRdvPlan()">Afficher sur le plan</button>
+        <button ion-button full (click)="onFavoris()">Ajouter aux favoris</button>            
     </ion-list>   
 </ion-content>
 
-<ion-footer>
-    <ion-toolbar class="btn-acc">
-        <button class="acc" (click)="Accueil()" ion-button round><ion-icon name="home"></ion-icon> &nbsp; Accueil</button>
-    </ion-toolbar>
-</ion-footer>

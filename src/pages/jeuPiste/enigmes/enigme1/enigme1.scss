@@ -12,14 +12,31 @@ page-home {
     }
 }
 
-$colors: (
-    red : #DE2916,
-    lime : #00FF00
-);
+//$colors: (
+//    red : #DE2916,
+//    lime : #00FF00
+//);
 
 .center {
-    display: block;
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+}
+
+.field
+{
+    
+    border:1.5px solid black;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;	
+    border-radius:8px;	
+    margin-bottom: 5%;
+    background: white;
+
+}
+.Liste{
+    background: #DED8CF;
+    color: black;
+    border-radius: 10px 10px 10px 10px;
 }
