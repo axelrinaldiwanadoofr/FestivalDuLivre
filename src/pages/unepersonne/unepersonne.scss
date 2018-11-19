@@ -1,6 +1,8 @@
 page-unepersonne {
     .p {
         white-space: nowrap;
+        float: left;
+        display: inline-block;
     }
     .btn-acc{
         text-align: center;
@@ -8,5 +10,11 @@ page-unepersonne {
     .acc{
         height: 50px;
         background: linear-gradient(to top, #0066cc 17%, #66ccff 91%);
+    }
+    .addFavorie{
+        float: right;
+        .star{
+            color: #ffbe00;
+        }
     }
 }

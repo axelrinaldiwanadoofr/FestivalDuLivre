@@ -6,7 +6,7 @@
 -->
 <ion-header>
         
-            <ion-navbar color="vivi">
+            <ion-navbar >
                 <button ion-button menuToggle>
                     <ion-icon name="menu"></ion-icon>
                 </button>
@@ -17,32 +17,32 @@
         
         
         <ion-content class="background" padding>
-            <ion-item>
+            <ion-item class="debutListe">
                 <ion-label>Jour :</ion-label>
                 <ion-select [(ngModel)]="unJour" (ionInput)="getJour($event)" interface="popover">
                     <ion-option value='samedi'>Samedi</ion-option>
                     <ion-option value='dimanche'>Dimanche</ion-option>
                 </ion-select>
             </ion-item>
-            <ion-item>
+            <ion-item class="Liste">
                 <ion-label>A partir de :</ion-label>
                 <ion-datetime [(ngModel)]="uneHeure" displayFormat="HH:mm"></ion-datetime>
             </ion-item>
-            <ion-item>
+            <ion-item class="Liste">
                 <ion-label>Thèmes :</ion-label>
                 <ion-select [(ngModel)]="unTheme" (ionInput)="getTheme($event)" interface="popover" multiple="false">
                     <ion-option value="0">Tous les thèmes</ion-option>
                     <ion-option *ngFor="let theme of themes" value={{theme.id}}>{{theme.libelle}}</ion-option>
                 </ion-select>
             </ion-item>
-            <ion-item>
+            <ion-item class="Liste">
                 <ion-label>Tranche d'âge :</ion-label>
                 <ion-select [(ngModel)]="uneTranche" interface="popover" (ionInput)="getTrancheAge($event)">
                     <ion-option value="0">Toutes les tranches</ion-option>
                     <ion-option *ngFor="let age of ages" value={{age.id}}>{{age.libelle}}</ion-option>
                 </ion-select>
             </ion-item>
-            <ion-item>
+            <ion-item class="finListe">
                 <ion-label>Type de RDV :</ion-label>
                 <ion-select [(ngModel)]="unTypeRDV" interface="popover">
                     <ion-option value="0">Tous les types</ion-option>
@@ -50,7 +50,7 @@
                 </ion-select>
             </ion-item>
         
-            <br><button ion-button style="width:100%;" (click)="onSearch()">Rechercher</button>
+            <br><button ion-button style="width:100%;" class="btn" (click)="onSearch()">Rechercher</button>
         
             <ion-list>
                 <ion-item *ngFor="let r of mesRDV">
@@ -72,8 +72,4 @@
             </ion-list>
         </ion-content>
         
-        <ion-footer class="accueil">
-            <ion-toolbar color="vivi">
-                <button class="btnacc" (click)="Accueil()" ion-button round><ion-icon style="font-size:20px;" name="home"></ion-icon>&nbsp;Accueil</button>
-            </ion-toolbar>
-        </ion-footer>
+       

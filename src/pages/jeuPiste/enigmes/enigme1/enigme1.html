@@ -1,40 +1,91 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Enigme n°1</ion-title>
+    <ion-title>Jeu de Piste</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
-  <h4>
-    <p>
-      <ion-label>[Titre enigme] </ion-label>
+  <h3>
+    <p *ngIf="!messageFin" >
+      {{todo.title}}
     </p>
-  </h4>
-  <br/> 
-  <h5>
-    <p>
-      Stand n°
-      <ion-input type= "text" [(ngModel)]="todo.numStand" ></ion-input>
-      <ion-label>Rendez vous sur le stand trouvez le code et insérez le </ion-label>
-    </p>
-  </h5>
+  </h3>
+  <!--Avant le Code : -->
+  <h6>
+    <div>
+      <ion-label *ngIf="!codeBon" text-center>Stand n°</ion-label>
+      <ion-input *ngIf="!codeBon"  type= "text" [(ngModel)]="todo.numStand" text-center></ion-input>
+      <ion-label *ngIf="!codeBon" >Rendez vous sur le stand trouvez le code </ion-label>
+      <ion-label *ngIf="!codeBon" >et insérez le ci-dessous </ion-label>
+    </div>
+  </h6>
 
-  <ion-item>
-    <ion-label id= "codeEnigme">Code :  </ion-label>
-    <ion-input type="text"  name="title"></ion-input>
+
+  
+  <!--Saisie du code-->
+  <ion-item *ngIf="!codeBon">
+    <ion-label *ngIf="!codeBon"  >Code :  </ion-label>
+    <ion-input *ngIf="!codeBon"  type="text"  [(ngModel)]="codeEnigme"></ion-input>
   </ion-item>
-  <!--<ion-item>
-    <ion-label>Description</ion-label>
-    <ion-input type="text" [(ngModel)]="todo.description" name="description"></ion-input>
-  </ion-item>-->
+  
   <br/>
-  <button ion-button round (click)="onClickCode()">Afficher l'énigme</button>
+  <button *ngIf="!codeBon"  ion-button round (click)="onClickCode()" class="debutJeu">Afficher l'énigme</button>
+  <ion-label *ngIf="erreurCode" color="red"  ><strong> Code incorrect ou mal écrit </strong></ion-label>
+  
 
 
+
+  <!--Après code : -->
+  <h6>
+  
+  <div *ngIf="repAValider"  [innerHTML]="todo.description" text-left></div>    
+  <img *ngIf="afficherImage" src={{todo.image}} style="width:535px;height:300px;" class="center">
+  
+  </h6>
   <br/>
 
 
+
+  <!--Saisie de la réponse-->
+  <ion-item *ngIf="repAValider">
+    <ion-label *ngIf="repAValider"  >Réponse :  </ion-label>
+    <ion-input *ngIf="repAValider"  type="text"  [(ngModel)]="reponseDonnee"></ion-input>
+  </ion-item>
   <br/>
+
+
+
+  <!--Traitement de la réponse-->
+  <button *ngIf="repAValider"  ion-button round (click)="onClickEnigme()" class="debutJeu">Valider</button>
+  <ion-label *ngIf="erreurRep" color="red"><strong> Réponse erronée ou mal écrite </strong></ion-label>
+
+
+
+  <!--Validation avant l'affichage de la prochaine énigme-->
+  <ion-label *ngIf="reponseBonne" color="lime"><strong> Bonne réponse ! </strong></ion-label>
+  <br/>
+
+  <h6>
+    <div *ngIf="reponseBonne"  [innerHTML]="todo.commentaireFin" text-left></div>    
+  </h6>
+  <br/>
+  <button *ngIf="reponseBonne"  ion-button round (click)="onClickValideEnigme()" class="debutJeu">Passer à l'énigme suivante</button>
+
+
+
+  <!--Affichage Message Final-->
+  <h3>
+    <strong>
+    <div *ngIf="messageFin" text-center>
+      Felicitations !!!
+    </div>
+    <br/>
+    <div *ngIf="messageFin" text-center>
+      Vous avez fini notre jeu de piste, rendez-vous à l'entrée du salon chez les étudiants en informatique :D
+    </div>
+    </strong>
+  </h3>
+
 </ion-content>

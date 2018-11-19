@@ -16,16 +16,18 @@
 
 <ion-content class="background" padding>
     <ion-list>
+        
         <ion-searchbar (ionInput)="getItems($event)" placeholder="N° du Stand"></ion-searchbar>
+        <br>
         <button class="button-list" ion-item *ngFor="let stand of stands" (click)="event(stand)" style="text-align:center;font-weight:bold;">
           <ion-icon class="icon-home" name="home"></ion-icon>
-        STAND {{stand.num}}
+        STAND {{stand.id}}
       </button>
     </ion-list>
 </ion-content>
 
-<ion-footer class="accueil">
+<!--<ion-footer class="accueil">
     <ion-toolbar>
         <button class="btnacc" (click)="Accueil()" ion-button round><ion-icon style="font-size:20px;" name="home"></ion-icon>&nbsp;Accueil</button>
     </ion-toolbar>
-</ion-footer>
+</ion-footer>-->

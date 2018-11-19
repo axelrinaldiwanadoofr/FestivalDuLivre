@@ -37,7 +37,6 @@ export class MyApp {
 
     // set our app's pages
     this.pages = [
-      
       { title: 'Accueil', component: HelloIonicPage, icon: 'home'},
       { title: "Présentation", component: PresentationPage, icon: 'desktop'},
       { title: "Infos pratiques", component: InfoPage, icon: 'information-circle'},
