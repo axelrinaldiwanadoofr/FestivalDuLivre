@@ -32,9 +32,8 @@
         <ion-item-divider class="debutListe">Liste des livres</ion-item-divider>
         <!-- <button ion-button full [hidden]="!exposants.length || exposants.length>6" (click)="onPlan()">Afficher sur le plan</button> -->
         <ion-item *ngFor="let l of livres" (click)="onLivreClick(l)">
-            <h2>{{l.titre}}</h2>
-            <p>{{l.auteur}}</p>
-            <ion-label item-end>numDuStand</ion-label>
+            <h2> {{l.titre}} </h2>
+            <p> {{l.auteur}} numDuStand</p>
         </ion-item>
     </ion-list>
 </ion-content>
