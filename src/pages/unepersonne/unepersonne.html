@@ -25,9 +25,9 @@
         <button ion-button full [hidden]="!dedicaces.length" (click)="onDedicacesPlan()">Afficher sur le plan</button>            
         <ion-item-divider class="debutListe" [hidden]="!rdv.length">Les rendez-vous</ion-item-divider>
         <ion-item *ngFor="let r of rdv">
-          <p style="white-space:initial;"><b>{{r.nom}}</b></p>  
+          <p style="white-space:initial;"><b>Nom:</b> {{r.nom}}</p>  
           <p></p>
-                 <p [hidden]="!r.description" style="white-space:initial;">{{r.description}}</p>
+                 <p [hidden]="!r.description" style="white-space:initial;"><b>Description:</b> {{r.description}}</p>
                  <br>
           <p>{{r.duree}} pour {{r.age}} sur le stand n° <b>{{r.idStand}}</b></p><br>
           <p><b>{{r.jour}} <span>{{r.heure}}</span></b></p> 
