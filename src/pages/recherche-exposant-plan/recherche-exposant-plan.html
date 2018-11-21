@@ -32,6 +32,9 @@
     <ion-list>
         <ion-item-divider class="debutListe">Liste des exposants</ion-item-divider>
         <ion-item *ngFor="let e of exposants" (click)="onExposantClick( e )">
+            <ion-thumbnail item-start *ngIf="e.image">
+                <img src="{{e.image}}">
+            </ion-thumbnail>
             <h2>{{e.nom}}</h2>
             <p>Stand n° {{e.idStand}}</p>
         </ion-item>

@@ -8,7 +8,7 @@
 
 <ion-content class="background" padding>
   <h3>
-    <fieldset class="field"> 
+    <fieldset *ngIf="!messageFin"   class="field"> 
     <p *ngIf="!messageFin" class="center">
       {{todo.title}}
     </p>
@@ -37,6 +37,7 @@
   <br/>
   <button *ngIf="!codeBon"  ion-button round (click)="onClickCode()" class="debutJeu">Afficher l'énigme</button>
   <ion-label *ngIf="erreurCode" color="red"  ><strong> Code incorrect ou mal écrit </strong></ion-label>
+
   
 
 
@@ -91,5 +92,8 @@
     </div>
     </strong>
   </h3>
+
+  <!--label de validation de victoire-->
+  <ion-label *ngIf="victoire"  color="lime"><strong> Vous avez déjà gagné le jeu ! Félicitations ! </strong></ion-label>
 
 </ion-content>
