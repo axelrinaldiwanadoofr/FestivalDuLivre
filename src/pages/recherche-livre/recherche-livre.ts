@@ -21,6 +21,9 @@ export class RechercheLivrePage implements OnInit {
   private recherche: RechercheLivreCriteres;
   private livres: Array<any>;
   private themes: Array<{ id: string, libelle: string }>;
+  private trancheAges: Array<{ id: string, libelle: string }>;
+  private auteurs: Array<string>
+  private editeurs: Array<string>
 
   constructor(
     public navCtrl: NavController,
@@ -29,6 +32,10 @@ export class RechercheLivrePage implements OnInit {
     this.recherche = new RechercheLivreCriteres();
     this.livres = [];
     this.themes = [];
+    this.trancheAges = [] ;
+    this.auteurs = [];
+    this.editeurs = [];
+
   }
 
 
@@ -36,49 +43,58 @@ export class RechercheLivrePage implements OnInit {
     // Charge les thèmes
     let sql = "SELECT * FROM theme_18 ORDER BY libelle";
     this.sqlPrd.select(sql, null, this.themes);
+
+    // Charge les tranches d'ages
+    sql = "SELECT * FROM trancheage_18 ORDER BY id";
+    this.sqlPrd.select(sql, null, this.trancheAges);
+
+    // Charge les auteurs
+    sql = "SELECT distinct auteur FROM livre_18 ORDER BY auteur";
+    this.sqlPrd.select(sql, null, this.auteurs);
+
+    // Charge les auteurs
+    sql = "SELECT distinct editeur FROM livre_18 ORDER BY editeur";
+    this.sqlPrd.select(sql, null, this.editeurs);
+
+    sql = "select titre, editeur, auteur, libelle, l.image as image, nom" ;
+    sql += " from livre_18 as l, theme_18 as t, EXPOSANTS_18 as e" ;
+    sql += " where l.idTheme = t.id and l.idExposant = e.id" ;
+    sql += " order by l.titre" ;
+    this.sqlPrd.select( sql, [], this.livres ) ;
   }
 
   onRecherche() {
     this.livres = [];
 
+    let sql = "select titre, editeur, auteur, libelle, l.image as image, nom, idTrancheAge" ;
+    sql += " from livre_18 as l, theme_18 as t, EXPOSANTS_18 as e" ;
+    sql += " where l.idTheme = t.id and l.idExposant = e.id" ;
+
     // requête titre et thèmes remplis
-    if (this.recherche.titre && this.recherche.themeId)
+    if (this.recherche.titre ) 
     {
-      let sql = "SELECT * "
-      sql += "FROM (livre_18 JOIN concerner_18 ON livre_18.id=concerner_18.idLivre) "
-      sql += "JOIN theme_18 ON concerner_18.idTheme = theme_18.id "
-      sql += "WHERE theme_18.id=" + this.recherche.themeId
-      sql += " AND titre LIKE '" + '%' + this.recherche.titre + '%' + "' "
-      sql += "ORDER BY titre"
-
-      this.sqlPrd.select(sql, null, this.livres);
+      sql += " AND titre LIKE '" + '%' + this.recherche.titre + '%' + "' " ;
     }
-    // requête thèmes remplis
-    else if(this.recherche.themeId)
+
+    if (this.recherche.auteur && this.recherche.auteur != "0" ) 
     {
-      let sql = "SELECT * "
-      sql += "FROM (livre_18 JOIN concerner_18 ON livre_18.id=concerner_18.idLivre) "
-      sql += "JOIN theme_18 ON concerner_18.idTheme = theme_18.id "
-      sql += "WHERE theme_18.id=" + this.recherche.themeId + " "
-      sql += "ORDER BY livre_18.titre"
-      // sql += "FROM (livre_18 JOIN concerner_18 ON livre_18.id=concerner_18.idLivre) "
-      // sql += "JOIN theme_18 "
-      // sql += "WHERE id=" + this.recherche.themeId + " "
-      // sql += "ORDER BY libelle"
-
-      this.sqlPrd.select(sql, null, this.livres);
+      sql += " AND auteur LIKE '" + '%' + this.recherche.auteur + '%' + "' " ;
     }
-    // requête titre remplis
-    else if(this.recherche.titre)
+    if (this.recherche.editeur && this.recherche.editeur != "0" ) 
     {
-      let sql = "SELECT * "
-      sql += "FROM livre_18 "
-      sql += "WHERE titre LIKE '" + '%' + this.recherche.titre + '%' + "' "
-      sql += "ORDER BY titre"
-
-      this.sqlPrd.select( sql , null, this.livres);
+      sql += " AND editeur LIKE '" + '%' + this.recherche.editeur + '%' + "' " ;
     }
-    
+    if( this.recherche.themeId && this.recherche.themeId != "0" ) 
+    {
+      sql += " AND idTheme=" + this.recherche.themeId ;
+    }
+    if( this.recherche.trancheAgeId && this.recherche.trancheAgeId != "0" ) 
+    {
+      sql += " AND idTrancheAge=" + this.recherche.trancheAgeId ;
+    }
+
+    sql += " ORDER BY titre" ;
+    this.sqlPrd.select(sql, null, this.livres);
   }
 
   // si clic sur un livre de la liste affichée par la requête
@@ -95,4 +111,8 @@ export class RechercheLivrePage implements OnInit {
 export class RechercheLivreCriteres {
   public titre: string;
   public themeId: string;
+  public exposantId: number ;
+  public trancheAgeId: string ;
+  public auteur: string ;
+  public editeur: string ;
 }
