@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { FavorisProvider } from '../../providers/favoris/favoris';
+import { IonicPage, NavController, NavParams, ToastController, Img } from 'ionic-angular';
+//import { FavorisProvider } from '../../providers/favoris/favoris';
 import { RemoteSqlProvider } from '../../providers/remotesql/remotesql';
 import { HelloIonicPage } from '../hello-ionic/hello-ionic';
 
@@ -24,6 +24,8 @@ export class LivrePage implements OnInit
   public auteur: string ;
   public editeur: string ;
   public idExposant: number ;
+  public image: string;
+  public commentaire: string ;
 
   constructor(
     public navCtrl: NavController, 
@@ -48,10 +50,12 @@ export class LivrePage implements OnInit
         {
           this.idLivre = livre.idLivre;
           this.titre = livre.titre;
-          this.enResume =  livre.enResume ;
-          this.auteur = livre.auteur ;
-          this.editeur = livre.editeur ;
-          this.idExposant = livre.idExposant ;
+          this.enResume =  livre.enResume;
+          this.commentaire =  livre.commentaire;
+          this.auteur = livre.auteur;
+          this.editeur = livre.editeur;
+          this.idExposant = livre.idExposant;
+          this.image = livre.image;
         }
       }) ;
       

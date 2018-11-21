@@ -10,7 +10,7 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>{{idLivre}} {{titre}}</ion-title>
+        <ion-title>{{titre}}</ion-title>
     </ion-navbar>
 </ion-header>
 
@@ -19,5 +19,20 @@
     <!-- <ion-segment-button class="segment-button" role="button" tappable="" ng-reflect-value="parcExpo" aria-pressed="false">
         Résumé
     </ion-segment-button> -->
-    <h1>{{enResume}}</h1>
+    <ion-card>
+        <img src={{image}}>
+        <ion-card-content>
+            <ion-card-title>      
+            de {{auteur}}
+            </ion-card-title>
+            <br>
+            <h1>Résumé</h1>
+            <p>{{enResume}}</p>
+            <br>
+            <h1 *ngIf="commentaire">Commentaire</h1>
+            <p>{{commentaire}}</p>
+        </ion-card-content>
+    </ion-card>
+    
+    
 </ion-content>

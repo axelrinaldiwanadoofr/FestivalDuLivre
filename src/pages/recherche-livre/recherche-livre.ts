@@ -42,7 +42,8 @@ export class RechercheLivrePage implements OnInit {
     this.livres = [];
 
     // requête titre et thèmes remplis
-    if (this.recherche.titre && this.recherche.themeId) {
+    if (this.recherche.titre && this.recherche.themeId)
+    {
       let sql = "SELECT * "
       sql += "FROM (livre_18 JOIN concerner_18 ON livre_18.id=concerner_18.idLivre) "
       sql += "JOIN theme_18 ON concerner_18.idTheme = theme_18.id "
@@ -52,15 +53,32 @@ export class RechercheLivrePage implements OnInit {
 
       this.sqlPrd.select(sql, null, this.livres);
     }
+    // requête thèmes remplis
+    else if(this.recherche.themeId)
+    {
+      let sql = "SELECT * "
+      sql += "FROM (livre_18 JOIN concerner_18 ON livre_18.id=concerner_18.idLivre) "
+      sql += "JOIN theme_18 ON concerner_18.idTheme = theme_18.id "
+      sql += "WHERE theme_18.id=" + this.recherche.themeId + " "
+      sql += "ORDER BY livre_18.titre"
+      // sql += "FROM (livre_18 JOIN concerner_18 ON livre_18.id=concerner_18.idLivre) "
+      // sql += "JOIN theme_18 "
+      // sql += "WHERE id=" + this.recherche.themeId + " "
+      // sql += "ORDER BY libelle"
+
+      this.sqlPrd.select(sql, null, this.livres);
+    }
     // requête titre remplis
-    else
+    else if(this.recherche.titre)
     {
       let sql = "SELECT * "
       sql += "FROM livre_18 "
       sql += "WHERE titre LIKE '" + '%' + this.recherche.titre + '%' + "' "
       sql += "ORDER BY titre"
+
       this.sqlPrd.select( sql , null, this.livres);
     }
+    
   }
 
   // si clic sur un livre de la liste affichée par la requête
