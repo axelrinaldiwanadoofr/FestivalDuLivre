@@ -96,7 +96,7 @@ export class RechercheRdvPage {
       sql +=" JOIN typerdv_18 ON rdv_18.idTypeRDV = typerdv_18.id";
       sql +=" JOIN parlerde_18 ON rdv_18.id = parlerde_18.idRDV";
       sql +=" JOIN theme_18 ON parlerde_18.idTheme = theme_18.id";
-      sql +=" JOIN EXPOSANTS_18 as e ON rdv_18.idExposant = e.id";
+      sql +=" JOIN exposant_18 as e ON rdv_18.idExposant = e.id";
       sql +=" WHERE jour='" + this.unJour + "' AND heure>='" + this.uneHeure + "'";
       
 
