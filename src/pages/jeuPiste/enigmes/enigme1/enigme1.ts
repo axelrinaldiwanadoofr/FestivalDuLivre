@@ -14,7 +14,7 @@ export class Enigme1 {
 
   public compteurReponse: number;
   public todo: any;
-  public index: number;
+  public index: number = JSON.parse(localStorage.getItem("index"));
   public codeBon: boolean;
   public reponseBonne: boolean;
   public erreurCode: boolean;
@@ -24,14 +24,13 @@ export class Enigme1 {
   public afficherIntitulé: boolean;
   public afficherImage: boolean;
   public messageFin: boolean;
+  public victoire: boolean = JSON.parse(localStorage.getItem("victory"));
 
   // Tab des dates
   public laDate: string;
 
   public codeEnigme: string;
   public reponseDonnee: string;
-
-
 
 
 
@@ -49,7 +48,7 @@ export class Enigme1 {
       //Enigme 2
       {
         title: "AVOCAT", description: "Déchiffrez le code : <br/>LKMRS-LYEJYEU",
-        day: 2, numStand: 201, reponse: [ "BACHI-BOUZOUK","yousk2", "bachi-bouzouk", "Bachi-bouzouk", "Bachi-Bouzouk", "BACHI BOUZOUK", "bachi bouzouk", "Bachi bouzouk", "Bachi Bouzouk"],
+        day: 2, numStand: 201, reponse: ["BACHI-BOUZOUK", "yousk2", "bachi-bouzouk", "Bachi-bouzouk", "Bachi-Bouzouk", "BACHI BOUZOUK", "bachi bouzouk", "Bachi bouzouk", "Bachi Bouzouk"],
         code: "h5cr2h", commentaireFin: "Bachi-Bouzouk : cavalier mercenaire de l'armée de l'Empire ottoman, souvent d'origine albanaise. Les bachi-bouzouk participèrent notamment au siège de Vienne.", image: null
       },
       //Enigme 3
@@ -67,36 +66,36 @@ export class Enigme1 {
       //Enigme 5
       {
         title: "Un fait impromptu", description: "Cet imprévisible évènement,<br/>Qu'on appelle aussi aléa.<br/>Apporte des bouleversements,<br/>Surtout quand on ne l'attend pas.<br/><br/>Qui est-il ?",
-        day: 2, numStand: 500, reponse: [ "HASARD","Hasard", "yousk2", "hasard", "le hasard", "le Hasard", "Le hasard", "Le Hasard", "LE HASARD"],
+        day: 2, numStand: 500, reponse: ["HASARD", "Hasard", "yousk2", "hasard", "le hasard", "le Hasard", "Le hasard", "Le Hasard", "LE HASARD"],
         code: "nhe8wz", commentaireFin: "Puissance considérée comme la cause d'événements apparemment fortuits ou inexplicables : Rien n'a été laissé au hasard.", image: null
       },
       //Enigme 6
       {
         title: "Charade atténuée", description: "Mon premier est la 5éme lettre de l’alphabet<br/>Mon deuxième est l’alliée de Peter Pan<br/>Mon troisième est élue dans un concours de beauté<br/>Mon quatrième est un pronom personnel<br/><br/>Mon tout est une figure de style",
-        day: 2, numStand: 416, reponse: ["EUPHÉMISME", "yousk2", "euphemisme", "Euphemisme", "Euphémisme", "euphémisme", "l'euphemisme", "L'euphemisme", "l'Euphemisme", "L'Euphemisme", "l'euphémisme", "L'euphémisme", "l'Euphémisme", "L'Euphémisme", "L'EUPHEMISME",  "L'EUPHÉMISME"],
+        day: 2, numStand: 416, reponse: ["EUPHÉMISME", "yousk2", "euphemisme", "Euphemisme", "Euphémisme", "euphémisme", "l'euphemisme", "L'euphemisme", "l'Euphemisme", "L'Euphemisme", "l'euphémisme", "L'euphémisme", "l'Euphémisme", "L'Euphémisme", "L'EUPHEMISME", "L'EUPHÉMISME"],
         code: "f7ezf5", commentaireFin: "Euphémisme (E-fée-miss-me). Elle permet de rendre une réalité moins brutale.", image: null
       },
       //Enigme 7
       {
         title: "Un peu de clacul...", description: "_ _ U _ _ _ E _ _<br/>  +<br/>T _ _ C _ _ _ N _<br/>  +<br/> _ R _ _ U _ _ _ _<br/>  +<br/>_ _ _ _ _ L _ _ T ",
-        day: 2, numStand: 320, reponse: ["TRUCULENT","yousk2", "truculent",  "Truculent"],
+        day: 2, numStand: 320, reponse: ["TRUCULENT", "yousk2", "truculent", "Truculent"],
         code: "kf8s3y", commentaireFin: "Truculent adj. :  On qualifie ainsi un style qui n'hésite pas à employer des mots crus, grossiers, ou des mots violents.", image: null
       },
       //Enigme 8
       {
         title: "Mystère final", description: "Je suis un poète français maudit,<br/>Ayant un époux infernal,<br/>J’écris des recueils.<br/><br/>Qui suis-je ?",
-        day: 2, numStand: 235, reponse: ["PAUL VERLAINE", "yousk2", "Paul VERLAINE",  "Paul Verlaine", "paul verlaine", "Paul verlaine", "paul Verlaine", "verlaine", "Verlaine", "VERLAINE"],
+        day: 2, numStand: 235, reponse: ["PAUL VERLAINE", "yousk2", "Paul VERLAINE", "Paul Verlaine", "paul verlaine", "Paul verlaine", "paul Verlaine", "verlaine", "Verlaine", "VERLAINE"],
         code: "4frt8d", commentaireFin: " Paul Verlaine est un poète français né à Metz le 30 mars 1844, il est décédé à Paris le 8 janvier 1896. Il abandonne sa femme pour suivre Rimbaud en Angleterre et en Belgique. Mais les relations entre ces deux hommes trop différents sont orageuses : En 1873 Verlaine blesse Rimbaud avec un révolver et sera condamné à deux ans de prison. Il se convertit au catholicisme pendant sa détention, et il écrit plusieurs poèmes de Sagesse.", image: null
       }
     ];
-    if (this.laDate == "21") {
+    if (this.laDate == "24") {
       this.lesEnigmes = [
         //Jour 1 
         //Enigme 1
         {
           title: "Il était une fois...", description:
           "Toujours le premier, <br/> Jamais le dernier.<br/> Rien sans lui n'est jamais fini, <br/> Car rien ne peut commencer sans lui.<br/><br/>  Qui est-il ?",
-          day: 1, numStand: 100, reponse: ["DEBUT","début", "debut", "Début", "Debut", "le début", "le debut",  "LE DEBUT", "Le Debut", "Le Début", "le Début", "le Debut", "Le début", "LE DÉBUT", "le DÉBUT", "Le DÉBUT", "le DEBUT", "Le DEBUT", "yousk2"],
+          day: 1, numStand: 100, reponse: ["DEBUT", "début", "debut", "Début", "Debut", "le début", "le debut", "LE DEBUT", "Le Debut", "Le Début", "le Début", "le Debut", "Le début", "LE DÉBUT", "le DÉBUT", "Le DÉBUT", "le DEBUT", "Le DEBUT", "yousk2"],
           code: "md7at1", commentaireFin: "Le début amorce l'histoire et ne permet pas de finir quoi que ce soit s'il n'est pas présent. ",
           image: null
         },
@@ -104,7 +103,7 @@ export class Enigme1 {
         {
           title: "AVOCAT", description:
           "Déchiffrez le code : <br/>OHYBNO",
-          day: 1, numStand: 201, reponse: ["EXORDE", "exorde", "éxorde", "l'exorde", "L'exorde", "l'éxorde", "L'éxorde", "l'Éxorde", "L'Éxorde", "L'ÉXORDE", "yousk2"],
+          day: 1, numStand: 201, reponse: ["EXORDE","Exorde", "exorde", "éxorde", "l'exorde", "L'exorde", "l'éxorde", "L'éxorde", "l'Éxorde", "L'Éxorde", "L'ÉXORDE", "yousk2"],
           code: "h5cr2h",
           commentaireFin: " Definition : <br/> Première partie d'un discours.<br/> Exorde d'une harangue, d'un plaidoyer. ", image: null
         },
@@ -116,15 +115,15 @@ export class Enigme1 {
         //Enigme 4
         {
           title: "Dingbat", description: "Quelle est cette expression ? ",
-          day: 1, numStand: 426, reponse: ["PLUS DE PEUR QUE DE MAL", "yousk2", "plus de peur que de mal",  "Plus de peur que de mal"],
-          code: "yf8t2d", commentaireFin: "Plus de peur que de mal", image: "assets/img/imgEnigmes/peurMal.png"
+          day: 1, numStand: 426, reponse: ["PLUS DE PEUR QUE DE MAL", "yousk2", "plus de peur que de mal", "Plus de peur que de mal"],
+          code: "yf8t2d", commentaireFin: "Plus de peur que de mal : les dégats ne sont pas graves", image: "assets/img/imgEnigmes/peurMal.png"
         },
         //Enigme 5
         {
           title: "Salée...", description: "Cette pierre tendre de feuilletée,<br/>En Bretagne, est très employée.<br/>Les écoliers l'ont tous levée.<br/>Et parfois, elle est très salée.<br/>Qui est-elle ?<br/>",
           day: 1, numStand: 500, reponse: ["ARDOISE", "ardoise", "l'ardoise", "Ardoise", "l'Ardoise", "L'ardoise", "L'Ardoise", "L'ARDOISE", "l'ARDOISE", "yousk2"],
           code: "nhe8wz",
-          commentaireFin: "L’ardoise est une roche métamorphique qui s'est formée dans de fortes conditions de pression et de température. Elle est très utilisées pour les toits des maisons Bretonnes", image: null
+          commentaireFin: "L’ardoise est une roche métamorphique qui s'est formée dans de fortes conditions de pression et de température. Elle est très utilisées pour les toits des maisons Bretonnes <br> C'est également un compte de marchandises, de consommations prises à crédit chez un commerçant, dans un café : Avoir une ardoise chez le boucher.", image: null
         },
         //Enigme 6
         {
@@ -135,34 +134,35 @@ export class Enigme1 {
         },
         //Enigme 7
         {
-          title: "Un peu de calcul", description: "S _ _ A _ _ _ Q  _ _ <br/>  +<br/>  _ _ M_ _ _ I _ _ _ <br/>  +<br/>  _ É _ _ N _ _ _ U _  <br/>  +<br/>  _ _ _ _ _ T _ _ _ E ", day: 1, numStand: 320,
-          reponse: ["SEMANTIQUE", "sémantique", "Sémantique",  "Semantique", "semantique", "SÉMANTIQUE", "yousk2"],
+          title: "Un peu de calcul", description: "S _ _ A _ _ _ Q  _ _ <br/>  +<br/>  _ _ M_ _ _ I _ _ _ <br/>  +<br/>  _ É _ _ N _ _ _ U _  <br/>  +<br/>  _ _ _ _ _ T _ _ _ E ",
+          day: 1, numStand: 320,
+          reponse: ["SEMANTIQUE", "sémantique", "Sémantique", "Semantique", "semantique", "SÉMANTIQUE", "yousk2"],
           code: "kf8s3y", commentaireFin: "Sémantique : Étude du sens des unités linguistiques et de leurs combinaisons.", image: null
         },
         //Enigme 8
         {
           title: "Mystère final", description: "Je suis un mystère de la critique,<br/>Je suis un pilier du poulpe,<br/>Le roman noir est l’avenir du roman,<br/>Je suis un spécialiste de la littérature américaine,<br/>Je suis au salon du livre de Colmar<br/><br/>Qui suis-je ?",
-          day: 1, numStand: 235, reponse: [ "PATRICK RAYNAL", "Patrick Raynal", "yousk2", "partick raynal", "Patrick raynal", "patrick Raynal", "raynal", "RAYNAL", "Raynal"],
+          day: 1, numStand: 235, reponse: ["PATRICK RAYNAL", "Patrick Raynal", "yousk2", "partick raynal", "Patrick raynal", "patrick Raynal", "raynal", "RAYNAL", "Raynal"],
           code: "4frt8d", commentaireFin: "Patrick Raynal, né le 1er juillet 1946 à Paris, est écrivain, éditeur, scénariste, traducteur et journaliste français. Considéré comme un spécialiste de la littérature américaine, il collabore, de 1990 à 1995, au journal Le Monde (Le Monde des Livres). La même année, il obtient le prix Mystère de la critique pour son roman Fenêtre sur femmes.", image: null
-        },
+        }
       ]
     }
     else {
-      if (this.laDate == "25") {
+      if (this.laDate == "21") {
         console.log(this.lesEnigmes);
         this.lesEnigmes = [
 
           //Jour 2 
           //Enigme 1
           {
-            title: "", description: "Modeste employé de bureau,<br/>Notant jadis sur ses tablettes,<br/>Pouvant porter une palette,<br/>Et qui déchiffre les rouleaux.<br/><br/>Qui est-il ?",
-            day: 2, numStand: 100, reponse: ["LE SCRIBE","scribe", "yousk2", "le scribe", "le Scribe", "Le scribe", "Le Scribe",  "SCRIBE"],
+            title: "Les prémices de la littérature", description: "Modeste employé de bureau,<br/>Notant jadis sur ses tablettes,<br/>Pouvant porter une palette,<br/>Et qui déchiffre les rouleaux.<br/><br/>Qui est-il ?",
+            day: 2, numStand: 100, reponse: ["LE SCRIBE", "scribe", "yousk2", "le scribe", "le Scribe", "Le scribe", "Le Scribe", "SCRIBE"],
             code: "md7at1", commentaireFin: "En Égypte ancienne, personnage important d'une administration chargé de la rédaction de divers textes.<br/>Dans les écrits du Nouveau Testament, docteur juif, interprète officiel des saintes Écritures.", image: null
           },
           //Enigme 2
           {
             title: "AVOCAT", description: "Déchiffrez le code : <br/>LKMRS-LYEJYEU",
-            day: 2, numStand: 201, reponse: ["BACHI-BOUZOUK", "yousk2",  "bachi-bouzouk", "Bachi-bouzouk", "Bachi-Bouzouk", "BACHI BOUZOUK", "bachi bouzouk", "Bachi bouzouk", "Bachi Bouzouk"],
+            day: 2, numStand: 201, reponse: ["BACHI-BOUZOUK", "yousk2", "bachi-bouzouk", "Bachi-bouzouk", "Bachi-Bouzouk", "BACHI BOUZOUK", "bachi bouzouk", "Bachi bouzouk", "Bachi Bouzouk"],
             code: "h5cr2h", commentaireFin: "Bachi-Bouzouk : cavalier mercenaire de l'armée de l'Empire ottoman, souvent d'origine albanaise. Les bachi-bouzouk participèrent notamment au siège de Vienne.", image: null
           },
           //Enigme 3
@@ -175,62 +175,66 @@ export class Enigme1 {
           {
             title: "Dingbat", description: "Quel est cet adjectif ? ",
             day: 2, numStand: 426, reponse: ["IRREVERSIBLE", "Irréversible", "yousk2", "irréversible", "irreversible", "Irreversible", "IRRÉVERSIBLE"],
-            code: "yf8t2d", commentaireFin: "Irréversible ( i ré vert si bleu) : Qui suit un processus qu'on ne peut ni enrayer ni renverser : Mouvement, maladie irréversible.", image: "assets/img/imgEnigmes/iresi.png"
+            code: "yf8t2d", commentaireFin: "Irréversible ( i ré vert si bleu) : <br> Qui suit un processus qu'on ne peut ni enrayer ni renverser : Mouvement, maladie irréversible.", image: "assets/img/imgEnigmes/iresi.png"
           },
           //Enigme 5
           {
             title: "Un fait impromptu", description: "Cet imprévisible évènement,<br/>Qu'on appelle aussi aléa.<br/>Apporte des bouleversements,<br/>Surtout quand on ne l'attend pas.<br/><br/>Qui est-il ?",
-            day: 2, numStand: 500, reponse: ["HASARD","yousk2", "Hasard",  "hasard", "le hasard", "le Hasard", "Le hasard", "Le Hasard", "LE HASARD"],
+            day: 2, numStand: 500, reponse: ["HASARD", "yousk2", "Hasard", "hasard", "le hasard", "le Hasard", "Le hasard", "Le Hasard", "LE HASARD"],
             code: "nhe8wz", commentaireFin: "Puissance considérée comme la cause d'événements apparemment fortuits ou inexplicables : Rien n'a été laissé au hasard.", image: null
           },
           //Enigme 6
           {
             title: "Charade atténuée", description: "Mon premier est la 5éme lettre de l’alphabet<br/>Mon deuxième est l’alliée de Peter Pan<br/>Mon troisième est élue dans un concours de beauté<br/>Mon quatrième est un pronom personnel<br/><br/>Mon tout est une figure de style",
-            day: 2, numStand: 416, reponse: ["EUPHEMISME", "yousk2", "euphemisme", "Euphemisme", "Euphémisme", "euphémisme", "l'euphemisme", "L'euphemisme", "l'Euphemisme", "L'Euphemisme", "l'euphémisme", "L'euphémisme", "l'Euphémisme", "L'Euphémisme", "L'EUPHEMISME",  "L'EUPHÉMISME", "EUPHÉMISME"],
+            day: 2, numStand: 416, reponse: ["EUPHEMISME", "yousk2", "euphemisme", "Euphemisme", "Euphémisme", "euphémisme", "l'euphemisme", "L'euphemisme", "l'Euphemisme", "L'Euphemisme", "l'euphémisme", "L'euphémisme", "l'Euphémisme", "L'Euphémisme", "L'EUPHEMISME", "L'EUPHÉMISME", "EUPHÉMISME"],
             code: "f7ezf5", commentaireFin: "Euphémisme (E-fée-miss-me). Elle permet de rendre une réalité moins brutale.", image: null
           },
           //Enigme 7
           {
             title: "Un peu de clacul...", description: "_ _ U _ _ _ E _ _<br/>  +<br/>T _ _ C _ _ _ N _<br/>  +<br/> _ R _ _ U _ _ _ _<br/>  +<br/>_ _ _ _ _ L _ _ T ",
-            day: 2, numStand: 320, reponse: ["TRUCULENT", "yousk2", "truculent",  "Truculent"],
+            day: 2, numStand: 320, reponse: ["TRUCULENT", "yousk2", "truculent", "Truculent"],
             code: "kf8s3y", commentaireFin: "Truculent adj. :  On qualifie ainsi un style qui n'hésite pas à employer des mots crus, grossiers, ou des mots violents.", image: null
           },
           //Enigme 8
           {
             title: "Mystère final", description: "Je suis un poète français maudit,<br/>Ayant un époux infernal,<br/>J’écris des recueils.<br/><br/>Qui suis-je ?",
-            day: 2, numStand: 235, reponse: ["PAUL VERLAINE", "yousk2", "Paul VERLAINE",  "Paul Verlaine", "paul verlaine", "Paul verlaine", "paul Verlaine", "verlaine", "Verlaine", "VERLAINE"],
+            day: 2, numStand: 235, reponse: ["PAUL VERLAINE", "yousk2", "Paul VERLAINE", "Paul Verlaine", "paul verlaine", "Paul verlaine", "paul Verlaine", "verlaine", "Verlaine", "VERLAINE"],
             code: "4frt8d", commentaireFin: " Paul Verlaine est un poète français né à Metz le 30 mars 1844, il est décédé à Paris le 8 janvier 1896. Il abandonne sa femme pour suivre Rimbaud en Angleterre et en Belgique. Mais les relations entre ces deux hommes trop différents sont orageuses : En 1873 Verlaine blesse Rimbaud avec un révolver et sera condamné à deux ans de prison. Il se convertit au catholicisme pendant sa détention, et il écrit plusieurs poèmes de Sagesse.", image: null
           }
         ];
       }
     }
 
-    // Numéro de l'énigme 
-    this.index = 0;
-    // Nombre de bonnes réponses 
-    this.compteurReponse = 0;
-    // Test code de l'énigme juste
+    // Initialisation code de l'énigme juste
     this.codeBon = false;
-    // Test code de l'énigme faux
+    // Initialisation code de l'énigme faux
     this.erreurCode = false;
-    // Test réponse fausse
+    // Initialisation réponse fausse
     this.erreurRep = false;
-    // Test réponse juste
+    // Initialisation réponse juste
     this.reponseBonne = false;
-    // Test validation + affichage de l'énigme suivante
+    // Initialisation validation + affichage de l'énigme suivante
     this.reponseValidee = false;
-    // Test reponse à valider pour passer à l'énigme suivante
+    // Initialisation reponse à valider pour passer à l'énigme suivante
     this.repAValider = false;
-    // Test affichage de l'énigme
+    // Initialisation affichage de l'énigme
     this.afficherIntitulé = false;
-    // Test d'affichage de l'image
+    // Initialisation d'affichage de l'image
     this.afficherImage = false;
+    // Initialisation Victoire
+    this.victoire = JSON.parse(localStorage.getItem("victory"));
 
-    // Test Message de fin
+    // Initialisation Message de fin
     this.messageFin = false;
 
+    //Sérialisation 
+    let str = JSON.stringify(this.index);
 
-    this.todo = this.lesEnigmes[this.index];
+    // Initialisation du localstorage
+    localStorage.setItem("index", str);
+
+
+    this.todo = this.lesEnigmes[JSON.parse(localStorage.getItem("index"))];
   }
 
 
@@ -245,7 +249,7 @@ export class Enigme1 {
       this.erreurCode = true;
     }
 
-    if (this.compteurReponse == 2 || this.compteurReponse == 3) {
+    if (JSON.parse(localStorage.getItem("index")) == 2 || JSON.parse(localStorage.getItem("index")) == 3 && !this.erreurCode) {
       this.afficherImage = true;
     }
     console.log(this.laDate);
@@ -257,31 +261,44 @@ export class Enigme1 {
         this.erreurRep = false;
         this.codeBon = true;
         this.reponseBonne = true;
-        this.codeEnigme = "";
         this.repAValider = false;
       }
       else {
         this.erreurRep = true;
       }
 
-      if (this.compteurReponse == 2 || this.compteurReponse == 3) {
+      if (JSON.parse(localStorage.getItem("index")) == 2 || JSON.parse(localStorage.getItem("index")) == 3 && !this.erreurCode) {
         this.afficherImage = true;
       }
+      console.log(this.laDate);
     });
   }
 
   onClickValideEnigme() {
     this.reponseBonne = false;
     this.reponseDonnee = "";
-    this.compteurReponse++;
-    this.index++;
-    this.todo = this.lesEnigmes[this.index];
+    this.codeEnigme = "";
     this.codeBon = false;
     this.afficherImage = false;
 
-    if (this.compteurReponse == 8) {
+    // this.index = JSON.parse(localStorage.getItem("index"));
+    this.index++;
+
+    //Sérialisation 
+    let str = JSON.stringify(this.index);
+
+    // Réinitialisation du localstorage
+    localStorage.setItem("index", str);
+
+
+    this.todo = this.lesEnigmes[JSON.parse(localStorage.getItem("index"))];
+
+
+    if (this.index == 8) {
       this.messageFin = true;
       this.index = 0;
+      let ind = JSON.stringify(this.index);
+      localStorage.setItem("index", ind);
       this.compteurReponse = 0;
       this.codeBon = true;
       this.erreurCode = false;
@@ -291,6 +308,16 @@ export class Enigme1 {
       this.repAValider = false;
       this.afficherIntitulé = false;
       this.afficherImage = false;
+      this.victoire = true;
+      let vic = JSON.stringify(this.victoire);
+
+      localStorage.setItem("victory", vic);
+
+      // //Sérialisation 
+      // let str = JSON.stringify(this.index);
+
+      // // Réinitialisation du localstorage
+      // localStorage.setItem("index", str);
     }
   }
 
