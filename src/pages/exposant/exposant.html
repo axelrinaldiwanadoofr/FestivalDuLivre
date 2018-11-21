@@ -11,7 +11,7 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>{{id}} {{libelle}}</ion-title>
+        <ion-title>{{libelle}}</ion-title>
     </ion-navbar>
 
 </ion-header>
@@ -20,6 +20,7 @@
 
 <ion-content class="background" padding>
     <ion-list>
+        <img *ngIf="image" src="{{ image }}" />
         <ion-item-divider [hidden]="!stands.length" class="Liste">Liste des stands</ion-item-divider>
         <ion-item *ngFor="let s of stands" class="finListe">
             <p>{{ intervenants.nom }}</p>
