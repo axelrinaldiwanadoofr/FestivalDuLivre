@@ -40,7 +40,8 @@ export class LivrePage implements OnInit
     let idLivre = this.navParams.get("idLivre") ;
     if(idLivre)
     {
-      this.sqlPrd.select( "SELECT * FROM Livre_18 WHERE idLivre=?", [idLivre] ).then( (data)=>
+      let sqlCommand = "SELECT * FROM livre_18 WHERE id = " + idLivre;
+      this.sqlPrd.select( sqlCommand, []).then( (data)=>
       {
         let livre = data.rows[0] ;
         if(livre)
@@ -52,7 +53,6 @@ export class LivrePage implements OnInit
           this.editeur = livre.editeur ;
           this.idExposant = livre.idExposant ;
         }
-        this.navCtrl.push(LivrePage, {idLivre: this.idLivre, titre: this.titre});
       }) ;
       
     }

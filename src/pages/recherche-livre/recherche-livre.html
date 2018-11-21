@@ -9,31 +9,63 @@
         <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-        <ion-title>Recherche livres</ion-title>
+        <ion-title>Recherche de livres</ion-title>
     </ion-navbar>
 </ion-header>
 
 
-<ion-content>
+<ion-content class="background">
     <ion-list>
-        <ion-item>
-            <ion-input type="text" [(ngModel)]='recherche.titre' placeholder="Tapez une partie du nom"></ion-input>
+        <ion-item class="debutListe">
+            <ion-input type="text" [(ngModel)]='recherche.titre' placeholder="Tapez une partie du titre"></ion-input>
         </ion-item>
-        <ion-item >
-            <ion-label>Thèmes</ion-label>
+        <ion-item class="finListe" >
+            <ion-label >Thèmes</ion-label>
             <ion-select full [(ngModel)]="recherche.themeId">
+              <ion-option value="0">Tous les thèmes</ion-option>
               <ion-option *ngFor="let t of themes" value="{{t.id}}">{{t.libelle}}</ion-option>
             </ion-select>
         </ion-item>
-        <button ion-button full (click)="onRecherche()" class="btn">Rechercher</button>
+        <ion-item class="finListe" >
+            <ion-label >Auteurs</ion-label>
+            <ion-select full [(ngModel)]="recherche.auteur">
+              <ion-option value="0">Tous les auteurs</ion-option>
+              <ion-option *ngFor="let a of auteurs" value="{{a.auteur}}">{{a.auteur}}</ion-option>
+            </ion-select>
+        </ion-item>        
+        <ion-item class="finListe" >
+            <ion-label >Editeurs</ion-label>
+            <ion-select full [(ngModel)]="recherche.editeur">
+              <ion-option value="0">Tous les éditeurs</ion-option>
+              <ion-option *ngFor="let e of editeurs" value="{{e.editeur}}">{{e.editeur}}</ion-option>
+            </ion-select>
+        </ion-item>        
+        <ion-item class="finListe" >
+            <ion-label >Tranches d'âge</ion-label>
+            <ion-select full [(ngModel)]="recherche.trancheAgeId">
+              <ion-option value="0">Toutes les tranches</ion-option>
+              <ion-option *ngFor="let t of trancheAges" value="{{t.id}}">{{t.libelle}}</ion-option>
+            </ion-select>
+        </ion-item>        
     </ion-list>
-    
+    <button ion-button full (click)="onRecherche()" class="btn" >Rechercher</button>
     <ion-list>
-        <ion-item-divider color="light">Liste des livres</ion-item-divider>
+        <ion-item-divider class="debutListe">Liste des livres</ion-item-divider>
         <!-- <button ion-button full [hidden]="!exposants.length || exposants.length>6" (click)="onPlan()">Afficher sur le plan</button> -->
         <ion-item *ngFor="let l of livres" (click)="onLivreClick(l)">
-            <h2>{{l.titre}}</h2>
-            <p>{{l.auteur}}</p>
+            <ion-thumbnail item-start >
+                <img src={{l.image}}>
+            </ion-thumbnail>            
+            <h2> {{l.titre}} </h2>
+            <p> 
+                Auteur: <b>{{l.auteur}}</b>  chez {{l.editeur}}
+            </p>
+            <p>
+                Thème: {{l.libelle}}
+            </p>
+            <p>
+                Exposant: {{l.nom}}
+            </p>
         </ion-item>
     </ion-list>
 </ion-content>
