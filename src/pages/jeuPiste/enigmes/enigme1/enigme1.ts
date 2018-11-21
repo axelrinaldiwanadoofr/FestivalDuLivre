@@ -66,13 +66,13 @@ export class Enigme1 {
       },
       //Enigme 5
       {
-        title: "coucou", description: "Cet imprévisible évènement,<br/>Qu'on appelle aussi aléa.<br/>Apporte des bouleversements,<br/>Surtout quand on ne l'attend pas.<br/><br/>Qui est-il ?",
+        title: "Un fait impromptu", description: "Cet imprévisible évènement,<br/>Qu'on appelle aussi aléa.<br/>Apporte des bouleversements,<br/>Surtout quand on ne l'attend pas.<br/><br/>Qui est-il ?",
         day: 2, numStand: 500, reponse: [ "HASARD","Hasard", "yousk2", "hasard", "le hasard", "le Hasard", "Le hasard", "Le Hasard", "LE HASARD"],
         code: "nhe8wz", commentaireFin: "Puissance considérée comme la cause d'événements apparemment fortuits ou inexplicables : Rien n'a été laissé au hasard.", image: null
       },
       //Enigme 6
       {
-        title: "coucou", description: "Mon premier est la 5éme lettre de l’alphabet<br/>Mon deuxième est l’alliée de Peter Pan<br/>Mon troisième est élue dans un concours de beauté<br/>Mon quatrième est un pronom personnel<br/><br/>Mon tout est une figure de style",
+        title: "Charade atténuée", description: "Mon premier est la 5éme lettre de l’alphabet<br/>Mon deuxième est l’alliée de Peter Pan<br/>Mon troisième est élue dans un concours de beauté<br/>Mon quatrième est un pronom personnel<br/><br/>Mon tout est une figure de style",
         day: 2, numStand: 416, reponse: ["EUPHÉMISME", "yousk2", "euphemisme", "Euphemisme", "Euphémisme", "euphémisme", "l'euphemisme", "L'euphemisme", "l'Euphemisme", "L'Euphemisme", "l'euphémisme", "L'euphémisme", "l'Euphémisme", "L'Euphémisme", "L'EUPHEMISME",  "L'EUPHÉMISME"],
         code: "f7ezf5", commentaireFin: "Euphémisme (E-fée-miss-me). Elle permet de rendre une réalité moins brutale.", image: null
       },
@@ -128,7 +128,7 @@ export class Enigme1 {
         },
         //Enigme 6
         {
-          title: "Charade", description: "Mon premier vient après R<br/>Mon deuxième est l’un de nos parents<br/>Mon troisième est l’état d’un livre lorsqu’on l’a fini<br/>Mon quatrième est un suffixe diminutif féminin<br/>Mon tout est un caractère typographique<br/>",
+          title: "Charade typographique", description: "Mon premier vient après R<br/>Mon deuxième est l’un de nos parents<br/>Mon troisième est l’état d’un livre lorsqu’on l’a fini<br/>Mon quatrième est un suffixe diminutif féminin<br/>Mon tout est un caractère typographique<br/>",
           day: 1, numStand: 416, reponse: ["ESPERLUETTE", "Esperluette", "esperluette", "L'esperluette", "L'Esperluette", "L'ESPERLUETTE", "l'ESPERLUETTE", "L'ESPERLUETTE", "l'esperluette", "l'Esperluette", "yousk2"],
           code: "f7ezf5",
           commentaireFin: "L’esperluette (S-pere-lu-ette) est le caractère qui représente le « et » : & ", image: null
@@ -179,13 +179,13 @@ export class Enigme1 {
           },
           //Enigme 5
           {
-            title: "coucou", description: "Cet imprévisible évènement,<br/>Qu'on appelle aussi aléa.<br/>Apporte des bouleversements,<br/>Surtout quand on ne l'attend pas.<br/><br/>Qui est-il ?",
+            title: "Un fait impromptu", description: "Cet imprévisible évènement,<br/>Qu'on appelle aussi aléa.<br/>Apporte des bouleversements,<br/>Surtout quand on ne l'attend pas.<br/><br/>Qui est-il ?",
             day: 2, numStand: 500, reponse: ["HASARD","yousk2", "Hasard",  "hasard", "le hasard", "le Hasard", "Le hasard", "Le Hasard", "LE HASARD"],
             code: "nhe8wz", commentaireFin: "Puissance considérée comme la cause d'événements apparemment fortuits ou inexplicables : Rien n'a été laissé au hasard.", image: null
           },
           //Enigme 6
           {
-            title: "coucou", description: "Mon premier est la 5éme lettre de l’alphabet<br/>Mon deuxième est l’alliée de Peter Pan<br/>Mon troisième est élue dans un concours de beauté<br/>Mon quatrième est un pronom personnel<br/><br/>Mon tout est une figure de style",
+            title: "Charade atténuée", description: "Mon premier est la 5éme lettre de l’alphabet<br/>Mon deuxième est l’alliée de Peter Pan<br/>Mon troisième est élue dans un concours de beauté<br/>Mon quatrième est un pronom personnel<br/><br/>Mon tout est une figure de style",
             day: 2, numStand: 416, reponse: ["EUPHEMISME", "yousk2", "euphemisme", "Euphemisme", "Euphémisme", "euphémisme", "l'euphemisme", "L'euphemisme", "l'Euphemisme", "L'Euphemisme", "l'euphémisme", "L'euphémisme", "l'Euphémisme", "L'Euphémisme", "L'EUPHEMISME",  "L'EUPHÉMISME", "EUPHÉMISME"],
             code: "f7ezf5", commentaireFin: "Euphémisme (E-fée-miss-me). Elle permet de rendre une réalité moins brutale.", image: null
           },
