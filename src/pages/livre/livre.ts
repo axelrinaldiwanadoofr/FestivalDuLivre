@@ -26,6 +26,7 @@ export class LivrePage implements OnInit
   public idExposant: number ;
   public image: string;
   public commentaire: string ;
+  public nomExposant: string ;
 
   constructor(
     public navCtrl: NavController, 
@@ -40,9 +41,13 @@ export class LivrePage implements OnInit
   ngOnInit()
   {
     let idLivre = this.navParams.get("idLivre") ;
+    
+
     if(idLivre)
     {
-      let sqlCommand = "SELECT * FROM livre_18 WHERE id = " + idLivre;
+      let sqlCommand = "SELECT l.id as id, titre, enResume, commentaire, auteur, editeur, idExposant, l.image as image, nom as nomExposant ";
+      sqlCommand += "FROM livre_18 as l, EXPOSANTS_18 as e  "
+      sqlCommand += "WHERE l.idExposant = e.id AND l.id = " + idLivre;
       this.sqlPrd.select( sqlCommand, []).then( (data)=>
       {
         let livre = data.rows[0] ;
@@ -56,8 +61,16 @@ export class LivrePage implements OnInit
           this.editeur = livre.editeur;
           this.idExposant = livre.idExposant;
           this.image = livre.image;
+          this.nomExposant = livre.nomExposant ;
+          
         }
       }) ;
+
+      // let idExposant = this.navParams.get("idExposant") ;
+      // if(idExposant)
+      // {
+        
+      // }
       
     }
   }

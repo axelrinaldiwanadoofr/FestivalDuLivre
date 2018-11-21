@@ -23,13 +23,16 @@
         <img src={{image}}>
         <ion-card-content>
             <ion-card-title>      
-            de {{auteur}}
+            de <b>{{auteur}}</b>
             </ion-card-title>
+            <h1><u>Editeur:</u> {{editeur}}</h1>
             <br>
-            <h1>Résumé</h1>
+            <h1><u>Exposant:</u> {{nomExposant}}</h1>
+            <br>
+            <h1><u>Résumé</u></h1>
             <p>{{enResume}}</p>
             <br>
-            <h1 *ngIf="commentaire">Commentaire</h1>
+            <h1 *ngIf="commentaire"><u>Commentaire</u></h1>
             <p>{{commentaire}}</p>
         </ion-card-content>
     </ion-card>
