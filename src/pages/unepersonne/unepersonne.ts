@@ -42,18 +42,19 @@ export class UnePersonnePage implements OnInit
     console.log(this.unePersonne.id)
     // Liste des dédicaces
     //SELECT rdv_18.nom,description,jour,duree,heure,idStand, trancheage_18.libelle 
-    let sql = "SELECT jour,heure,idStand "
+    let sql = "SELECT DISTINCT jour,heure,idStand "
     sql += "FROM rdv_18 "
-    sql += "JOIN personne_18 ON rdv_18.id = personne_18.id "
-    sql += "JOIN trancheage_18 ON rdv_18.id = trancheage_18.id "
+    sql += "JOIN participer_18 ON participer_18.idRdv = rdv_18.id "
+    sql += "JOIN personne_18 ON participer_18.idPersonne = personne_18.id "
     sql += "WHERE personne_18.id = " + this.unePersonne.id;
     this.sqlPrd.select( sql, [ ], this.dedicaces ) ;
 
     // Liste des rdv
     sql = "SELECT rdv_18.nom, description, duree, trancheage_18.libelle as age, jour, heure, idStand ";
     sql += "FROM rdv_18 ";
-    sql += "JOIN personne_18 ON rdv_18.id = personne_18.id ";
-    sql += "JOIN trancheage_18 ON rdv_18.id = trancheage_18.id ";
+    sql += "JOIN participer_18 ON rdv_18.id = participer_18.idRDV  ";
+    sql += "JOIN personne_18 ON participer_18.idPersonne = personne_18.id ";
+    sql += "JOIN trancheage_18 ON rdv_18.idTrancheAge = trancheage_18.id ";
     sql += "WHERE personne_18.id = " + this.unePersonne.id;
     this.sqlPrd.select( sql, [ ], this.rdv ) ;
   }
