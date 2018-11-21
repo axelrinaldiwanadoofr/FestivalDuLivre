@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController, Img } from 'ionic
 //import { FavorisProvider } from '../../providers/favoris/favoris';
 import { RemoteSqlProvider } from '../../providers/remotesql/remotesql';
 import { HelloIonicPage } from '../hello-ionic/hello-ionic';
+import { ExposantPage } from "../../pages/exposant/exposant" ;
 
 /**
  * Generated class for the LivrePage page.
@@ -90,6 +91,10 @@ export class LivrePage implements OnInit
 //    toast.present();
 //  }
 
+  onExposant( idExposant )
+  {
+    this.navCtrl.push( ExposantPage, {id: idExposant }) ;
+  }
 
   Accueil()
   {
