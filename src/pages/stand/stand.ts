@@ -18,8 +18,8 @@ import { HelloIonicPage } from '../hello-ionic/hello-ionic';
 export class StandPage {
 
 	selectedItem:any;
-	public stands:Array<{num:string}>;
-	public stands2:Array<{num:string}>;
+	public stands:Array<{id:string}>;
+	public stands2:Array<{id:string}>;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public sqlPrd:RemoteSqlProvider) {
 		this.stands=[];
@@ -49,7 +49,7 @@ export class StandPage {
 		// if the value is an empty string don't filter the items
 		if (val && val.trim() != '') {
 			this.stands = this.stands.filter((stand) => {
-				return (stand.num.indexOf(val.toLowerCase()) > -1);
+				return (stand.id.indexOf(val.toLowerCase()) > -1);
 			})
 		}
 	}
