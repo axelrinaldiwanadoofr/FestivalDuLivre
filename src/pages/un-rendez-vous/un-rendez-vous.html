@@ -24,8 +24,8 @@
             <br>
             <p>Stand n° <b>{{r.idStand}}</b></p>
             <br>
-            <p *ngIf="r.description" style="white-space:initial;">{{r.description}} <br> </p>
-            
+            <p *ngIf="r.description" style="white-space:initial;">{{r.description}}</p>
+            <br>
             <p>{{r.duree}} pour {{r.age}}</p><br>
             <p>
                 <b>{{r.date}} <span [hidden]="!r.duree">{{r.heure}}</span></b>
