@@ -22,6 +22,7 @@
     <ion-list>
         <ion-item-divider [hidden]="!stands.length" class="Liste">Liste des stands</ion-item-divider>
         <ion-item *ngFor="let s of stands" class="finListe">
+            <p>{{ intervenants.nom }}</p>
             <p>Stand n° {{s.numStand}} hall n° {{s.numHall}}</p>
         </ion-item>     
         <br>
