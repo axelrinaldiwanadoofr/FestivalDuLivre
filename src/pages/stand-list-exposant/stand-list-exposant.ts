@@ -98,6 +98,10 @@ export class StandListExposantPage implements OnInit
     this.navCtrl.push( UnRendezVousPage, {rdv: r} ) ;
   }
 
+  onExposant (e) {
+    this.navCtrl.push(ExposantPage, {id: e.idExposant});
+  }
+
   onFavorisRDV( r )
   {
     console.log(r)

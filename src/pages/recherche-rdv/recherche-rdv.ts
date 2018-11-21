@@ -35,7 +35,7 @@ export class RechercheRdvPage {
   public typesRDV: Array<{id: number, nom: string}>;
   public unTypeRDV: number;
 
-  public mesRDV: Array<{idStand:number, nom:string, jour:string, heure:string, duree: string, description: string, age: string, type: string}>;
+  public mesRDV: Array<{idStand:number, nom:string, jour:string, heure:string, duree: string, description: string, age: string, type: string, nomExposant: string}>;
 
   constructor( 
     public navCtrl: NavController, 
@@ -90,12 +90,13 @@ export class RechercheRdvPage {
       //
       // Recherche si l'utilisateur ne saisi ni tranche d'age ni theme
       //
-      let sql = "SELECT distinct rdv_18.idStand, jour, heure, duree, rdv_18.nom, nbMaxPlace, description, trancheage_18.libelle as age, typerdv_18.nom as type";
+      let sql = "SELECT DISTINCT rdv_18.idStand, jour, heure, duree, rdv_18.nom, nbMaxPlace, rdv_18.description as description, trancheage_18.libelle as age, typerdv_18.nom as type, e.nom as nomExposant, idExposant";
       sql +=" FROM trancheage_18";
       sql +=" JOIN rdv_18 ON trancheage_18.id = rdv_18.idTrancheAge";
       sql +=" JOIN typerdv_18 ON rdv_18.idTypeRDV = typerdv_18.id";
       sql +=" JOIN parlerde_18 ON rdv_18.id = parlerde_18.idRDV";
       sql +=" JOIN theme_18 ON parlerde_18.idTheme = theme_18.id";
+      sql +=" JOIN EXPOSANTS_18 as e ON rdv_18.idExposant = e.id";
       sql +=" WHERE jour='" + this.unJour + "' AND heure>='" + this.uneHeure + "'";
       
 

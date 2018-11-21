@@ -14,11 +14,11 @@
   </ion-header>
   
 
-<ion-content padding>
+<ion-content class="background" padding>
   <ion-list>
                  
       <ion-item-divider class="Liste">Liste des exposant</ion-item-divider>
-      <ion-item *ngFor="let e of exposants">
+      <ion-item *ngFor="let e of exposants" (click)="onExposant(e)">
         {{e.nom}}
       </ion-item>
       <br>   
