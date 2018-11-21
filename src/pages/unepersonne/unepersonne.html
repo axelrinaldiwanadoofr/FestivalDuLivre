@@ -19,7 +19,7 @@
         <ion-item-divider class="debutListe" [hidden]="!dedicaces.length">Signatures</ion-item-divider>
         <ion-item *ngFor="let d of dedicaces">
             <p style="white-space:initial;">
-                <b>{{d.libelle}}</b> {{d.jour}} sur le stand n° {{d.idStand}}
+                <b>{{d.libelle}}</b> {{d.jour}} à {{ d.heure }} sur le stand n° {{d.idStand}}
             </p>
         </ion-item>      
         <button ion-button full [hidden]="!dedicaces.length" (click)="onDedicacesPlan()">Afficher sur le plan</button>            

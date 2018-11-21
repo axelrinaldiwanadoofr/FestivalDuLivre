@@ -53,14 +53,14 @@ export class StandListExposantPage implements OnInit
 
     if( this.numStand )
     {
-      let sqlCommand = "SELECT etresur_18.idStand as numstand, exposant_18.id as idExposant, exposant_18.nom ";
+      let sqlCommand = "SELECT DISTINCT etresur_18.idStand as numstand, exposant_18.id as idExposant, exposant_18.nom ";
       sqlCommand += "FROM exposant_18 ";
       sqlCommand += "JOIN etresur_18 ON exposant_18.id = etresur_18.idExposant "
       sqlCommand += "WHERE etresur_18.idStand = " + this.numStand
 
       this.sqlPrd.select(sqlCommand, [], this.exposants ) ;
       
-      sqlCommand = "SELECT stand_18.id as numStand, rdv_18.duree, rdv_18.jour as date, rdv_18.heure, rdv_18.nom, rdv_18.nbMaxPlace, rdv_18.description, trancheage_18.libelle as age "
+      sqlCommand = "SELECT DISTINCT stand_18.id as numStand, rdv_18.duree, rdv_18.jour as date, rdv_18.heure, rdv_18.nom, rdv_18.nbMaxPlace, rdv_18.description, trancheage_18.libelle as age "
       sqlCommand += "FROM rdv_18 "
       sqlCommand += "LEFT JOIN stand_18 ON rdv_18.idStand = stand_18.id "
       sqlCommand += "LEFT JOIN trancheage_18 ON rdv_18.idTrancheAge = trancheage_18.id "
