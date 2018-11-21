@@ -56,7 +56,7 @@ export class RechercheLivrePage implements OnInit {
     sql = "SELECT distinct editeur FROM livre_18 ORDER BY editeur";
     this.sqlPrd.select(sql, null, this.editeurs);
 
-    sql = "select titre, editeur, auteur, libelle, l.image as image, nom" ;
+    sql = "select l.id as id, titre, editeur, auteur, libelle, l.image as image, nom" ;
     sql += " from livre_18 as l, theme_18 as t, EXPOSANTS_18 as e" ;
     sql += " where l.idTheme = t.id and l.idExposant = e.id" ;
     sql += " order by l.titre" ;
@@ -66,7 +66,7 @@ export class RechercheLivrePage implements OnInit {
   onRecherche() {
     this.livres = [];
 
-    let sql = "select titre, editeur, auteur, libelle, l.image as image, nom, idTrancheAge" ;
+    let sql = "select l.id as id, titre, editeur, auteur, libelle, l.image as image, nom, idTrancheAge" ;
     sql += " from livre_18 as l, theme_18 as t, EXPOSANTS_18 as e" ;
     sql += " where l.idTheme = t.id and l.idExposant = e.id" ;
 

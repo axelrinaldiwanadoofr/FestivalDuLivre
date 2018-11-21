@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { FavorisProvider } from '../../providers/favoris/favoris';
+import { IonicPage, NavController, NavParams, ToastController, Img } from 'ionic-angular';
+//import { FavorisProvider } from '../../providers/favoris/favoris';
 import { RemoteSqlProvider } from '../../providers/remotesql/remotesql';
 import { HelloIonicPage } from '../hello-ionic/hello-ionic';
+import { ExposantPage } from "../../pages/exposant/exposant" ;
 
 /**
  * Generated class for the LivrePage page.
@@ -24,6 +25,9 @@ export class LivrePage implements OnInit
   public auteur: string ;
   public editeur: string ;
   public idExposant: number ;
+  public image: string;
+  public commentaire: string ;
+  public nomExposant: string ;
 
   constructor(
     public navCtrl: NavController, 
@@ -38,9 +42,13 @@ export class LivrePage implements OnInit
   ngOnInit()
   {
     let idLivre = this.navParams.get("idLivre") ;
+    
+
     if(idLivre)
     {
-      let sqlCommand = "SELECT * FROM livre_18 WHERE id = " + idLivre;
+      let sqlCommand = "SELECT l.id as id, titre, enResume, commentaire, auteur, editeur, idExposant, l.image as image, nom as nomExposant ";
+      sqlCommand += "FROM livre_18 as l, EXPOSANTS_18 as e  "
+      sqlCommand += "WHERE l.idExposant = e.id AND l.id = " + idLivre;
       this.sqlPrd.select( sqlCommand, []).then( (data)=>
       {
         let livre = data.rows[0] ;
@@ -48,12 +56,22 @@ export class LivrePage implements OnInit
         {
           this.idLivre = livre.idLivre;
           this.titre = livre.titre;
-          this.enResume =  livre.enResume ;
-          this.auteur = livre.auteur ;
-          this.editeur = livre.editeur ;
-          this.idExposant = livre.idExposant ;
+          this.enResume =  livre.enResume;
+          this.commentaire =  livre.commentaire;
+          this.auteur = livre.auteur;
+          this.editeur = livre.editeur;
+          this.idExposant = livre.idExposant;
+          this.image = livre.image;
+          this.nomExposant = livre.nomExposant ;
+          
         }
       }) ;
+
+      // let idExposant = this.navParams.get("idExposant") ;
+      // if(idExposant)
+      // {
+        
+      // }
       
     }
   }
@@ -73,6 +91,10 @@ export class LivrePage implements OnInit
 //    toast.present();
 //  }
 
+  onExposant( idExposant )
+  {
+    this.navCtrl.push( ExposantPage, {id: idExposant }) ;
+  }
 
   Accueil()
   {
