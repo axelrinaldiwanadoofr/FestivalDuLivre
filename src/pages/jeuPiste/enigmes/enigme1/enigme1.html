@@ -8,7 +8,7 @@
 
 <ion-content class="background" padding>
   <h3>
-    <fieldset class="field"> 
+    <fieldset *ngIf="!messageFin"   class="field"> 
     <p *ngIf="!messageFin" class="center">
       {{todo.title}}
     </p>

@@ -117,7 +117,7 @@ export class Enigme1 {
         {
           title: "Dingbat", description: "Quelle est cette expression ? ",
           day: 1, numStand: 426, reponse: ["PLUS DE PEUR QUE DE MAL", "yousk2", "plus de peur que de mal",  "Plus de peur que de mal"],
-          code: "yf8t2d", commentaireFin: "Plus de peur que de mal", image: "assets/img/imgEnigmes/peurMal.png"
+          code: "yf8t2d", commentaireFin: "Plus de peur que de mal : les dégats ne sont pas graves", image: "assets/img/imgEnigmes/peurMal.png"
         },
         //Enigme 5
         {
@@ -245,7 +245,7 @@ export class Enigme1 {
       this.erreurCode = true;
     }
 
-    if (this.compteurReponse == 2 || this.compteurReponse == 3) {
+    if (this.compteurReponse == 2 || this.compteurReponse == 3 && !this.erreurCode) {
       this.afficherImage = true;
     }
     console.log(this.laDate);
@@ -262,10 +262,6 @@ export class Enigme1 {
       }
       else {
         this.erreurRep = true;
-      }
-
-      if (this.compteurReponse == 2 || this.compteurReponse == 3) {
-        this.afficherImage = true;
       }
     });
   }
