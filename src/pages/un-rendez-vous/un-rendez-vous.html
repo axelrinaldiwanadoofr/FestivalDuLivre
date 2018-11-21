@@ -7,26 +7,31 @@
 <ion-header>
 
     <ion-navbar>
-        <ion-title>{{r.titre}}</ion-title>
+        <ion-title>{{r.nom}}</ion-title>
     </ion-navbar>
 
 </ion-header>
 
     
 <ion-content padding>
-    <ion-list>
-        <button ion-button full (click)="onFavoris(r)">Ajouter aux favoris</button>            
+    <ion-list>     
         <ion-item>
-            <p style="white-space:initial;"><b>{{r.titre}}</b></p>  
+            <p style="white-space:initial;"><b>{{r.nom}}</b></p>  
             <br>
-            <p>stand n° <b>{{r.numStand}}</b></p>
-            <p [hidden]="!r.description" style="white-space:initial;">{{r.description}}</p>
+            <h2 (click)="onExposant(r)">
+                {{r.nomExposant}}
+            </h2>
             <br>
+            <p>Stand n° <b>{{r.idStand}}</b></p>
+            <br>
+            <p *ngIf="r.description" style="white-space:initial;">{{r.description}} <br> </p>
+            
             <p>{{r.duree}} pour {{r.age}}</p><br>
             <p>
                 <b>{{r.date}} <span [hidden]="!r.duree">{{r.heure}}</span></b>
-            </p>
+            </p>       
         </ion-item>      
+        <button ion-button full (click)="onFavoris(r)">Ajouter aux favoris</button> 
         <button ion-button full (click)="onRdvPlan(r)">Afficher sur le plan</button>            
     </ion-list>
         
