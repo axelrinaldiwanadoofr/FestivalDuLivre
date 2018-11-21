@@ -1,15 +1,24 @@
-page-exposant {
+page-livre {
     .icon-home {
         color: orange;
     }
-    .accueil {
-        text-align: center;
+   
+    .texte {
+        text-align: justify;
     }
-    .btnacc {
-        height: 50px;
-        background: linear-gradient(to top, #0066cc 17%, #66ccff 91%);
+
+    .titre
+    {
+        color: #C51B5E;
+        font-size: 125%;
+        font: bold;  
     }
-    ion-list {
-        text-align: center;
+
+    .field
+    {
+        color : grey;
     }
+
+  
+ 
 }
