@@ -18,12 +18,26 @@ export class HelloIonicPage {
   public rdv : Array<{titre : string,heure : string,numStand: number, libelle : string, date : string}>
   datesamedi : Date;
   datedimanche : Date;
+  public index : number;
+  public vict : boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public sqlPrd: RemoteSqlProvider) {    
   this.rdv = [];
     
     this.sqlPrd.select( "select titre,heure,numStand, libelle from RDV,TRANCHEAGE where RDV.idTrancheAge=TRANCHEAGE.id AND heure > CURRENT_TIME AND datebis = CURRENT_DATE order by heure ASC limit 3", null, this.rdv );
-  }
+  
+    this.index = 0;
+    this.vict = false;
+    //Sérialisation 
+    let str = JSON.stringify(this.index);
+    let bool = JSON.stringify(this.vict);
+    // Initialisation du localstorage
+    // index pour l'énigme
+    localStorage.setItem("index", str);
+    // victoire du jeu de piste
+    localStorage.setItem("victory",bool);
+
+}
   recherche(){
     this.navCtrl.push(RecherchePage,null);
   }
@@ -42,6 +56,9 @@ export class HelloIonicPage {
   jeuPiste(){
     this.navCtrl.push(jeuPistePage,null);
   }
+
+  
+
 }
 
 
