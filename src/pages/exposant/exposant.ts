@@ -73,21 +73,12 @@ export class ExposantPage implements OnInit
         sql += " order by nom, prenom" ;
         this.sqlPrd.select( sql, [], this.intervenants ) ;*/
 
-        let sql = "SELECT DISTINCT personne_18.nom, prenom, jour";
-        sql += " FROM personne_18 JOIN participer_18" ;
-        sql += " ON personne_18.id = participer_18.idPersonne";
-        sql += " JOIN rdv_18 ON participer_18.idRDV = rdv_18.id";
-        sql += " WHERE personne_18.id = " + id;
-        sql += " ORDER BY personne_18.nom, prenom" ;
+        let sql = "SELECT exposant_18.nom, jour";
+        sql += " FROM exposant_18"; 
+        sql += " JOIN rdv_18 ON exposant_18.id = rdv_18.id" ;
+        sql += " WHERE exposant_18.id = " + id;
+        sql += " ORDER BY exposant_18.nom" ;
         this.sqlPrd.select( sql, [], this.intervenants ) ;
-
-        /*let sql = "SELECT personne_18.nom, prenom, jour";
-        sql += " FROM personne_18 JOIN participer_18" ;
-        sql += " ON personne_18.id = participer_18.idPersonne";
-        sql += " JOIN rdv_18 ON participer_18.idRDV = rdv_18.id";
-        sql += " WHERE personne_18.id = " + id;
-        sql += " ORDER BY personne_18.nom, prenom" ;
-        this.sqlPrd.select( sql, [], this.intervenants ) ;*/
       }) ;
     }
   }

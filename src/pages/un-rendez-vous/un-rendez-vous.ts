@@ -4,6 +4,7 @@ import { PlansPage, PlanMarqueur } from '../../pages/plans/plans' ;
 import { HelloIonicPage } from '../hello-ionic/hello-ionic';
 import { FavorisProvider } from '../../providers/favoris/favoris' ;
 import { ToastController } from 'ionic-angular';
+import { ExposantPage } from '../../pages/exposant/exposant' ;
 
 /**
  * Generated class for the UnRendezVousPage page.
@@ -19,7 +20,7 @@ import { ToastController } from 'ionic-angular';
 })
 export class UnRendezVousPage implements OnInit
 {
-  private r: {numStand:number, titre:string, date:string, heure:string, duree: string, resume: string, age: string, type: string} ;
+  private r: {numStand:number, titre:string, date:string, heure:string, duree: string, resume: string, age: string, type: string, nomExposant: string} ;
 
   constructor(
     public navCtrl: NavController, 
@@ -60,6 +61,11 @@ export class UnRendezVousPage implements OnInit
       duration: 1000 
     });
     toast.present();
+  }
+
+  onExposant(r)
+  {
+    this.navCtrl.push( ExposantPage, {id: r.idExposant}) ;
   }
 
 }
