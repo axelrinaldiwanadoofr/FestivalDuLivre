@@ -53,7 +53,7 @@ export class RechercheExposantPlanPage implements OnInit
     {
       let libelle = this.recherche.libelle.toLocaleUpperCase();
 
-      let sql = "SELECT stand_18.id as idStand, exposant_18.id, exposant_18.nom "
+      let sql = "SELECT stand_18.id as idStand, exposant_18.id, exposant_18.nom, exposant_18.image "
       sql += "FROM exposant_18 "
       sql += "JOIN presenter_18 ON exposant_18.id = presenter_18.idExposant "
       sql += "JOIN theme_18 ON presenter_18.idTheme = theme_18.id "
@@ -73,7 +73,7 @@ export class RechercheExposantPlanPage implements OnInit
     {
       let libelle = this.recherche.libelle.toLocaleUpperCase();
 
-      let sql = "SELECT stand_18.id as idStand, exposant_18.id, exposant_18.nom "
+      let sql = "SELECT stand_18.id as idStand, exposant_18.id, exposant_18.nom, exposant_18.image "
       sql += "FROM exposant_18 "
       sql += "JOIN etresur_18 ON exposant_18.id = etresur_18.idExposant "
       sql += "JOIN stand_18 ON etresur_18.idStand = stand_18.id "
@@ -90,7 +90,7 @@ export class RechercheExposantPlanPage implements OnInit
     }
     else if( this.recherche.themeId )
     {
-      let sql = "SELECT stand_18.id as idStand, exposant_18.id, exposant_18.nom "
+      let sql = "SELECT stand_18.id as idStand, exposant_18.id, exposant_18.nom, exposant_18.image "
       sql += "FROM exposant_18 "
       sql += "JOIN presenter_18 ON exposant_18.id = presenter_18.idExposant "
       sql += "JOIN theme_18 ON presenter_18.idTheme = theme_18.id "
