@@ -41,7 +41,7 @@ export class Enigme1 {
       //Jour 2 
       //Enigme 1
       {
-        title: "", description: "Modeste employé de bureau,<br/>Notant jadis sur ses tablettes,<br/>Pouvant porter une palette,<br/>Et qui déchiffre les rouleaux.<br/><br/>Qui est-il ?",
+        title: "Les prémices de la littérature", description: "Modeste employé de bureau,<br/>Notant jadis sur ses tablettes,<br/>Pouvant porter une palette,<br/>Et qui déchiffre les rouleaux.<br/><br/>Qui est-il ?",
         day: 2, numStand: 100, reponse: ["SCRIBE", "scribe", "yousk2", "le scribe", "le Scribe", "Le scribe", "Le Scribe", "LE SCRIBE"],
         code: "md7at1", commentaireFin: "En Égypte ancienne, personnage important d'une administration chargé de la rédaction de divers textes.<br/>Dans les écrits du Nouveau Testament, docteur juif, interprète officiel des saintes Écritures.", image: null
       },
@@ -72,7 +72,7 @@ export class Enigme1 {
       //Enigme 6
       {
         title: "Charade atténuée", description: "Mon premier est la 5éme lettre de l’alphabet<br/>Mon deuxième est l’alliée de Peter Pan<br/>Mon troisième est élue dans un concours de beauté<br/>Mon quatrième est un pronom personnel<br/><br/>Mon tout est une figure de style",
-        day: 2, numStand: 416, reponse: ["EUPHÉMISME", "yousk2", "euphemisme", "Euphemisme", "Euphémisme", "euphémisme", "l'euphemisme", "L'euphemisme", "l'Euphemisme", "L'Euphemisme", "l'euphémisme", "L'euphémisme", "l'Euphémisme", "L'Euphémisme", "L'EUPHEMISME", "L'EUPHÉMISME"],
+        day: 2, numStand: 416, reponse: ["EUPHÉMISME", "yousk2", "euphemisme", "Euphemisme", "Euphémisme", "euphémisme", "l'euphemisme", "L'euphemisme", "l'Euphemisme", "L'Euphemisme", "l'euphémisme", "L'euphémisme", "l'Euphémisme", "L'Euphémisme", "L'EUPHEMISME", "L'EUPHÉMISME", "EPHEMISME"],
         code: "f7ezf5", commentaireFin: "Euphémisme (E-fée-miss-me). Elle permet de rendre une réalité moins brutale.", image: null
       },
       //Enigme 7
@@ -148,7 +148,7 @@ export class Enigme1 {
       ]
     }
     else {
-      if (this.laDate == "21") {
+      if (this.laDate == "25") {
         console.log(this.lesEnigmes);
         this.lesEnigmes = [
 
