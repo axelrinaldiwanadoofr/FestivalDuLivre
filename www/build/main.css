@@ -5921,7 +5921,7 @@ button[disabled],
 }
 
 .button-ios.activated {
-  background-color:#C51B5E;
+  background-color: #C51B5E;
   opacity: 1;
 }
 
@@ -19200,7 +19200,7 @@ ion-item-sliding.active-swipe-left button[expandable] {
 }
 
 .item-ios.activated {
-  
+  background-color: #d9d9d9;
   -webkit-transition-duration: 0ms;
   transition-duration: 0ms;
 }
@@ -51898,22 +51898,11 @@ page-hello-ionic .ios {
 
 page-hello-ionic .titreFDL {
   color: black;
-  font-size: 250%;
+  font-size: 200%;
 }
 
 page-hello-ionic .logo {
   border-radius: 20px;
-}
-
-page-hello-ionic .imgbtn {
-  border-radius: 10px;
-}
-
-page-hello-ionic .logo-client {
-  margin: 2px;
-  max-height: 300px;
-  max-width: auto;
-  border-radius: 10px;
 }
 
 page-hello-ionic .btn {
@@ -51940,12 +51929,6 @@ page-hello-ionic .searchbar {
 
 page-hello-ionic ion-col {
   border: 1px solid transparent;
-}
-
-page-hello-ionic .rdv {
-  font-weight: bold;
-  font-size: 100%;
-  text-align: left;
 }
 
 page-hello-ionic .btn2 {
