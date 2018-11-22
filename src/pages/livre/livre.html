@@ -32,7 +32,12 @@
 
             <fieldset class="fieldLivre">
                     <legend> &nbsp; Exposant &nbsp; </legend>
-                    <p>{{nomExposant}}</p>
+                    <p (click)="onExposantClick(idExposant)">{{nomExposant}}</p>
+            </fieldset>
+
+            <fieldset class="fieldLivre">
+                    <legend> &nbsp; Stand n° &nbsp; </legend>
+                    <p (click)="onNumStandClick(numStand)" class="texte">{{numStand}}</p>
             </fieldset>
 
             <fieldset class="fieldLivre">
