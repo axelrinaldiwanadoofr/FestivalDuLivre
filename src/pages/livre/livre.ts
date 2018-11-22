@@ -3,8 +3,8 @@ import { IonicPage, NavController, NavParams, ToastController, Img } from 'ionic
 //import { FavorisProvider } from '../../providers/favoris/favoris';
 import { RemoteSqlProvider } from '../../providers/remotesql/remotesql';
 import { HelloIonicPage } from '../hello-ionic/hello-ionic';
-import { ExposantPage } from "../../pages/exposant/exposant" ;
-
+import { ExposantPage } from '../../pages/exposant/exposant' ;
+import { StandListExposantPage } from '../../pages/stand-list-exposant/stand-list-exposant';
 /**
  * Generated class for the LivrePage page.
  *
@@ -28,6 +28,7 @@ export class LivrePage implements OnInit
   public image: string;
   public commentaire: string ;
   public nomExposant: string ;
+  public numStand: number ;
 
   constructor(
     public navCtrl: NavController, 
@@ -36,8 +37,8 @@ export class LivrePage implements OnInit
     // public favorisPrd: FavorisProvider,
     // public toastCtrl: ToastController )
   )
-  {
-  }
+    {
+    }
 
   ngOnInit()
   {
@@ -46,9 +47,11 @@ export class LivrePage implements OnInit
 
     if(idLivre)
     {
-      let sqlCommand = "SELECT l.id as id, titre, enResume, commentaire, auteur, editeur, idExposant, l.image as image, nom as nomExposant ";
-      sqlCommand += "FROM livre_18 as l, EXPOSANTS_18 as e  "
-      sqlCommand += "WHERE l.idExposant = e.id AND l.id = " + idLivre;
+      let sqlCommand = "SELECT l.id AS id, titre, enResume, commentaire, auteur, editeur, l.idExposant, l.image AS image, nom AS nomExposant, idStand AS numStand ";
+      sqlCommand += "FROM livre_18 AS l, exposant_18 AS e, etresur_18 AS et ";
+      sqlCommand += "WHERE l.idExposant = e.id ";
+      sqlCommand += "AND l.id = " + idLivre + " ";
+      sqlCommand += "AND et.idExposant=l.idExposant";
       this.sqlPrd.select( sqlCommand, []).then( (data)=>
       {
         let livre = data.rows[0] ;
@@ -62,18 +65,12 @@ export class LivrePage implements OnInit
           this.editeur = livre.editeur;
           this.idExposant = livre.idExposant;
           this.image = livre.image;
-          this.nomExposant = livre.nomExposant ;
-          
+          this.nomExposant = livre.nomExposant;
+          this.numStand = livre.numStand;
         }
       }) ;
-
-      // let idExposant = this.navParams.get("idExposant") ;
-      // if(idExposant)
-      // {
-        
-      // }
-      
     }
+    
   }
 
 
@@ -91,10 +88,16 @@ export class LivrePage implements OnInit
 //    toast.present();
 //  }
 
-  onExposant( idExposant )
+  onExposantClick( idExposant )
   {
-    this.navCtrl.push( ExposantPage, {id: idExposant }) ;
+    this.navCtrl.push(ExposantPage, {id: idExposant }) ;
   }
+
+
+  onNumStandClick(numStand){
+		this.navCtrl.push(StandListExposantPage,{numStand: numStand});
+  }
+
 
   Accueil()
   {

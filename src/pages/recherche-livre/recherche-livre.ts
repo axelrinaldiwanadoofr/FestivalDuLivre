@@ -28,18 +28,19 @@ export class RechercheLivrePage implements OnInit {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public sqlPrd: RemoteSqlProvider) {
+    public sqlPrd: RemoteSqlProvider)
+    {
     this.recherche = new RechercheLivreCriteres();
     this.livres = [];
     this.themes = [];
-    this.trancheAges = [] ;
+    this.trancheAges = [];
     this.auteurs = [];
     this.editeurs = [];
-
   }
 
 
   ngOnInit() {
+    
     // Charge les thèmes
     let sql = "SELECT * FROM theme_18 ORDER BY libelle";
     this.sqlPrd.select(sql, null, this.themes);
@@ -52,47 +53,56 @@ export class RechercheLivrePage implements OnInit {
     sql = "SELECT distinct auteur FROM livre_18 ORDER BY auteur";
     this.sqlPrd.select(sql, null, this.auteurs);
 
-    // Charge les auteurs
+    // Charge les editeurs
     sql = "SELECT distinct editeur FROM livre_18 ORDER BY editeur";
     this.sqlPrd.select(sql, null, this.editeurs);
+    
+    // // Charge les stands
+    // sql = "SELECT * FROM stand_18";
+    // this.sqlPrd.select(sql, this.stands);
 
-    sql = "select l.id as id, titre, editeur, auteur, libelle, l.image as image, nom" ;
-    sql += " from livre_18 as l, theme_18 as t, EXPOSANTS_18 as e" ;
-    sql += " where l.idTheme = t.id and l.idExposant = e.id" ;
-    sql += " order by l.titre" ;
-    this.sqlPrd.select( sql, [], this.livres ) ;
+    // Afficher la liste dès l'arrivée sur la page
+    sql = "SELECT l.id as id, titre, editeur, auteur, libelle, l.image as image, nom, idStand AS numStand ";
+    sql += "FROM livre_18 as l, theme_18 as t, exposant_18 as e, etresur_18 AS et ";
+    sql += "WHERE l.idTheme = t.id and l.idExposant = e.id "
+    sql += "AND et.idExposant = l.idExposant " ;
+    sql += "ORDER BY l.titre" ;
+    this.sqlPrd.select( sql, [], this.livres) ;
   }
 
-  onRecherche() {
+  onRechercheClick() {
     this.livres = [];
 
-    let sql = "select l.id as id, titre, editeur, auteur, libelle, l.image as image, nom, idTrancheAge" ;
-    sql += " from livre_18 as l, theme_18 as t, EXPOSANTS_18 as e" ;
-    sql += " where l.idTheme = t.id and l.idExposant = e.id" ;
-
-    // requête titre et thèmes remplis
+    let sql = "SELECT l.id AS id, titre, editeur, auteur, libelle, l.image AS image, nom, idTrancheAge, idStand AS numStand ";
+    sql += "FROM livre_18 aS l, theme_18 AS t, exposant_18 AS e, etresur_18 AS et ";
+    sql += "WHERE l.idTheme = t.id and l.idExposant = e.id ";
+    sql += "AND et.idExposant = l.idExposant ";
+    // requête si titre rempli
     if (this.recherche.titre ) 
     {
       sql += " AND titre LIKE '" + '%' + this.recherche.titre + '%' + "' " ;
     }
-
+  // requête si auteur rempli
     if (this.recherche.auteur && this.recherche.auteur != "0" ) 
     {
       sql += " AND auteur LIKE '" + '%' + this.recherche.auteur + '%' + "' " ;
     }
+    // requête si editeur rempli
     if (this.recherche.editeur && this.recherche.editeur != "0" ) 
     {
       sql += " AND editeur LIKE '" + '%' + this.recherche.editeur + '%' + "' " ;
     }
+    // requête si theme rempli
     if( this.recherche.themeId && this.recherche.themeId != "0" ) 
     {
       sql += " AND idTheme=" + this.recherche.themeId ;
     }
+    // requête si tranche d'âge rempli
     if( this.recherche.trancheAgeId && this.recherche.trancheAgeId != "0" ) 
     {
       sql += " AND idTrancheAge=" + this.recherche.trancheAgeId ;
     }
-
+    // classé par titre
     sql += " ORDER BY titre" ;
     this.sqlPrd.select(sql, null, this.livres);
   }

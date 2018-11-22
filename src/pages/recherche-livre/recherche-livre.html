@@ -49,7 +49,7 @@
         </ion-item>        
     </ion-list>
     
-    <button ion-button full (click)="onRecherche()" class="btn" >Rechercher</button>
+    <button ion-button full (click)="onRechercheClick()" class="btn" >Rechercher</button>
     <ion-list>
         <ion-item-divider class="debutListe">Liste des livres</ion-item-divider>
         <!-- <button ion-button full [hidden]="!exposants.length || exposants.length>6" (click)="onPlan()">Afficher sur le plan</button> -->
@@ -66,6 +66,9 @@
             </p>
             <p>
                 Exposant: {{l.nom}}
+            </p>
+            <p>
+                Stand n°{{l.numStand}}
             </p>
         </ion-item>
     </ion-list>
