@@ -79,7 +79,7 @@ export class UnePersonnePage implements OnInit
     let m = [] ;
     this.rdv.forEach( (r)=>
     {
-      m.push( new PlanMarqueur( r.numStand, $this.unePersonne.nom + " " + $this.unePersonne.prenom )) ;
+      m.push( new PlanMarqueur( r.numStand, this.unePersonne.nom + " " + this.unePersonne.prenom )) ;
     }) ;
     this.navCtrl.push( PlansPage, {marqueurs: m} )
   }
