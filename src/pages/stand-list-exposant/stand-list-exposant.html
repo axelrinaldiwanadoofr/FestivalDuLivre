@@ -17,13 +17,13 @@
 <ion-content class="background" padding>
   <ion-list>
                  
-      <ion-item-divider class="Liste">Liste des exposant</ion-item-divider>
+      <ion-item-divider class="Liste">Liste des exposants</ion-item-divider>
       <ion-item *ngFor="let e of exposants" (click)="onExposant(e)">
         {{e.nom}}
       </ion-item>
       <br>   
       <ion-item-divider class="Liste">Liste des rendez vous</ion-item-divider>
-      <ion-item *ngFor="let r of rdvs"><!--(click)="onRdv(r)"-->
+      <ion-item *ngFor="let r of rdvs" (click)="onRdv(r)"><!--(click)="onRdv(r)"-->
         <p style="white-space:initial;"><b>{{r.titre}}</b></p>  
         <br>
         <p>stand n° <b>{{r.numStand}}</b></p>
