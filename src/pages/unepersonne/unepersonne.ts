@@ -22,8 +22,8 @@ import { UnRendezVousPage } from '../../pages/un-rendez-vous/un-rendez-vous' ;
 export class UnePersonnePage implements OnInit
 {
   private unePersonne:  {id:number,nom:string,prenom:string};
-  private dedicaces: Array<{id:number, numstand: number, libelle: string, jour: string}> ;
-  private rdv: Array<{numStand: number, date: string, heure: string, duree: string, titre: string, resume: string, age: string, type: string }>
+  private dedicaces: Array<{id:number, idStand: number, libelle: string, jour: string}> ;
+  private rdv: Array<{idStand: number, date: string, heure: string, duree: string, nom: string, resume: string, age: string, type: string }>
 
   constructor(
     public navCtrl: NavController, 
@@ -68,7 +68,7 @@ export class UnePersonnePage implements OnInit
     let m = [] ;
     this.dedicaces.forEach( (d)=>
     {
-      m.push( new PlanMarqueur( d.numstand, d.libelle )) ;
+      m.push( new PlanMarqueur( d.idStand, d.libelle )) ;
     }) ;
     this.navCtrl.push( PlansPage, {marqueurs: m} )
   }
@@ -79,24 +79,24 @@ export class UnePersonnePage implements OnInit
     let m = [] ;
     this.rdv.forEach( (r)=>
     {
-      m.push( new PlanMarqueur( r.numStand, $this.unePersonne.nom + " " + $this.unePersonne.prenom )) ;
+      m.push( new PlanMarqueur( r.idStand, $this.unePersonne.nom + " " + $this.unePersonne.prenom )) ;
     }) ;
     this.navCtrl.push( PlansPage, {marqueurs: m} )
   }
   
   onFavoris()
   {
-    this.dedicaces.forEach( (d)=>
+    /*this.dedicaces.forEach( (d)=>
     {
-      this.favorisPrd.ajoute( d.numstand, d.id, 
+      this.favorisPrd.ajoute( d.idStand, d.id, 
         this.unePersonne.nom + " " + this.unePersonne.prenom + " dédicace chez " + d.libelle ) ;
-    }) ;
+    }) ;*/
 
     let r = this.rdv[0] ;
     if( r )
     {
-      this.favorisPrd.ajoute( r.numStand, 999, 
-        "RDV avec " + this.unePersonne.nom + " " + this.unePersonne.prenom + " pour " + r.titre ) ;
+      this.favorisPrd.ajoute( r.idStand, 999, 
+        "RDV avec " + this.unePersonne.nom + " " + this.unePersonne.prenom + " pour " + r.nom ) ;
     }
 
     let toast = this.toastCtrl.create({
