@@ -16,7 +16,6 @@
   <h4  class="debutListe">Liste des exposants</h4>
   <ion-list>
       <button ion-item *ngFor="let exposant of tab" (click)="onExposant(exposant)">{{exposant.nom}}</button>      
-      <button class="btn" ion-button full [hidden]="!tab.length || tab.length>6" (click)="onPlan()">Afficher sur le plan</button>            
     </ion-list>
 </ion-content>
 
