@@ -20,29 +20,23 @@
             <br>-->
 
             <h2  class="titre">
-                {{r.nomExposant}}
+                {{r.nom}}
             </h2>
             <br>
             
         <ion-item class="Liste">  
 
-            <p>Stand n° <b>{{r.idStand}}</b></p>
+            <p>Stand n° <b>{{r.numStand}}</b></p>
             <br>
-            
-
-            
             <p *ngIf="r.description" >{{r.description}}</p>
             <br>
             <p>{{r.duree}} pour {{r.age}}</p><br>
-            <p>    
-            
-
+            <p>
                 <b>{{r.date}} <span [hidden]="!r.duree">{{r.heure}}</span></b>
             </p>  
                
         </ion-item>   
-        <button ion-button full (click)="onExposant(r)" class="btn">Plus d'informations</button>
-        <br>      
+        <!--<button ion-button full (click)="onExposant(r)" class="btn">Plus d'informations</button>-->
         <button ion-button full (click)="onFavoris(r)" class="btn">Ajouter aux favoris</button> 
         <button ion-button full (click)="onRdvPlan(r)" class="btn">Afficher sur le plan</button>
                   
