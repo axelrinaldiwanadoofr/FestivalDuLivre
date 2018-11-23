@@ -27,7 +27,7 @@
             </ion-select>
         </ion-item>
         <br>
-        <button ion-button class="btn" full (click)="onRecherche()">Rechercher</button>
+        <button ion-button class="btn"  color="rouge" full (click)="onRecherche()">Rechercher</button>
     </ion-list>
     <ion-list>
         <ion-item-divider class="debutListe">Liste des exposants</ion-item-divider>
@@ -39,6 +39,6 @@
             <p>Stand n° {{e.idStand}}</p>
         </ion-item>
         <br>
-        <button ion-button full [hidden]="!exposants.length || exposants.length>1" (click)="onPlan()"class="btn">Afficher sur le plan</button>
+        <button ion-button full [hidden]="!exposants.length || exposants.length>1" (click)="onPlan()"class="btn"  color="rouge">Afficher sur le plan</button>
     </ion-list>
 </ion-content>

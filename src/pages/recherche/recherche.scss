@@ -10,7 +10,7 @@ page-recherche {
         color:white;
         background: #C51B5E;
         border-radius: 10% / 55%;
-         
+        
     }
     ion-list {
         text-align: center;
@@ -18,4 +18,8 @@ page-recherche {
     ion-icon {
         font-size: 30px;
     }
+    button:active{
+        background-color: #C51B5E;
+    }
+    
 }
