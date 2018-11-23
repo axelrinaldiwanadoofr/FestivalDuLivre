@@ -19,21 +19,13 @@
 
 <ion-content class="background">
     <ion-grid>
-        <p></p>
-        <ion-row row-auto>
-            <!--
-            <ion-col>
-                <br>
-                <img src="assets/img/bandeauSuggestionRDV.png"><br>
-                <p class="rdv" *ngFor="let rdvs of rdv">{{rdvs.heure}} : Stand {{rdvs.titre}} n° {{rdvs.numStand}} ({{rdvs.libelle}})</p>
-            </ion-col>
-        -->
-        </ion-row>
-        <h1 class="ios">Informations</h1>
-        <ion-row>
+        <h1 class="titreFDL">Festival du livre de Colmar</h1>
 
-            <ion-col>
-                <button class="btn" (click)="restaurants()"><img src="assets/img/Repas.png"><br><strong>Restauration</strong></button>
+        <h1 class="ios">Informations</h1>
+        <ion-row> <!-- Lignes des images REsto/Plan et Rechercher-->
+
+            <ion-col> <!-- 1 ion-col est une colonne-->
+                <button class="btn" (click)="restaurants()"><img src="assets/img/Repas.png" ><br><strong>Restauration</strong></button>
             </ion-col>
                         
             <ion-col>
@@ -51,6 +43,11 @@
                 <button class="btn" (click)="jeuPiste()"><img class="" src="assets/img/Jeudepiste.png"><br></button>
             </ion-col>
         </ion-row>
+        <!--<ion-row>
+            <ion-col>
+                <img src="assets/img/TanguyV2petiteReso.png">
+            </ion-col>
+        </ion-row>-->
         
         <h1 class="ios">Nous suivre</h1>
         

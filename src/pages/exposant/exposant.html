@@ -28,7 +28,7 @@
         </ion-item>     
         <br>
                             
-        <ion-item-divider [hidden]="!intervenants.length" class="Liste">Dédicaces</ion-item-divider>
+        <ion-item-divider [hidden]="!intervenants.length" class="Liste">Signatures</ion-item-divider>
         <ion-item *ngFor="let i of intervenants" >
             <h2>{{i.nom}} {{i.prenom}}</h2>
             <p item-end>{{i.jour}}</p>
@@ -40,8 +40,8 @@
         
 </ion-content>
 
-<!--<ion-footer>
+<ion-footer>
     <ion-toolbar class="accueil">
         <button class="btnacc" (click)="Accueil()" ion-button round><ion-icon style="font-size:20px;" name="home"></ion-icon>&nbsp;Accueil</button>
     </ion-toolbar>
-</ion-footer>-->
+</ion-footer>

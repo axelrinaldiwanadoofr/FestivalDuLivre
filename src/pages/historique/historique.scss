@@ -3,25 +3,25 @@ page-historique {
         color:#C51B5E;
     }
 	
-	fieldset{
-	text-align: left;
-	border:2px solid #BDAC98;
-    -moz-border-radius:8px;
-    -webkit-border-radius:8px;	
-    border-radius:8px;	
-	margin-bottom: 5%;
+	.fieldsetHistoire{
+		text-align: justify;
+	    border:2px solid lightgrey;
+        -moz-border-radius:8px;
+        -webkit-border-radius:8px;	
+        border-radius:8px;	
+	    margin-bottom: 5%;
 	}
 	
 	legend
 	{
 	  font-size: 113%;
-	  Font-Weight: Bold;
+	  font-Weight: Bold;
 	  color:#C51B5E;
 	}
 	
 	div
 	{
-	text-align: center;
+	text-align: justify;
 	}
 	
 }
