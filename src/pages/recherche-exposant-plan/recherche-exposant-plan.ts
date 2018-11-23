@@ -42,12 +42,6 @@ export class RechercheExposantPlanPage implements OnInit
     let sql = "select id, libelle from theme_18 order by libelle";
     this.sqlPrd.select( sql, null, this.themes );
 
-    sql = "select idStand, id, nom "
-    sql += "from EXPOSANTS_18 "
-    sql += "JOIN etresur_18 ON id = idExposant " 
-    sql += "order by nom"
-    this.sqlPrd.select( sql , null, this.exposants ) ;
-
   }
 
   onRecherche()

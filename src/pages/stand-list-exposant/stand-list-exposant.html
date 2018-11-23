@@ -17,13 +17,13 @@
 <ion-content class="background" padding>
   <ion-list>
                  
-      <ion-item-divider class="Liste">Liste des exposants</ion-item-divider>
+      <ion-item-divider class="Liste">Liste des exposant</ion-item-divider>
       <ion-item *ngFor="let e of exposants" (click)="onExposant(e)">
         {{e.nom}}
       </ion-item>
       <br>   
       <ion-item-divider class="Liste">Liste des rendez vous</ion-item-divider>
-      <ion-item *ngFor="let r of rdvs" (click)="onRdv(r)"><!--(click)="onRdv(r)"-->
+      <ion-item *ngFor="let r of rdvs"><!--(click)="onRdv(r)"-->
         <p style="white-space:initial;"><b>{{r.titre}}</b></p>  
         <br>
         <p>stand n° <b>{{r.numStand}}</b></p>
@@ -40,10 +40,4 @@
       <button class="button-list" ion-button full (click)="onFavoris()">Ajouter aux favoris</button>     
   </ion-list>
 </ion-content>
-
-<ion-footer>
-    <ion-toolbar class="accueil">
-        <button class="btnacc" (click)="Accueil()" ion-button round><ion-icon style="font-size:20px;" name="home"></ion-icon>&nbsp;Accueil</button>
-    </ion-toolbar>
-</ion-footer>
 

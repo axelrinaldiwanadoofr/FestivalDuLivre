@@ -7,7 +7,12 @@ page-halls {
         height: 50px;
         border-radius: 10% / 55%;
         background: #C51B5E;
-        
     }
-    
+    .accueil {
+        text-align: center;
+    }
+    .btnacc {
+        height: 50px;
+        background: linear-gradient(to top, #0066cc 17%, #66ccff 91%);
+    }
 }
