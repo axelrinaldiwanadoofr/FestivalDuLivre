@@ -23,10 +23,10 @@ import { UnRendezVousPage } from '../../pages/un-rendez-vous/un-rendez-vous' ;
 export class StandListExposantPage implements OnInit
 {
 
-  private numStand: number ;
+  private idStand: number ;
   private exposants: Array<any> ;
   private rdvs: Array<{
-    numStand: number, 
+    idStand: number, 
     date: string, 
     heure: string, 
     duree: string, 
@@ -49,25 +49,28 @@ export class StandListExposantPage implements OnInit
 
   ngOnInit()
   {
-    this.numStand = this.navParams.get( "numStand" );
+    this.idStand = this.navParams.get( "numStand" );
 
-    if( this.numStand )
+    if( this.idStand )
     {
-      let sqlCommand = "SELECT DISTINCT etresur_18.idStand as numstand, exposant_18.id as idExposant, exposant_18.nom ";
+      // Liste des exposants
+      let sqlCommand = "SELECT DISTINCT etresur_18.idStand as idStand, exposant_18.id as idExposant, exposant_18.nom ";
       sqlCommand += "FROM exposant_18 ";
       sqlCommand += "JOIN etresur_18 ON exposant_18.id = etresur_18.idExposant "
-      sqlCommand += "WHERE etresur_18.idStand = " + this.numStand
+      sqlCommand += "WHERE etresur_18.idStand = " + this.idStand
 
       this.sqlPrd.select(sqlCommand, [], this.exposants ) ;
       
-      sqlCommand = "SELECT DISTINCT stand_18.id as numStand, rdv_18.duree, rdv_18.jour as date, rdv_18.heure, rdv_18.nom, rdv_18.nbMaxPlace, rdv_18.description, trancheage_18.libelle as age "
+      // Liste des RDV
+      sqlCommand = "SELECT DISTINCT stand_18.id as idStand, rdv_18.duree, rdv_18.jour, rdv_18.heure, rdv_18.nom, rdv_18.nbMaxPlace, rdv_18.description, trancheage_18.libelle as age, typerdv_18.nom as typeRdv "
       sqlCommand += "FROM rdv_18 "
       sqlCommand += "LEFT JOIN stand_18 ON rdv_18.idStand = stand_18.id "
       sqlCommand += "LEFT JOIN trancheage_18 ON rdv_18.idTrancheAge = trancheage_18.id "
+      sqlCommand += "JOIN typerdv_18 ON rdv_18.idTypeRDV = typerdv_18.id "
       sqlCommand += "WHERE rdv_18.idStand = ? "
-      sqlCommand += "ORDER BY rdv_18.jour DESC"
+      sqlCommand += "ORDER BY rdv_18.jour DESC, rdv_18.heure ASC"
 
-      this.sqlPrd.select(sqlCommand, [this.numStand], this.rdvs);
+      this.sqlPrd.select(sqlCommand, [this.idStand], this.rdvs);
     }     
   }
 
@@ -78,16 +81,16 @@ export class StandListExposantPage implements OnInit
 
   onPlan()
   {
-    let m = [new PlanMarqueur( this.numStand, "" )] ;
+    let m = [new PlanMarqueur( this.idStand, "" )] ;
     this.navCtrl.push( PlansPage, {marqueurs: m} )
   }
 
   onFavoris()
   {
-    this.favorisPrd.ajoute( this.numStand ) ;
+    this.favorisPrd.ajoute( this.idStand ) ;
 
     let toast = this.toastCtrl.create({
-      message: 'Stand n° ' + this.numStand + ' ajouté aux favoris',
+      message: 'Stand n° ' + this.idStand + ' ajouté aux favoris',
       duration: 1000 
     });
     toast.present();
@@ -109,7 +112,7 @@ export class StandListExposantPage implements OnInit
     if( r.duree == "en continu") str += " en continu" ;
     else str += " à " + r.heure ;
 
-    this.favorisPrd.ajoute( r.numStand, 999, str ) ;
+    this.favorisPrd.ajoute( r.idStand, 999, str ) ;
 
     let toast = this.toastCtrl.create({
       message: 'Rendez-vous ajouté aux favoris.',

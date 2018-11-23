@@ -20,24 +20,27 @@
 
 <ion-content class="background" padding>
     <ion-list>
-        <img *ngIf="image" src="{{image }}" />
+        <img *ngIf="image" src="{{image}}" />
         <ion-card *ngIf="description">
-            <p>
             {{description}}
-            </p>
         </ion-card>            
         <ion-item-divider [hidden]="!stands.length" class="Liste">Liste des stands</ion-item-divider>
         <ion-item *ngFor="let s of stands" class="finListe">
-            <p>{{ intervenants.nom }}</p>
             <p>Stand n° {{s.numStand}} hall n° {{s.numHall}}</p>
         </ion-item>     
         <br>
                             
-        <ion-item-divider [hidden]="!intervenants.length" class="Liste">Signatures</ion-item-divider>
-        <ion-item *ngFor="let i of intervenants" >
-            <h2>{{i.nom}} {{i.prenom}}</h2>
-            <p item-end>{{i.jour}}</p>
-        </ion-item>
+        <ion-item-divider class="Liste" [hidden]="!rdvs.length">Liste des rendez vous</ion-item-divider>
+        <ion-item *ngFor="let r of rdvs" (click)="onRdv(r)">
+            <p style="white-space:initial;"><b>{{r.nom}}</b> ({{r.typeRdv}})</p>  
+            <br>
+            <p [hidden]="!r.duree"><b>le {{r.jour}} à {{r.heure}}</b></p>
+            <br>
+            <p [hidden]="!r.description" style="white-space:initial;">{{r.description}}</p>
+            <br>
+            <p>{{r.duree}} pour {{r.age}}</p><br>
+            <p class="addFavorie" (click)="onFavorisRDV(r)"><ion-icon name="star" class="star"></ion-icon></p>
+        </ion-item> 
         <br>
         <button ion-button full [hidden]="!stands.length" (click)="onPlan()" class="btn" color="rouge">Afficher sur le plan</button>    
         <button class="btn" color="rouge" ion-button full (click)="onFavoris()">Ajouter aux favoris</button>
