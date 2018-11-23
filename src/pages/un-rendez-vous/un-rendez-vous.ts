@@ -5,6 +5,7 @@ import { HelloIonicPage } from '../hello-ionic/hello-ionic';
 import { FavorisProvider } from '../../providers/favoris/favoris' ;
 import { ToastController } from 'ionic-angular';
 import { ExposantPage } from '../../pages/exposant/exposant' ;
+import { RemoteSqlProvider } from '../../providers/remotesql/remotesql';
 
 /**
  * Generated class for the UnRendezVousPage page.
@@ -20,19 +21,31 @@ import { ExposantPage } from '../../pages/exposant/exposant' ;
 })
 export class UnRendezVousPage implements OnInit
 {
-  private r: {numStand:number, titre:string, date:string, heure:string, duree: string, resume: string, age: string, type: string, nomExposant: string} ;
+  private r: {id:number, numStand:number, titre:string, date:string, heure:string, duree: string, resume: string, age: string, type: string, nomExposant: string} ;
+  public personne: Array<{nom: string, pernom: string}> ;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public favorisPrd: FavorisProvider,
+    public sqlPrd: RemoteSqlProvider,
     public toastCtrl: ToastController ) 
   {
+    this.personne = [] ;
   }
 
   ngOnInit()
   {
-    this.r = this.navParams.get( "rdv" ) ;    
+    this.r = this.navParams.get( "rdv" ) ;  
+    this.onPersonne(this.r);
+  }
+
+  onPersonne(r){
+    let sql = "SELECT nom, prenom FROM personne_18";  
+    sql += " JOIN participer_18 ON personne_18.id = participer_18.idPersonne";   
+    sql += " WHERE participer_18.idRDV = " + r.id ;      
+
+    this.sqlPrd.select(sql, null, this.personne);
   }
 
   Accueil(){

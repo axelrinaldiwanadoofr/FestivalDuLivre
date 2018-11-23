@@ -28,10 +28,9 @@
 
             <p>Stand n° <b>{{r.idStand}}</b></p>
             <br>
-            
-
-            
-            <p *ngIf="r.description" >{{r.description}}</p>
+            <p [hidden]="!r.description" style="white-space:initial;">{{r.description}}</p>
+            <br>
+            <p *ngFor="let p of personne" style="white-space:initial;">{{p.nom}} {{p.prenom}}</p>
             <br>
             <p>{{r.duree}} pour {{r.age}}</p><br>
             <p>    
