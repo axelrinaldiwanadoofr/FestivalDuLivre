@@ -30,12 +30,13 @@ export class RechercheRdvPage {
   public uneHeure :string;
   public uneTranche:number;
   public unTheme:number;
+  public uneDuree:string;
   public uneTrancheAge : Array<{id:number}>;
 
   public typesRDV: Array<{id: number, nom: string}>;
   public unTypeRDV: number;
 
-  public mesRDV: Array<{idStand:number, nom:string, jour:string, heure:string, duree: string, description: string, age: string, type: string, nomExposant: string}>;
+  public mesRDV: Array<{id:number, idStand:number, nom:string, jour:string, heure:string, duree: string, description: string, age: string, type: string, nomExposant: string}>;
 
   constructor( 
     public navCtrl: NavController, 
@@ -56,11 +57,12 @@ export class RechercheRdvPage {
     if( !d.getDay()  ) this.unJour="dimanche";
     else this.unJour="samedi";
 
-    this.uneHeure= d.getHours() + ":" + d.getMinutes() ;
+    this.uneHeure = d.getHours() + ":" + d.getMinutes() ;
     this.uneTranche=0;
     this.unTheme=0;
     this.uneTrancheAge=[];
     this.unTypeRDV=0;
+    this.uneDuree="";
     this.mesRDV=[];
   }
 
@@ -87,18 +89,18 @@ export class RechercheRdvPage {
 
     this.mesRDV = [] ;
 
+
       //
       // Recherche si l'utilisateur ne saisi ni tranche d'age ni theme
       //
-      let sql = "SELECT DISTINCT rdv_18.idStand, jour, heure, duree, rdv_18.nom, nbMaxPlace, rdv_18.description as description, trancheage_18.libelle as age, typerdv_18.nom as type, e.nom as nomExposant, idExposant";
+      let sql = "SELECT DISTINCT rdv_18.id, rdv_18.idStand, jour, heure, duree, rdv_18.nom, nbMaxPlace, rdv_18.description as description, trancheage_18.libelle as age, typerdv_18.nom as type, e.nom as nomExposant, idExposant";
       sql +=" FROM trancheage_18";
       sql +=" JOIN rdv_18 ON trancheage_18.id = rdv_18.idTrancheAge";
       sql +=" JOIN typerdv_18 ON rdv_18.idTypeRDV = typerdv_18.id";
       sql +=" JOIN parlerde_18 ON rdv_18.id = parlerde_18.idRDV";
       sql +=" JOIN theme_18 ON parlerde_18.idTheme = theme_18.id";
       sql +=" JOIN exposant_18 as e ON rdv_18.idExposant = e.id";
-      sql +=" WHERE jour='" + this.unJour + "' AND heure>='" + this.uneHeure + "'";
-      
+      sql +=" WHERE jour = '" + this.unJour + "'"; 
 
       if(this.unTheme != 0){
         sql += " AND theme_18.id = " + this.unTheme; 
@@ -112,7 +114,15 @@ export class RechercheRdvPage {
         sql += " AND trancheage_18.id = " + this.uneTranche;
       }
 
+      if(this.unTypeRDV == 11){
+        sql += " AND HOUR(heure) <= HOUR('19:00:00')"; 
+      }  
+      else{
+        sql +=" AND HOUR(heure) >= HOUR('" + this.uneHeure + "')";
+      }
+
       sql += " order by jour desc, heure";
+
       this.sqlPrd.select(sql, null, this.mesRDV);
   }
 
