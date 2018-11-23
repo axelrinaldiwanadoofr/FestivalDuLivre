@@ -20,7 +20,12 @@
 
 <ion-content class="background" padding>
     <ion-list>
-        <img *ngIf="image" src="{{ image }}" />
+        <img *ngIf="image" src="{{image }}" />
+        <ion-card *ngIf="description">
+            <p>
+            {{description}}
+            </p>
+        </ion-card>            
         <ion-item-divider [hidden]="!stands.length" class="Liste">Liste des stands</ion-item-divider>
         <ion-item *ngFor="let s of stands" class="finListe">
             <p>{{ intervenants.nom }}</p>

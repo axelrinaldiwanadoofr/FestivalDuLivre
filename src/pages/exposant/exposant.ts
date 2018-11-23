@@ -24,6 +24,7 @@ export class ExposantPage implements OnInit
   public id: number ;
   public libelle: string ;
   public image: string ;
+  public description: string ;
 
   public stands: Array<{numStand: number, numHall: number}> ;
   public intervenants: Array<{nom: string, prenom: string, jour: string}> ;
@@ -44,7 +45,7 @@ export class ExposantPage implements OnInit
     let id = this.navParams.get("id");
     if(id)
     {
-      let sqlCommand = "SELECT id, nom, image FROM exposant_18 where id = " + id ;
+      let sqlCommand = "SELECT id, nom, image, description FROM exposant_18 where id = " + id ;
       this.sqlPrd.select(sqlCommand, []).then( (data)=>
       {
         let e = data.rows[0] ;
@@ -53,6 +54,7 @@ export class ExposantPage implements OnInit
           this.id = e.id ;
           this.libelle = e.nom ;
           this.image = e.image ;
+          this.description = e.description ;
         }
         
         // Liste des stands
