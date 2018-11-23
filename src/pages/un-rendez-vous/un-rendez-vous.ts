@@ -38,6 +38,7 @@ export class UnRendezVousPage implements OnInit
   {
     this.r = this.navParams.get( "rdv" ) ;  
     this.onPersonne(this.r);
+
   }
 
   onPersonne(r){
