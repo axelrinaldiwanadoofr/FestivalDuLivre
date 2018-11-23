@@ -25,7 +25,7 @@
         </ion-item>      
         <ion-item-divider class="debutListe" [hidden]="!rdv.length">Les rendez-vous</ion-item-divider>
         <ion-item *ngFor="let r of rdv">
-          <p style="white-space:initial;"><b>Type rendez-vous:</b> {{r.nom}}</p>  
+          <p style="white-space:initial;"><b>Type rendez-vous :</b> {{r.nom}}</p>  
           <p></p>
                  <p [hidden]="!r.description" style="white-space:initial;"><b>Description:</b> {{r.description}}</p>
                  <br>
