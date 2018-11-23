@@ -62,11 +62,12 @@ export class StandListExposantPage implements OnInit
       this.sqlPrd.select(sqlCommand, [], this.exposants ) ;
       
       // Liste des RDV
-      sqlCommand = "SELECT DISTINCT stand_18.id as idStand, rdv_18.duree, rdv_18.jour, rdv_18.heure, rdv_18.nom, rdv_18.nbMaxPlace, rdv_18.description, trancheage_18.libelle as age, typerdv_18.nom as typeRdv "
+      sqlCommand = "SELECT DISTINCT rdv_18.id, exposant_18.nom as nomExposant, stand_18.id as idStand, rdv_18.duree, rdv_18.jour, rdv_18.heure, rdv_18.nom, rdv_18.nbMaxPlace, rdv_18.description, trancheage_18.libelle as age, typerdv_18.nom as typeRdv "
       sqlCommand += "FROM rdv_18 "
       sqlCommand += "LEFT JOIN stand_18 ON rdv_18.idStand = stand_18.id "
       sqlCommand += "LEFT JOIN trancheage_18 ON rdv_18.idTrancheAge = trancheage_18.id "
       sqlCommand += "JOIN typerdv_18 ON rdv_18.idTypeRDV = typerdv_18.id "
+      sqlCommand += "JOIN exposant_18 ON rdv_18.idExposant = exposant_18.id "
       sqlCommand += "WHERE rdv_18.idStand = ? "
       sqlCommand += "ORDER BY rdv_18.jour DESC, rdv_18.heure ASC"
 

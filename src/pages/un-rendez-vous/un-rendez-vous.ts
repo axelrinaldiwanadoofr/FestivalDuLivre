@@ -21,7 +21,7 @@ import { RemoteSqlProvider } from '../../providers/remotesql/remotesql';
 })
 export class UnRendezVousPage implements OnInit
 {
-  private r: {id:number, numStand:number, titre:string, date:string, heure:string, duree: string, resume: string, age: string, type: string, nomExposant: string} ;
+  private r: {id:number, idStand:number, titre:string, date:string, heure:string, duree: string, resume: string, age: string, type: string, nomExposant: string} ;
   public personne: Array<{nom: string, pernom: string}> ;
 
   constructor(
@@ -56,11 +56,9 @@ export class UnRendezVousPage implements OnInit
   onRdvPlan(r)
   {
     let m = [] ;
-    
-      m.push( new PlanMarqueur( r.numStand, r.titre ) ) ;
-    
-    this.navCtrl.push( PlansPage, {marqueurs: m} ) ;
-  }
+    m.push( new PlanMarqueur( this.r.idStand, this.r.nomExposant )) ;
+    this.navCtrl.push( PlansPage, {marqueurs: m} )
+ }
 
   onFavoris( r )
   {
