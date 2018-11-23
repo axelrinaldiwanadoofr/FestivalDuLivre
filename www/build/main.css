@@ -51741,7 +51741,7 @@ page-ajout .label-md-text-color {
 }
 
 page-ajout .label-md-text-color-focused {
-  color: #cd3d;
+  color: #C51B5E;
 }
 
 page-contact .h1 {
@@ -52597,6 +52597,10 @@ page-un-rendez-vous .Liste {
   background: #DED8CF;
   color: black;
   border-radius: 10px 10px 10px 10px;
+}
+
+page-un-rendez-vous .Liste p {
+  white-space: initial;
 }
 
 page-unepersonne .btn {
