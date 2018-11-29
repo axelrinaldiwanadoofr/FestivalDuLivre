@@ -15,36 +15,26 @@
     
 <ion-content class="background" padding>
     <ion-list>     
-        
-            <!--<p style="white-space:initial;"><b>{{r.nom}}</b></p>  
-            <br>-->
-
-            <h2  class="titre">
-                {{r.nomExposant}}
-            </h2>
-            <br>
-            
+                    
         <ion-item class="Liste">  
 
-            <p>Stand n° <b>{{r.idStand}}</b></p>
+            <p>Stand n° <b>{{r.idStand}}</b> <span>le {{r.jour}} à {{r.heure}}</span></p>
             <br>
-            
-
-            
-            <p *ngIf="r.description" >{{r.description}}</p>
+            <p>Type : <b>{{r.typeRdv}}</b></p>
+            <br>
+            <p>Exposant : <b>{{r.nomExposant}}</b></p>
+            <br>
+            <p [hidden]="!r.description" style="white-space:initial;">{{r.description}}</p>
+            <br>
+            <h2 *ngIf="personne.length">Participants</h2>
+            <p *ngFor="let p of personne" style="white-space:initial;">{{p.nom}} {{p.prenom}}</p>
             <br>
             <p>{{r.duree}} pour {{r.age}}</p><br>
-            <p>    
-            
-
-                <b>{{r.date}} <span [hidden]="!r.duree">{{r.heure}}</span></b>
-            </p>  
                
         </ion-item>   
-        <button ion-button full (click)="onExposant(r)" class="btn">Plus d'informations</button>
-        <br>      
-        <button ion-button full (click)="onFavoris(r)" class="btn">Ajouter aux favoris</button> 
-        <button ion-button full (click)="onRdvPlan(r)" class="btn">Afficher sur le plan</button>
+        <!--<button ion-button full (click)="onExposant(r)" class="btn">Plus d'informations</button>-->
+        <button ion-button full (click)="onFavoris(r)" class="btn" color="rouge">Ajouter aux favoris</button> 
+        <button ion-button full (click)="onRdvPlan(r)" class="btn" color="rouge">Afficher sur le plan</button>
                   
     </ion-list>
         

@@ -22,7 +22,7 @@ $app-direction: ltr;
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
 $colors: ( primary: #488aff, secondary: #32db64, danger: #f53d3d, light: #f4f4f4, dark: #222, orange:#ff944d, cyan:#2e7d32, 
-/*#69f0ae*/ vivi : #4A148C, lime:#32CD32 ,
+/*#69f0ae*/ vivi : #4A148C, lime:#32CD32 , rouge: #C51B5E,
 
 twitter: ( base: #55acee, contrast: #000000), white:#ffffff, lightbleu:#55acef, red:red, );
 $white: map-get($colors, white);

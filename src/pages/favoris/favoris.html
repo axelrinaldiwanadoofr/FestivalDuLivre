@@ -19,9 +19,9 @@
             <p style="white-space:initial;" (click)="onFavorisClick( f )">
                 <b>Stand n° {{f.idStand}}</b> <span *ngIf='f.idExposant'>{{f.nomExposant}}</span>
             </p>
-            <button ion-button  item-end (click)="onRemoveFavorisClick( f )" class="btnSuppr">Supprimer</button>
+            <button ion-button  item-end (click)="onRemoveFavorisClick( f )" class="btnSuppr" color="rouge" > <ion-icon name="md-trash"></ion-icon></button>
         </ion-item>   
     </ion-list>
-    <button ion-button full (click)="onPlan()"class="btn">Afficher sur le plan</button> 
+    <button ion-button full (click)="onPlan()"class="btn" color="rouge">Afficher sur le plan</button> 
 </ion-content>
 

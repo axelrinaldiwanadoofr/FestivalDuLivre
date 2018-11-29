@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RemoteSqlProvider } from '../../providers/remotesql/remotesql';
 import { LivrePage } from '../../pages/livre/livre';
@@ -22,8 +22,9 @@ export class RechercheLivrePage implements OnInit {
   private livres: Array<any>;
   private themes: Array<{ id: string, libelle: string }>;
   private trancheAges: Array<{ id: string, libelle: string }>;
-  private auteurs: Array<string>
-  private editeurs: Array<string>
+  private auteurs: Array<string> ;
+  private editeurs: Array<string> ;
+  //Input() idExposant: number ;
 
   constructor(
     public navCtrl: NavController,

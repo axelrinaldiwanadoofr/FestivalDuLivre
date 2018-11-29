@@ -5,6 +5,7 @@ import { PlansPage, PlanMarqueur} from '../plans/plans';
 import { HelloIonicPage } from '../hello-ionic/hello-ionic';
 import { FavorisProvider } from '../../providers/favoris/favoris' ;
 import { ToastController } from 'ionic-angular';
+import { UnRendezVousPage } from '../un-rendez-vous/un-rendez-vous' ;
 
 /**
  * Generated class for the ExposantPage page.
@@ -24,9 +25,11 @@ export class ExposantPage implements OnInit
   public id: number ;
   public libelle: string ;
   public image: string ;
+  public description: string ;
 
   public stands: Array<{numStand: number, numHall: number}> ;
   public intervenants: Array<{nom: string, prenom: string, jour: string}> ;
+  public rdvs: Array<any> ;
 
   constructor(
     public navCtrl: NavController, 
@@ -36,7 +39,7 @@ export class ExposantPage implements OnInit
     public toastCtrl: ToastController ) 
   {
     this.stands = [] ;
-    this.intervenants = [] ;
+    this.rdvs = [] ;
   }
 
   ngOnInit()
@@ -44,7 +47,7 @@ export class ExposantPage implements OnInit
     let id = this.navParams.get("id");
     if(id)
     {
-      let sqlCommand = "SELECT id, nom, image FROM exposant_18 where id = " + id ;
+      let sqlCommand = "SELECT id, nom, image, description FROM exposant_18 where id = " + id ;
       this.sqlPrd.select(sqlCommand, []).then( (data)=>
       {
         let e = data.rows[0] ;
@@ -53,6 +56,7 @@ export class ExposantPage implements OnInit
           this.id = e.id ;
           this.libelle = e.nom ;
           this.image = e.image ;
+          this.description = e.description ;
         }
         
         // Liste des stands
@@ -69,18 +73,17 @@ export class ExposantPage implements OnInit
           })
         }) ;
 
-        // Liste des intervenants
-        /*let sql = "select nom, prenom, jour from INTERVENANT, SERA_PRESENT"
-        sql += " where id=numIntervenant and num_exposant=" + id
-        sql += " order by nom, prenom" ;
-        this.sqlPrd.select( sql, [], this.intervenants ) ;*/
+        // Liste des RDV
+        sqlCommand = "SELECT DISTINCT  exposant_18.nom as nomExposant, rdv_18.id, rdv_18.idExposant, stand_18.id as idStand, rdv_18.duree, rdv_18.jour, rdv_18.heure, rdv_18.nom, rdv_18.nbMaxPlace, rdv_18.description, trancheage_18.libelle as age, typerdv_18.nom as typeRdv "
+        sqlCommand += "FROM rdv_18 "
+        sqlCommand += "LEFT JOIN stand_18 ON rdv_18.idStand = stand_18.id "
+        sqlCommand += "LEFT JOIN trancheage_18 ON rdv_18.idTrancheAge = trancheage_18.id "
+        sqlCommand += "JOIN typerdv_18 ON rdv_18.idTypeRDV = typerdv_18.id "
+        sqlCommand += "JOIN exposant_18 ON rdv_18.idExposant = exposant_18.id "
+        sqlCommand += "WHERE rdv_18.idExposant = ? "
+        sqlCommand += "ORDER BY rdv_18.jour DESC, rdv_18.heure ASC"
 
-        let sql = "SELECT exposant_18.nom, jour";
-        sql += " FROM exposant_18"; 
-        sql += " JOIN rdv_18 ON exposant_18.id = rdv_18.id" ;
-        sql += " WHERE exposant_18.id = " + id;
-        sql += " ORDER BY exposant_18.nom" ;
-        this.sqlPrd.select( sql, [], this.intervenants ) ;
+        this.sqlPrd.select(sqlCommand, [this.id], this.rdvs);
       }) ;
     }
   }
@@ -93,6 +96,11 @@ export class ExposantPage implements OnInit
       m.push( new PlanMarqueur( es.numStand, this.libelle )) ;
     }) ;
     this.navCtrl.push( PlansPage, {marqueurs: m} )
+ }
+
+ onRdv( r: any )
+ {
+    this.navCtrl.push( UnRendezVousPage, {rdv: r} ) ;
  }
 
  onFavoris()
