@@ -105,7 +105,7 @@ export class RechercheLivrePage implements OnInit {
       sql += " AND idTheme=" + this.recherche.themeId ;
     }
 
-    // Si tranche d'âge rempli et que "toutes les tranches d'âge" n'est pas sélectionné, prendre en compte la tranche d'âge
+    // Si tranche d'âge remplie et que "toutes les tranches d'âge" n'est pas sélectionné, prendre en compte la tranche d'âge
     if( this.recherche.trancheAgeId && this.recherche.trancheAgeId != "0" ) 
     {
       sql += " AND idTrancheAge=" + this.recherche.trancheAgeId ;
