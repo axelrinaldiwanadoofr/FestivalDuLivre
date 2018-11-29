@@ -58,6 +58,7 @@
         <ion-item-divider class="debutListe">Liste des livres</ion-item-divider> <!-- séparateur "Liste des livres" -->
         <!-- <button ion-button full [hidden]="!exposants.length || exposants.length>6" (click)="onPlan()">Afficher sur le plan</button> -->
 
+        
         <ion-item *ngFor="let l of livres" (click)="onLivreClick(l)"> <!-- pour chaque ligne de livre affichée il y a: -->
             <ion-thumbnail item-start >
                 <img src={{l.image}}> <!-- la couverture -->
@@ -76,6 +77,7 @@
                 Stand n° {{l.numStand}} <!-- le num du stand où on peut le trouver -->
             </p>
         </ion-item>
+        <p *ngIf="!livres.length" style="color:red;"><b>Aucun livre n'a été trouvé.</b></p>
     </ion-list>
 </ion-content>
 

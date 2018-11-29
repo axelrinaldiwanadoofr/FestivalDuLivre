@@ -42,9 +42,10 @@ export class LivrePage implements OnInit
 
   ngOnInit()
   {
+    // récupère l'id du livre pushé par onLivreClick
     let idLivre = this.navParams.get("idLivre") ;
     
-
+    // à partir de cet id on récupère tous les attributs de ce livre dans la base de données 
     if(idLivre)
     {
       let sqlCommand = "SELECT l.id AS id, titre, enResume, commentaire, auteur, editeur, l.idExposant, l.image AS image, nom AS nomExposant, idStand AS numStand ";
@@ -52,9 +53,14 @@ export class LivrePage implements OnInit
       sqlCommand += "WHERE l.idExposant = e.id ";
       sqlCommand += "AND l.id = " + idLivre + " ";
       sqlCommand += "AND et.idExposant=l.idExposant";
+
+      // on insère les attributs dans la variable data[0] (par défaut) parce qu'on peut pas les mettre directement dans livre
       this.sqlPrd.select( sqlCommand, []).then( (data)=>
       {
+        // on créer une variable livre pour contenir toutes les données des attributs
         let livre = data.rows[0] ;
+
+        // on affecte les données à notre instance de livre
         if(livre)
         {
           this.idLivre = livre.idLivre;
@@ -88,17 +94,21 @@ export class LivrePage implements OnInit
 //    toast.present();
 //  }
 
-  onExposantClick( idExposant )
+
+  // si clic sur l'exposant
+  onExposantClick(idExposant)
   {
     this.navCtrl.push(ExposantPage, {id: idExposant }) ;
   }
 
 
+  // si clic sur le num du stand
   onNumStandClick(numStand){
 		this.navCtrl.push(StandListExposantPage,{numStand: numStand});
   }
 
 
+  // bouton accueil
   Accueil()
   {
     this.navCtrl.setRoot(HelloIonicPage);

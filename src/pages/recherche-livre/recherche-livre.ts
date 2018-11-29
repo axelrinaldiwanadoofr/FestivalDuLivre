@@ -32,11 +32,11 @@ export class RechercheLivrePage implements OnInit {
     public sqlPrd: RemoteSqlProvider)
     {
     this.recherche = new RechercheLivreCriteres();
-    this.livres = [];
-    this.themes = [];
-    this.trancheAges = [];
-    this.auteurs = [];
-    this.editeurs = [];
+    this.livres = []; // Tableau qui contiendra les livres
+    this.themes = []; // Tableau qui contiendra les thèmes
+    this.trancheAges = []; // Tableau qui contiendra les tranches d'âge
+    this.auteurs = []; // Tableau qui contiendra les auteurs
+    this.editeurs = []; // Tableau qui contiendra les éditeurs
   }
 
 
