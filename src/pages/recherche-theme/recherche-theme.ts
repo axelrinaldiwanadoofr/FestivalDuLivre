@@ -19,17 +19,30 @@ export class RechercheThemePage {
 
 public themes:Array<{id: number, libelle: string}>
 
+	/**
+	 * Constructeur de la class RechercheThemePage.
+	 * @param navCtrl 
+	 * @param navParams 
+	 * @param sqlPrd 
+	 */
+	constructor(public navCtrl: NavController, public navParams: NavParams,public sqlPrd:RemoteSqlProvider) {
+		this.themes=[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public sqlPrd:RemoteSqlProvider) {
-    this.themes=[];
-    
-    this.sqlPrd.select("SELECT * FROM theme_18 ORDER BY libelle", null, this.themes);
-  }
+		this.sqlPrd.select("SELECT * FROM theme_18 ORDER BY libelle", null, this.themes);
+	}
 
-  exposants(theme){
-    this.navCtrl.push(ThemeExposantsPage,{item:theme});
-  }
-  Accueil(){
-    this.navCtrl.setRoot(HelloIonicPage);
-  }
+	/**
+	 * Method qui permet d'allez vers un exposants.
+	 * @param theme 
+	 */
+	exposants(theme){
+		this.navCtrl.push(ThemeExposantsPage,{item:theme});
+	}
+
+	/**
+	 * Renvoi la page vers la page d'accueil.
+	 */
+	Accueil(){
+		this.navCtrl.setRoot(HelloIonicPage);
+	}
 }

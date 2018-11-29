@@ -9,34 +9,64 @@ import { RemoteSqlProvider } from '../../../../providers/remotesql/remotesql';
 })
 export class Enigme1 {
 
+  // Déclaration du tableau contenant les attributs de chaque énigme
   public lesEnigmes: Array<{ title: string, description: string, day: number, numStand: number, reponse: Array<string>, code: string[6], commentaireFin: string, image: string }>;
 
+  // Déclaration des variables utilisées dans le jeu 
 
-  public compteurReponse: number;
+  // Variable todo qui contiendra l'énigme en cours
   public todo: any;
+
+  // Index correspond au numéro de l'énigme dans le tableau : 
+  // On le stocke dans le localstorage sous le nom "index" (stockage qui à chaque refresh se réinitialise)
+  // la fonction parse de JSON permet de passer l'index de string à number (inverse d'un toString)
   public index: number = JSON.parse(localStorage.getItem("index"));
+
+  // Booléen qui teste si le code saisi dans l'application est bon
   public codeBon: boolean;
+
+  // Booléen qui teste si la réponse saisie dans l'application est bonne
   public reponseBonne: boolean;
+
+  // Booléen qui teste si le code saisi dans l'application est faux
   public erreurCode: boolean;
+
+  // Booléen qui teste si la réponse saisie dans l'application est fausse
   public erreurRep: boolean;
-  public reponseValidee: boolean;
+
+  // Booléen pour afficher l'énigme 
   public repAValider: boolean;
-  public afficherIntitulé: boolean;
+
+  // Booléen d'affichage de l'image en cas d'énigme en ayant besoin (rébus / dingbat)
   public afficherImage: boolean;
+
+  // Booléen d'affichage du message d'info apèrs une bonne réponse
   public messageFin: boolean;
+
+  // Booléen affichant un label en cas de victoire 
+  // C'est un label en bas de l'écran qui montre que la personne a fini le jeu
   public victoire: boolean = JSON.parse(localStorage.getItem("victory"));
 
-  // Tab des dates
+  // Variable contenant le numéro du jour actuel
   public laDate: string;
 
+  // Variable utilisée pour faire un lien entre le .ts et le .html 
+  // Elle contiendra le code saisi par les utilisateurs dans l'appli
   public codeEnigme: string;
+
+  // Variable utilisée pour faire un lien entre le .ts et le .html 
+  // Elle contiendra la réponse saisie par les utilisateurs dans l'appli
   public reponseDonnee: string;
 
 
 
   constructor(public navCtrl: NavController, public sqlPrd: RemoteSqlProvider, public navParams: NavParams) {
+    // Instanciation de la date du jour
+    // La fonction getDate() récupère le numéro du jour de la date système
+    // La fonction toString() permet de convertir cette date en chaine de caractère
     this.laDate = new Date().getDate().toString();
-    console.log(this.laDate);
+
+    // Instanciation des énigmes du deuxième jour en cas de date non définie
     this.lesEnigmes = [
       //Jour 2 
       //Enigme 1
@@ -88,7 +118,10 @@ export class Enigme1 {
         code: "4frt8d", commentaireFin: " Paul Verlaine est un poète français né à Metz le 30 mars 1844, il est décédé à Paris le 8 janvier 1896. Il abandonne sa femme pour suivre Rimbaud en Angleterre et en Belgique. Mais les relations entre ces deux hommes trop différents sont orageuses : En 1873 Verlaine blesse Rimbaud avec un révolver et sera condamné à deux ans de prison. Il se convertit au catholicisme pendant sa détention, et il écrit plusieurs poèmes de Sagesse.", image: null
       }
     ];
+
+    // Test de la date du premier jour du festival du livre 2018 : 24/11/2018
     if (this.laDate == "24") {
+      // Instanciation des énigmes du 1er jour dans le tableau des énigmes
       this.lesEnigmes = [
         //Jour 1 
         //Enigme 1
@@ -103,7 +136,7 @@ export class Enigme1 {
         {
           title: "AVOCAT", description:
           "Déchiffrez le code : <br/>OHYBNO",
-          day: 1, numStand: 201, reponse: ["EXORDE","Exorde", "exorde", "éxorde", "l'exorde", "L'exorde", "l'éxorde", "L'éxorde", "l'Éxorde", "L'Éxorde", "L'ÉXORDE", "yousk2"],
+          day: 1, numStand: 201, reponse: ["EXORDE", "Exorde", "exorde", "éxorde", "l'exorde", "L'exorde", "l'éxorde", "L'éxorde", "l'Éxorde", "L'Éxorde", "L'ÉXORDE", "yousk2"],
           code: "h5cr2h",
           commentaireFin: " Definition : <br/> Première partie d'un discours.<br/> Exorde d'une harangue, d'un plaidoyer. ", image: null
         },
@@ -148,10 +181,10 @@ export class Enigme1 {
       ]
     }
     else {
+      // Test de la date du second jour du festival du livre 2018 : 25/11/2018
       if (this.laDate == "25") {
-        console.log(this.lesEnigmes);
+        // Instanciation des énigmes du 2ème jour dans le tableau des énigmes
         this.lesEnigmes = [
-
           //Jour 2 
           //Enigme 1
           {
@@ -207,117 +240,129 @@ export class Enigme1 {
 
     // Initialisation code de l'énigme juste
     this.codeBon = false;
+
     // Initialisation code de l'énigme faux
     this.erreurCode = false;
+
     // Initialisation réponse fausse
     this.erreurRep = false;
+
     // Initialisation réponse juste
     this.reponseBonne = false;
-    // Initialisation validation + affichage de l'énigme suivante
-    this.reponseValidee = false;
+
     // Initialisation reponse à valider pour passer à l'énigme suivante
     this.repAValider = false;
-    // Initialisation affichage de l'énigme
-    this.afficherIntitulé = false;
+
     // Initialisation d'affichage de l'image
     this.afficherImage = false;
+
     // Initialisation Victoire
     this.victoire = JSON.parse(localStorage.getItem("victory"));
 
     // Initialisation Message de fin
     this.messageFin = false;
 
-    //Sérialisation 
+    // Récupération de l'index en chaine de caractère (inverse d'un toString())
     let str = JSON.stringify(this.index);
 
-    // Initialisation du localstorage
+    // Initialisation de l'index dans le localstorage
     localStorage.setItem("index", str);
 
-
+    // Instanciation de l'énigme de début en partant de l'index du localstorage
     this.todo = this.lesEnigmes[JSON.parse(localStorage.getItem("index"))];
   }
 
 
-
+  // Fonction de test de validité du code
   onClickCode() {
+    // Test si le code est juste
     if (this.todo.code == this.codeEnigme) {
       this.codeBon = true;
       this.erreurCode = false;
       this.repAValider = true;
     }
+    // Affichage du message d'erreur de code
     else {
       this.erreurCode = true;
     }
 
+    // Test si le numéro de l'énigme actuelle vaut 2 ou 3 
+    // Ce sont les énigmes avec des images (rébus / dingbat)
+    // Il faut donc permettre de les afficher avec la variable afficherImage
     if (JSON.parse(localStorage.getItem("index")) == 2 || JSON.parse(localStorage.getItem("index")) == 3 && !this.erreurCode) {
       this.afficherImage = true;
     }
-    console.log(this.laDate);
   }
 
+  // Fonction de test de validité de la réponse
   onClickEnigme() {
+    // Pour chaque réponse traitée par le tableau de l'énigme
     this.todo.reponse.forEach(rep => {
+      // Si on trouve une réponse qui correspond
       if ((rep == this.reponseDonnee || this.reponseBonne)) {
+        // Instanciation des variable de l'affichage suivant
         this.erreurRep = false;
         this.codeBon = true;
         this.reponseBonne = true;
         this.repAValider = false;
       }
+      // Affichage du message d'erreur de réponse
       else {
         this.erreurRep = true;
       }
 
+      // Test si le numéro de l'énigme actuelle vaut 2 ou 3 
+      // Ce sont les énigmes avec des images (rébus / dingbat)
+      // Il faut donc permettre de les afficher avec la variable afficherImage
       if (JSON.parse(localStorage.getItem("index")) == 2 || JSON.parse(localStorage.getItem("index")) == 3 && !this.erreurCode) {
         this.afficherImage = true;
       }
-      console.log(this.laDate);
     });
   }
 
+  // Fonction de validation de l'énigme pour passer à la suivante
+  // Après la page d'information
   onClickValideEnigme() {
+    // Réinitialisation des variables 
     this.reponseBonne = false;
     this.reponseDonnee = "";
     this.codeEnigme = "";
     this.codeBon = false;
     this.afficherImage = false;
 
-    // this.index = JSON.parse(localStorage.getItem("index"));
+    // incrémentation de l'index pour passer à l'énigme suivante
     this.index++;
 
-    //Sérialisation 
+    // Récupération de l'index en chaine de caractère (inverse d'un toString())
     let str = JSON.stringify(this.index);
 
-    // Réinitialisation du localstorage
+    // Réinitialisation de l'index dans le localstorage
     localStorage.setItem("index", str);
 
-
+    // Incrémentation de l'énigme suivante
     this.todo = this.lesEnigmes[JSON.parse(localStorage.getItem("index"))];
 
 
+    // Si le joueur a répondu à la dernière énigme (Celle qui correspond à l'index 8)
     if (this.index == 8) {
+      // On affiche le message de fin
       this.messageFin = true;
+      // On réinitialise les variables
       this.index = 0;
       let ind = JSON.stringify(this.index);
       localStorage.setItem("index", ind);
-      this.compteurReponse = 0;
       this.codeBon = true;
       this.erreurCode = false;
       this.erreurRep = false;
       this.reponseBonne = false;
-      this.reponseValidee = false;
       this.repAValider = false;
-      this.afficherIntitulé = false;
       this.afficherImage = false;
+      // On affiche le label de victoire
       this.victoire = true;
       let vic = JSON.stringify(this.victoire);
-
+      // On note la victoire dans le localstorage
       localStorage.setItem("victory", vic);
 
-      // //Sérialisation 
-      // let str = JSON.stringify(this.index);
-
-      // // Réinitialisation du localstorage
-      // localStorage.setItem("index", str);
     }
   }
 
