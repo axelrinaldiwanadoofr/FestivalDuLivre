@@ -22,26 +22,37 @@ import { UnRendezVousPage } from '../un-rendez-vous/un-rendez-vous' ;
 export class ExposantPage implements OnInit 
 {
 
-  public id: number ;
-  public libelle: string ;
-  public image: string ;
-  public description: string ;
+	public id: number ;
+	public libelle: string ;
+	public image: string ;
+	public description: string ;
 
-  public stands: Array<{numStand: number, numHall: number}> ;
-  public intervenants: Array<{nom: string, prenom: string, jour: string}> ;
-  public rdvs: Array<any> ;
+	public stands: Array<{numStand: number, numHall: number}> ;
+	public intervenants: Array<{nom: string, prenom: string, jour: string}> ;
+	public rdvs: Array<any> ;
 
-  constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams,
-    public sqlPrd: RemoteSqlProvider,
-    public favorisPrd: FavorisProvider,
-    public toastCtrl: ToastController ) 
-  {
-    this.stands = [] ;
-    this.rdvs = [] ;
-  }
+	/**
+	 * Constructeur de la classe ExposantPage.
+	 * @param navCtrl 
+	 * @param navParams 
+	 * @param sqlPrd 
+	 * @param favorisPrd 
+	 * @param toastCtrl 
+	 */
+	constructor(
+		public navCtrl: NavController, 
+		public navParams: NavParams,
+		public sqlPrd: RemoteSqlProvider,
+		public favorisPrd: FavorisProvider,
+		public toastCtrl: ToastController)
+	{
+		this.stands = [];
+		this.rdvs = [];
+	}
 
+  /**
+   * Method charger lors de l'initialisation de l'exposant.
+   */
   ngOnInit()
   {
     let id = this.navParams.get("id");
@@ -87,39 +98,53 @@ export class ExposantPage implements OnInit
       }) ;
     }
   }
+	  
+  	/**
+	 * Permet d'afficher l'exposant sur le plan.
+	 */
+	onPlan()
+	{
+		let m = [];
+		this.stands.forEach((es) => {
+			m.push( new PlanMarqueur( es.numStand, this.libelle )) ;
+		});
+		this.navCtrl.push( PlansPage, {marqueurs: m} )
+	}
 
- onPlan()
- {
-    let m = [] ;
-    this.stands.forEach( (es)=>
-    {
-      m.push( new PlanMarqueur( es.numStand, this.libelle )) ;
-    }) ;
-    this.navCtrl.push( PlansPage, {marqueurs: m} )
- }
+ 	/**
+	  * Method qui permet d'allez ver un rendez-vous.
+	  * @param r 
+	  */
+	onRdv(r: any)
+	{
+		this.navCtrl.push(UnRendezVousPage, {rdv: r});
+	}
 
- onRdv( r: any )
- {
-    this.navCtrl.push( UnRendezVousPage, {rdv: r} ) ;
- }
+	/**
+	 * method qui permet d'ajouter au favorie un exposant.
+	 */
+	onFavoris()
+	{
+		this.stands.forEach((s) =>
+		{
+			this.favorisPrd.ajoute( s.numStand, this.id, this.libelle ) ;      
+		});
 
- onFavoris()
- {
-    this.stands.forEach( (s)=>
-    {
-      this.favorisPrd.ajoute( s.numStand, this.id, this.libelle ) ;      
-    })
+		/**
+		 * Permet de créer un message (toast).
+		 */
+		let toast = this.toastCtrl.create({
+			message: 'Exposant ' + this.libelle + ' ajouté aux favoris',
+			duration: 1000 
+		});
+		toast.present();
+	}
 
-   let toast = this.toastCtrl.create({
-     message: 'Exposant ' + this.libelle + ' ajouté aux favoris',
-     duration: 1000 
-   });
-   toast.present();
- }
-
-
-  Accueil()
-  {
-    this.navCtrl.setRoot(HelloIonicPage);
-  }
+	/**
+	 * Renvoi la page vers la page d'accueil.
+	 */
+	Accueil()
+	{
+		this.navCtrl.setRoot(HelloIonicPage);
+	}
 }

@@ -21,6 +21,12 @@ export class StandPage {
 	public stands:Array<{id:string}>;
 	public stands2:Array<{id:string}>;
 
+	/**
+	 * Constructeur de la class StandPage.
+	 * @param navCtrl 
+	 * @param navParams 
+	 * @param sqlPrd 
+	 */
 	constructor(public navCtrl: NavController, public navParams: NavParams, public sqlPrd:RemoteSqlProvider) {
 		this.stands=[];
 		this.selectedItem=navParams.get('item');
@@ -32,13 +38,25 @@ export class StandPage {
 		this.stands2=this.stands;
 	}
 
+	/**
+	 * Method charger au moment du chargement de la vue.
+	 */
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad StandPage');
 	}
- 
+	
+	/**
+	 * Method qui renvoi vers la liste des exposant.
+	 * @param stand 
+	 */
 	event(stand){
 		this.navCtrl.push(StandListExposantPage,{numStand:stand.id});
 	}
+
+	/**
+	 * Method qui permet d'effectuer une recherche.
+	 * @param ev 
+	 */
 	getItems(ev: any) {
 		// Reset items back to all of the items
 		this.stands=this.stands2
@@ -54,6 +72,9 @@ export class StandPage {
 		}
 	}
 
+	/**
+	 * Renvoi la page vers la page d'accueil.
+	 */
 	Accueil(){
 		this.navCtrl.setRoot(HelloIonicPage);
 	}
