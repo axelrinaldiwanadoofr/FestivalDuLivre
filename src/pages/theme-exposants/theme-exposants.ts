@@ -18,56 +18,63 @@ import { PlansPage, PlanMarqueur} from '../plans/plans';
   templateUrl: 'theme-exposants.html',
 })
 export class ThemeExposantsPage {
-  public selectedItem:any;
-  public tab : Array<{numStand: number, id: string, libelle : string}>
+	
+	public selectedItem:any;
+	public tab : Array<{numStand: number, id: string, libelle : string}>
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public sqlPrd:RemoteSqlProvider) {
-    this.selectedItem=navParams.get('item');
-    this.tab = [];
-  }
+	/**
+	 * Constructeur de la class ThemeExposantsPage.
+	 * @param navCtrl 
+	 * @param navParams 
+	 * @param sqlPrd 
+	 */
+	constructor(public navCtrl: NavController, public navParams: NavParams, public sqlPrd:RemoteSqlProvider) {
+		this.selectedItem=navParams.get('item');
+		this.tab = [];
+	}
 
-  ngOnInit()
-  {
-   /* let sql = "SELECT numStand, e.id as id, libelle " ;
-    sql += " FROM EXPOSANT as e, CONCERNE as c, EXPOSER as er" ;
-    sql += " WHERE c.idExposant = e.id AND e.id=er.idExposant AND idTheme = ?" ;
-    sql += " ORDER BY libelle" ; 
-    this.sqlPrd.select( sql, [this.selectedItem.id], this.tab);*/
+  	/**
+	 * Method qui est charger pendant l'action.
+	 */
+	ngOnInit()
+	{
+		let sql = "SELECT exposant_18.id, nom " ;
+		sql += " FROM exposant_18 JOIN presenter_18 ON exposant_18.id = presenter_18.idExposant";
+		sql += " JOIN theme_18 ON presenter_18.idTheme = theme_18.id";
+		sql += " WHERE idTheme = " + this.selectedItem.id;
+		sql += " ORDER BY nom" ; 
 
-    let sql = "SELECT exposant_18.id, nom " ;
-    sql += " FROM exposant_18 JOIN presenter_18 ON exposant_18.id = presenter_18.idExposant";
-    sql += " JOIN theme_18 ON presenter_18.idTheme = theme_18.id";
-    sql += " WHERE idTheme = " + this.selectedItem.id;
-    sql += " ORDER BY nom" ; 
-
-    this.sqlPrd.select( sql, null, this.tab);
-  }
+		this.sqlPrd.select( sql, null, this.tab);
+	}
    
-  
+	accueil(){
+		this.navCtrl.push(HelloIonicPage, null);
+	}
 
+  	/**
+	 * Method qui permet d'allez vers un exposant.
+	 * @param exposant 
+	 */
+	onExposant( exposant )
+	{
+		this.navCtrl.push( ExposantPage, {id: exposant.id} ) ;
+	}
 
-  accueil(){
-    this.navCtrl.push(HelloIonicPage, null);
-  }
+	onPlan()
+	{
+		let m = [];
+		this.tab.forEach((es) => {
+			m.push( new PlanMarqueur( es.numStand, es.libelle )) ;
+		});
+		this.navCtrl.push( PlansPage, {marqueurs: m} )      
+	}
 
-  onExposant( exposant )
-  {
-    this.navCtrl.push( ExposantPage, {id: exposant.id} ) ;
-  }
-
-  onPlan()
-  {
-    let m = [] ;
-    this.tab.forEach( (es)=>
-    {
-      m.push( new PlanMarqueur( es.numStand, es.libelle )) ;
-    }) ;
-     this.navCtrl.push( PlansPage, {marqueurs: m} )      
-  }
-
-  Accueil()
-  {
-    this.navCtrl.setRoot(HelloIonicPage);
-  }
+	/**
+	 * Renvoi la page vers la page d'accueil.
+	 */
+	Accueil()
+	{
+		this.navCtrl.setRoot(HelloIonicPage);
+	}
 
 }
