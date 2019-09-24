@@ -16,21 +16,20 @@ import { Enigme1 } from '../jeuPiste/enigmes/enigme1/enigme1';
 })
 export class jeuPistePage {
 
+
     constructor(public navCtrl: NavController, public navParams: NavParams) {
     }
  
+    
     ionViewDidLoad() {
         console.log('ionViewDidLoad jeuPistePage');
     }
 
+    // Début de l'énigme lorsqu'on clique sur le bouton 
+    // de début de jeu (passage à la pages des énigmes)
     onClickDebutJeu()
   {
     this.navCtrl.push(Enigme1);
-  }
-
-  saveAnswer()
-  {
-      
   }
 
 }

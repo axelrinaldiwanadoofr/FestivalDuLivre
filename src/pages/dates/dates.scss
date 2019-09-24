@@ -40,15 +40,11 @@ h3 {
 
 .fieldsetDate{
 	text-align: left;
-	border:2px solid lightgrey;
+	border:2px solid #BDAC98;
     -moz-border-radius:8px;
     -webkit-border-radius:8px;	
     border-radius:8px;	
 	margin-bottom: 5%;
-    }
-    
-.texteDate{
-    text-align: center;
-}
+	}
 	
 // Changement de couleur des dates dans le dossier app/app.scss

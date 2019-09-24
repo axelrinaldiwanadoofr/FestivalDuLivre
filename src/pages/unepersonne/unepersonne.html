@@ -21,11 +21,11 @@
             <p style="white-space:initial;">
                 <b>{{d.libelle}}</b> {{d.jour}} à {{ d.heure }} sur le stand n° {{d.idStand}}
             </p>
-            <br>
         </ion-item>      
+        <button ion-button full [hidden]="!dedicaces.length" (click)="onDedicacesPlan()">Afficher sur le plan</button>            
         <ion-item-divider class="debutListe" [hidden]="!rdv.length">Les rendez-vous</ion-item-divider>
         <ion-item *ngFor="let r of rdv">
-          <p style="white-space:initial;"><b>Type rendez-vous :</b> {{r.nom}}</p>  
+          <p style="white-space:initial;"><b>Nom:</b> {{r.nom}}</p>  
           <p></p>
                  <p [hidden]="!r.description" style="white-space:initial;"><b>Description:</b> {{r.description}}</p>
                  <br>
@@ -39,10 +39,4 @@
         <button ion-button full (click)="onFavoris()" class="btn" color="rouge">Ajouter aux favoris</button>            
     </ion-list>   
 </ion-content>
-
-<ion-footer class="accueil">
-        <ion-toolbar>
-            <button class="btnacc" (click)="Accueil()" ion-button round><ion-icon style="font-size:20px;" name="home"></ion-icon>&nbsp;Accueil</button>
-        </ion-toolbar>
-    </ion-footer>
 

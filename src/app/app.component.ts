@@ -36,8 +36,9 @@ export class MyApp {
     this.initializeApp();
 
     // set our app's pages
+    // Après title c'est le titre et à la fin c'est l'icone 
     this.pages = [
-      { title: 'Accueil', component: HelloIonicPage, icon: 'home'},
+      { title: 'Accueil', component: HelloIonicPage, icon: 'home'}, 
       { title: "Présentation", component: PresentationPage, icon: 'desktop'},
       { title: "Infos pratiques", component: InfoPage, icon: 'information-circle'},
       { title: 'Restaurants', component: RestaurantsPage, icon: 'restaurant'},

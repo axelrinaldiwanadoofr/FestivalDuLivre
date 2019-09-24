@@ -1,15 +1,9 @@
 page-theme {
-   .fieldsetTheme{
-    text-align: justify;
-    border:2px solid lightgrey;
-    -moz-border-radius:8px;
-    -webkit-border-radius:8px;	
-    border-radius:8px;	
-    margin-bottom: 5%;
-   }
-
-   .imageRond
-   {
-        border-radius: 10px 10px 10px 10px;
-   }
+    .accueil {
+        text-align: center;
+    }
+    .btnacc {
+        height: 50px;
+        background: linear-gradient(to top, #0066cc 17%, #66ccff 91%);
+    }
 }

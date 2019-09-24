@@ -20,6 +20,12 @@ selectedItem :any;
 public Stand: Array<{num: number}> ;
 
 
+  /**
+   * Constructeur de la class ExposerPage.
+   * @param navCtrl 
+   * @param navParams 
+   * @param sqlPrd 
+   */
   constructor(public navCtrl: NavController, public navParams: NavParams,public sqlPrd: RemoteSqlProvider) {
     this.selectedItem = navParams.get('item');
     this.Stand=[]
@@ -27,9 +33,16 @@ public Stand: Array<{num: number}> ;
 
   }
 
+  /**
+   * Method charger au chargement de la vue.
+   */
   ionViewDidLoad() {
     console.log('ionViewDidLoad ExposerPage');
   }
+
+  /**
+   * Renvoi la page vers la page d'accueil.
+   */
   Accueil(){
     this.navCtrl.setRoot(HelloIonicPage);
   }
