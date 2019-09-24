@@ -21,15 +21,9 @@ import { UnRendezVousPage } from '../../pages/un-rendez-vous/un-rendez-vous' ;
 })
 export class UnePersonnePage implements OnInit
 {
-<<<<<<< HEAD
   private unePersonne:  {id:number,nom:string,prenom:string};
   private dedicaces: Array<{id:number, numstand: number, libelle: string, jour: string}> ;
   private rdv: Array<{numStand: number, date: string, heure: string, duree: string, titre: string, resume: string, age: string, type: string }>
-=======
-	private unePersonne:  {id:number,nom:string,prenom:string};
-	private dedicaces: Array<{id:number, idStand: number, libelle: string, jour: string}> ;
-	private rdv: Array<{idStand: number, date: string, heure: string, duree: string, nom: string, resume: string, age: string, type: string }>
->>>>>>> 514d2b0bd739409ab24e7e7d24e1e74cd5957f8f
 
 	/**
 	 * Constructeur de la classe UnePersonnePage.
@@ -82,43 +76,6 @@ export class UnePersonnePage implements OnInit
 		this.navCtrl.setRoot(HelloIonicPage);
 	}
 
-<<<<<<< HEAD
-  onDedicacesPlan()
-  {
-    let m = [] ;
-    this.dedicaces.forEach( (d)=>
-    {
-      m.push( new PlanMarqueur( d.numstand, d.libelle )) ;
-    }) ;
-    this.navCtrl.push( PlansPage, {marqueurs: m} )
-  }
-
-  onRdvPlan()
-  {
-    let $this = this ;
-    let m = [] ;
-    this.rdv.forEach( (r)=>
-    {
-      m.push( new PlanMarqueur( r.numStand, $this.unePersonne.nom + " " + $this.unePersonne.prenom )) ;
-    }) ;
-    this.navCtrl.push( PlansPage, {marqueurs: m} )
-  }
-  
-  onFavoris()
-  {
-    this.dedicaces.forEach( (d)=>
-    {
-      this.favorisPrd.ajoute( d.numstand, d.id, 
-        this.unePersonne.nom + " " + this.unePersonne.prenom + " dédicace chez " + d.libelle ) ;
-    }) ;
-
-    let r = this.rdv[0] ;
-    if( r )
-    {
-      this.favorisPrd.ajoute( r.numStand, 999, 
-        "RDV avec " + this.unePersonne.nom + " " + this.unePersonne.prenom + " pour " + r.titre ) ;
-    }
-=======
 	/**
 	 * ...
 	 */
@@ -162,7 +119,6 @@ export class UnePersonnePage implements OnInit
 		});
 		toast.present();
 	}
->>>>>>> 514d2b0bd739409ab24e7e7d24e1e74cd5957f8f
 
 	/**
 	 * Method qui permet d'ajouter en favorie un rendez-vous.

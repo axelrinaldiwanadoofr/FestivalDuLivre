@@ -4881,10 +4881,6 @@ textarea::-webkit-input-placeholder {
   padding-left: 2px;
 }
 
-textarea:-ms-input-placeholder {
-  padding-left: 2px;
-}
-
 textarea::-ms-input-placeholder {
   padding-left: 2px;
 }
@@ -56151,16 +56147,12 @@ page-ajout .label-md-text-color {
 }
 
 page-ajout .label-md-text-color-focused {
-  color: #C51B5E;
+  color: #cd3d;
 }
 
 page-contact .h1 {
   color: #C51B5E;
   font-weight: bold;
-}
-
-page-contact .cadreRond {
-  border-radius: 10px 10px 10px 10px;
 }
 
 page-dates ion-slides {
@@ -56206,13 +56198,9 @@ h3 {
 
 .fieldsetDate {
   text-align: left;
-  border: 2px solid lightgrey;
+  border: 2px solid #BDAC98;
   border-radius: 8px;
   margin-bottom: 5%;
-}
-
-.texteDate {
-  text-align: center;
 }
 
 page-exposant .icon-home {
@@ -56261,8 +56249,8 @@ page-exposer .accueil {
 
 page-exposer .btnacc {
   height: 50px;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(17%, #0066cc), color-stop(91%, #66ccff));
-  background: linear-gradient(to top, #0066cc 17%, #66ccff 91%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#00cc66), to(#009933));
+  background: linear-gradient(to bottom, #00cc66 0%, #009933 100%);
 }
 
 page-favoris .btn {
@@ -56278,8 +56266,8 @@ page-favoris .btn {
 
 page-favoris .btnSuppr {
   text-align: center;
-  width: 8%;
-  height: 8%;
+  width: 25%;
+  height: 5px;
   margin-bottom: 10px;
   color: white;
   background: #C51B5E;
@@ -56296,6 +56284,16 @@ page-halls .button-hall {
   background: #C51B5E;
 }
 
+page-halls .accueil {
+  text-align: center;
+}
+
+page-halls .btnacc {
+  height: 50px;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(17%, #0066cc), color-stop(91%, #66ccff));
+  background: linear-gradient(to top, #0066cc 17%, #66ccff 91%);
+}
+
 page-hello-ionic .btn-right {
   float: right;
   color: white;
@@ -56306,13 +56304,19 @@ page-hello-ionic .ios {
   color: #C51B5E;
 }
 
-page-hello-ionic .titreFDL {
-  color: #4D5F7A;
-  font-size: 200%;
-}
-
 page-hello-ionic .logo {
   border-radius: 20px;
+}
+
+page-hello-ionic .imgbtn {
+  border-radius: 10px;
+}
+
+page-hello-ionic .logo-client {
+  margin: 2px;
+  max-height: 300px;
+  max-width: auto;
+  border-radius: 10px;
 }
 
 page-hello-ionic .btn {
@@ -56325,11 +56329,18 @@ page-hello-ionic .btn {
   max-width: 200px;
 }
 
-page-hello-ionic .btnResto {
-  width: 110px;
-  height: 110px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#EEEDEB));
-  background: linear-gradient(#EEEDEB);
+page-hello-ionic .btnresto:active {
+  -webkit-transform: translate(0px, 3px);
+  transform: translate(0px, 3px);
+  -webkit-box-shadow: 0px 2px #fff3e6;
+  box-shadow: 0px 2px #fff3e6;
+}
+
+page-hello-ionic .btn:active {
+  -webkit-transform: translate(0px, 3px);
+  transform: translate(0px, 3px);
+  -webkit-box-shadow: 0px 2px #fff3e6;
+  box-shadow: 0px 2px #fff3e6;
 }
 
 page-hello-ionic .searchbar {
@@ -56341,6 +56352,12 @@ page-hello-ionic ion-col {
   border: 1px solid transparent;
 }
 
+page-hello-ionic .rdv {
+  font-weight: bold;
+  font-size: 100%;
+  text-align: left;
+}
+
 page-hello-ionic .btn2 {
   font-size: 120%;
   font-weight: bold;
@@ -56348,32 +56365,25 @@ page-hello-ionic .btn2 {
   background: #fff7e6;
 }
 
-page-hello-ionic .fieldsetFDL {
-  text-align: center;
-  border: 2px solid rgba(0, 0, 0, 0.945);
-  border-radius: 8px;
-  margin-bottom: 5%;
-}
-
 page-historique .rouge {
   color: #C51B5E;
 }
 
-page-historique .fieldsetHistoire {
-  text-align: justify;
-  border: 2px solid lightgrey;
+page-historique fieldset {
+  text-align: left;
+  border: 2px solid #BDAC98;
   border-radius: 8px;
   margin-bottom: 5%;
 }
 
 page-historique legend {
   font-size: 113%;
-  font-Weight: Bold;
+  Font-Weight: Bold;
   color: #C51B5E;
 }
 
 page-historique div {
-  text-align: justify;
+  text-align: center;
 }
 
 .accueil {
@@ -56391,30 +56401,29 @@ page-historique div {
 }
 
 /*.tab-button:nth-child(1) {
-    //your  text color 
+    /*your  text color 
     color: green;
-    //your background color
+    /* your background color
     background:#2c68e0;
     
 }
 
 .tab-button:nth-child(2) {
-    //your  text color 
+    /*your  text color 
     color: #fff;
     // Couleur de fond des boutons 
     background: #2c68e0;
 }
 
 .tab-button:nth-child(3) {
-    //your  text color 
+    /*your  text color 
     color: #fff;
-    //your background color
+    /* your background color
     background: #2c68e0; 
 
 }
-
-
- l'onglet active
+*/
+/* l'onglet active
 .tab-button[aria-selected=true] {
     background: yellow;
 }*/
@@ -56431,10 +56440,6 @@ page-intervenant .btn {
 
 .titre {
   color: #C51B5E;
-}
-
-.navetteRond {
-  border-radius: 10px 10px 10px 10px;
 }
 
 .debutJeu {
@@ -56489,7 +56494,7 @@ page-livre .texte {
 
 page-livre .titre {
   color: #C51B5E;
-  font-size: 50%;
+  font-size: 125%;
   font: bold;
 }
 
@@ -56498,11 +56503,6 @@ page-livre .fieldLivre {
   border: 2px solid lightgrey;
   border-radius: 8px;
   margin-bottom: 5%;
-}
-
-page-livre .lien {
-  text-decoration: underline;
-  color: #72b8cf;
 }
 
 page-lycee .field {
@@ -56526,10 +56526,6 @@ page-lycee .texte {
 
 page-lycee table {
   margin: auto;
-}
-
-page-mode-emploi {
-  /* Background en dégrader mais titre en noir*/
 }
 
 page-mode-emploi ion-content {
@@ -56914,14 +56910,6 @@ page-restaurants td.decal {
   border-bottom: none;
 }
 
-page-restaurants .cadreRond {
-  border-radius: 10px 10px 10px 10px;
-}
-
-page-restaurants .titre {
-  color: #C51B5E;
-}
-
 page-stand .button-list {
   border-radius: 10% / 55%;
   background: #C51B5E;
@@ -56937,17 +56925,17 @@ page-stand-list-exposant .accueil {
   text-align: center;
 }
 
+page-stand-list-exposant .btnacc {
+  height: 50px;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(17%, #0066cc), color-stop(91%, #66ccff));
+  background: linear-gradient(to top, #0066cc 17%, #66ccff 91%);
+}
+
 page-stand-list-exposant .button-list {
   border-radius: 10% / 55%;
   background: #C51B5E;
   margin-bottom: 10px;
   color: white;
-}
-
-page-stand-list-exposant .btnacc {
-  height: 50px;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(17%, #0066cc), color-stop(91%, #66ccff));
-  background: linear-gradient(to top, #0066cc 17%, #66ccff 91%);
 }
 
 page-stand-list-exposant .Liste {
@@ -56956,15 +56944,14 @@ page-stand-list-exposant .Liste {
   border-radius: 10px 10px 0px 0px;
 }
 
-page-theme .fieldsetTheme {
-  text-align: justify;
-  border: 2px solid lightgrey;
-  border-radius: 8px;
-  margin-bottom: 5%;
+page-theme .accueil {
+  text-align: center;
 }
 
-page-theme .imageRond {
-  border-radius: 10px 10px 10px 10px;
+page-theme .btnacc {
+  height: 50px;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(17%, #0066cc), color-stop(91%, #66ccff));
+  background: linear-gradient(to top, #0066cc 17%, #66ccff 91%);
 }
 
 page-theme-exposants .btn {
@@ -57013,10 +57000,6 @@ page-un-rendez-vous .Liste {
   border-radius: 10px 10px 10px 10px;
 }
 
-page-un-rendez-vous .Liste p {
-  white-space: initial;
-}
-
 page-unepersonne .btn {
   text-align: center;
   width: 100%;
@@ -57038,18 +57021,4 @@ page-unepersonne .finListe {
   background: #DED8CF;
   color: black;
   border-radius: 0px 0px 10px 10px;
-}
-
-page-unepersonne .button {
-  text-align: center;
-}
-
-page-unepersonne .accueil {
-  text-align: center;
-}
-
-page-unepersonne .btnacc {
-  height: 50px;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(17%, #0066cc), color-stop(91%, #66ccff));
-  background: linear-gradient(to top, #0066cc 17%, #66ccff 91%);
 }
