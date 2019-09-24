@@ -181,11 +181,10 @@ export class AppModule {
   constructor()
   {
     // Specifie l'URL pour l'accès à la base de donnée 
-    RemoteSqlProvider.setWebSqlApiUrl( "http://www.lcs.alsace/flc/php" ) ;
-    //RemoteSqlProvider.setWebSqlApiUrl( "http://localhost/bd" ) ;
+    RemoteSqlProvider.setWebSqlApiUrl( "http://www.lcs.best/flc/php" ) ;
     
     // Specifie le nom de la base de donnée à consulter
-    RemoteSqlProvider.setWebDbNameAndId( "lcsalsacggroot", 1 ) ;
+    RemoteSqlProvider.setWebDbNameAndId( "lcsbestmdcbdusr", 1 ) ;
 
     WebSqlProvider.setWebSql( "FLC", "1.0", "Festival du livre", 1000*1024, (prd)=>
     {
