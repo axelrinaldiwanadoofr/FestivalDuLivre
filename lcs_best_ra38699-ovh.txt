@@ -1,0 +1,13 @@
+lcs.best
+--------
+
+ftp srv: ftp.cluster020.hosting.ovh.net
+ftp usr: lcsbestmdc
+ftp pwd: LcsBestFtp123
+
+BD srv: lcsbestmdcbdusr.mysql.db
+BD nom: lcsbestmdcbdusr
+BD usr: lcsbestmdcbdusr
+BD pwd: LcsBestBd123
+
+https://phpmyadmin.cluster020.hosting.ovh.net/index.php?pma_username=lcsbestmdcbdusr&pma_servername=lcsbestmdcbdusr.mysql.db
