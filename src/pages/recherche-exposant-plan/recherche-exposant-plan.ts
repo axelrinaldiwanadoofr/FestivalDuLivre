@@ -112,7 +112,7 @@ export class RechercheExposantPlanPage implements OnInit
     else
     {
       let sql = "select idStand, id, nom "
-      sql += "from EXPOSANTS_18 "
+      sql += "from exposant_18 "
       sql += "JOIN etresur_18 ON id = idExposant " 
       sql += "order by nom"
       this.sqlPrd.select( sql , null, this.exposants ) ;

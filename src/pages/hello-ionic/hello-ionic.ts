@@ -24,7 +24,7 @@ export class HelloIonicPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public sqlPrd: RemoteSqlProvider) {    
   this.rdv = [];
     
-    this.sqlPrd.select( "select titre,heure,numStand, libelle from RDV,TRANCHEAGE where RDV.idTrancheAge=TRANCHEAGE.id AND heure > CURRENT_TIME AND datebis = CURRENT_DATE order by heure ASC limit 3", null, this.rdv );
+    this.sqlPrd.select( "select titre,heure,idStand, libelle from rdv_18,trancheage_18 where rdv_18.idTrancheAge=trancheage_18.id AND heure > CURRENT_TIME AND datebis = CURRENT_DATE order by heure ASC limit 3", null, this.rdv );
   
     this.index = 0;
     this.vict = false;

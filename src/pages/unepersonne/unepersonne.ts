@@ -23,7 +23,7 @@ export class UnePersonnePage implements OnInit
 {
   private unePersonne:  {id:number,nom:string,prenom:string};
   private dedicaces: Array<{id:number, numstand: number, libelle: string, jour: string}> ;
-  private rdv: Array<{numStand: number, date: string, heure: string, duree: string, titre: string, resume: string, age: string, type: string }>
+  private rdv: Array<{idStand: number, date: string, heure: string, duree: string, titre: string, resume: string, age: string, type: string }>
 
 	/**
 	 * Constructeur de la classe UnePersonnePage.
