@@ -22,8 +22,8 @@ import { UnRendezVousPage } from '../../pages/un-rendez-vous/un-rendez-vous' ;
 export class UnePersonnePage implements OnInit
 {
   private unePersonne:  {id:number,nom:string,prenom:string};
-  private dedicaces: Array<{id:number, isStand: number, libelle: string, jour: string}> ;
-  private rdv: Array<{idStand: number, date: string, heure: string, duree: string, titre: string, resume: string, age: string, type: string }>
+  private dedicaces: Array<{id:number, idStand: number, libelle: string, jour: string}> ;
+  private rdv: Array<{idStand: number, nom: string, date: string, heure: string, duree: string, titre: string, resume: string, age: string, type: string }>
 
 	/**
 	 * Constructeur de la classe UnePersonnePage.
